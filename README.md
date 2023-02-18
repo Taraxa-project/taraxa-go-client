@@ -30,7 +30,6 @@ run
 abigen --abi=client/abi/DposInterface.abi --pkg=taraxaDposClient --out=client/taraxa_dpos_client.go
 ```
 
-
 ### !!! To work with latest dpos contract interface
 Update taraxa-evm submodule and re-generate abi & client go implementation by running:
 ```
