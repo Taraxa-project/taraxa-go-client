@@ -198,7 +198,7 @@ func (dposScClient *DposScClient) NewTransactor(privateKeyStr string) (*Transact
 	return transactor, nil
 }
 
-func (dposScClient *DposScClient) setupNewTransactOpts(transactor *Transactor) (*bind.TransactOpts, error) {
+func (dposScClient *DposScClient) createNewTransactOpts(transactor *Transactor) (*bind.TransactOpts, error) {
 	nonce, err := dposScClient.ethClient.PendingNonceAt(context.Background(), transactor.address)
 	if err != nil {
 		return nil, err
@@ -220,7 +220,7 @@ func (dposScClient *DposScClient) setupNewTransactOpts(transactor *Transactor) (
 }
 
 func (dposScClient *DposScClient) Delegate(transactor *Transactor, amount *big.Int, validator common.Address) (*types.Transaction, error) {
-	transactOpts, err := dposScClient.setupNewTransactOpts(transactor)
+	transactOpts, err := dposScClient.createNewTransactOpts(transactor)
 	if err != nil {
 		return nil, err
 	}
@@ -230,7 +230,7 @@ func (dposScClient *DposScClient) Delegate(transactor *Transactor, amount *big.I
 }
 
 func (dposScClient *DposScClient) Undelegate(transactor *Transactor, amount *big.Int, validator common.Address) (*types.Transaction, error) {
-	transactOpts, err := dposScClient.setupNewTransactOpts(transactor)
+	transactOpts, err := dposScClient.createNewTransactOpts(transactor)
 	if err != nil {
 		return nil, err
 	}
@@ -238,8 +238,8 @@ func (dposScClient *DposScClient) Undelegate(transactor *Transactor, amount *big
 	return dposScClient.dposInterface.Undelegate(transactOpts, validator, amount)
 }
 
-func (dposScClient *DposScClient) confirmUndelegate(transactor *Transactor, validator common.Address) (*types.Transaction, error) {
-	transactOpts, err := dposScClient.setupNewTransactOpts(transactor)
+func (dposScClient *DposScClient) ConfirmUndelegate(transactor *Transactor, validator common.Address) (*types.Transaction, error) {
+	transactOpts, err := dposScClient.createNewTransactOpts(transactor)
 	if err != nil {
 		return nil, err
 	}
@@ -247,8 +247,8 @@ func (dposScClient *DposScClient) confirmUndelegate(transactor *Transactor, vali
 	return dposScClient.dposInterface.ConfirmUndelegate(transactOpts, validator)
 }
 
-func (dposScClient *DposScClient) cancelUndelegate(transactor *Transactor, validator common.Address) (*types.Transaction, error) {
-	transactOpts, err := dposScClient.setupNewTransactOpts(transactor)
+func (dposScClient *DposScClient) CancelUndelegate(transactor *Transactor, validator common.Address) (*types.Transaction, error) {
+	transactOpts, err := dposScClient.createNewTransactOpts(transactor)
 	if err != nil {
 		return nil, err
 	}
@@ -256,11 +256,29 @@ func (dposScClient *DposScClient) cancelUndelegate(transactor *Transactor, valid
 	return dposScClient.dposInterface.CancelUndelegate(transactOpts, validator)
 }
 
-func (dposScClient *DposScClient) redelegateUndelegate(transactor *Transactor, amount *big.Int, validatorFrom common.Address, validatorTo common.Address) (*types.Transaction, error) {
-	transactOpts, err := dposScClient.setupNewTransactOpts(transactor)
+func (dposScClient *DposScClient) RedelegateUndelegate(transactor *Transactor, amount *big.Int, validatorFrom common.Address, validatorTo common.Address) (*types.Transaction, error) {
+	transactOpts, err := dposScClient.createNewTransactOpts(transactor)
 	if err != nil {
 		return nil, err
 	}
 
 	return dposScClient.dposInterface.ReDelegate(transactOpts, validatorFrom, validatorTo, amount)
+}
+
+func (dposScClient *DposScClient) ClaimRewards(transactor *Transactor, validator common.Address) (*types.Transaction, error) {
+	transactOpts, err := dposScClient.createNewTransactOpts(transactor)
+	if err != nil {
+		return nil, err
+	}
+
+	return dposScClient.dposInterface.ClaimRewards(transactOpts, validator)
+}
+
+func (dposScClient *DposScClient) ClaimCommissionRewards(transactor *Transactor, validator common.Address) (*types.Transaction, error) {
+	transactOpts, err := dposScClient.createNewTransactOpts(transactor)
+	if err != nil {
+		return nil, err
+	}
+
+	return dposScClient.dposInterface.ClaimCommissionRewards(transactOpts, validator)
 }
