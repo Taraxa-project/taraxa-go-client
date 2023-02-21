@@ -43,6 +43,14 @@ func (dposScClient *DposScClient) GetValidator(validator common.Address) (dpos_i
 	return dposScClient.dposInterface.GetValidator(&bind.CallOpts{}, validator)
 }
 
+func (dposScClient *DposScClient) GetValidatorEligibleVotesCount(validator common.Address) (uint64, error) {
+	return dposScClient.dposInterface.GetValidatorEligibleVotesCount(&bind.CallOpts{}, validator)
+}
+
+func (dposScClient *DposScClient) IsValidatorEligible(validator common.Address) (bool, error) {
+	return dposScClient.dposInterface.IsValidatorEligible(&bind.CallOpts{}, validator)
+}
+
 func (dposScClient *DposScClient) GetValidators() ([]dpos_interface.DposInterfaceValidatorData, error) {
 	var validators []dpos_interface.DposInterfaceValidatorData
 
@@ -85,6 +93,44 @@ func (dposScClient *DposScClient) GetOwnerValidators(owner common.Address) ([]dp
 	return validators, nil
 }
 
-func (dposScClient *DposScClient) GetValidatorEligibleVotesCount(validator common.Address) (uint64, error) {
-	return dposScClient.dposInterface.GetValidatorEligibleVotesCount(&bind.CallOpts{}, validator)
+func (dposScClient *DposScClient) GetDelegations(delegator common.Address) ([]dpos_interface.DposInterfaceDelegationData, error) {
+	var delegations []dpos_interface.DposInterfaceDelegationData
+
+	for batch := uint32(0); ; batch++ {
+		delegationsBatch, err := dposScClient.dposInterface.GetDelegations(&bind.CallOpts{}, delegator, batch)
+		if err != nil {
+			return nil, err
+		}
+
+		if len(delegationsBatch.Delegations) != 0 {
+			delegations = append(delegations, delegationsBatch.Delegations...)
+		}
+
+		if delegationsBatch.End == true {
+			break
+		}
+	}
+
+	return delegations, nil
+}
+
+func (dposScClient *DposScClient) GetUndelegations(delegator common.Address) ([]dpos_interface.DposInterfaceUndelegationData, error) {
+	var undelegations []dpos_interface.DposInterfaceUndelegationData
+
+	for batch := uint32(0); ; batch++ {
+		undelegationsBatch, err := dposScClient.dposInterface.GetUndelegations(&bind.CallOpts{}, delegator, batch)
+		if err != nil {
+			return nil, err
+		}
+
+		if len(undelegationsBatch.Undelegations) != 0 {
+			undelegations = append(undelegations, undelegationsBatch.Undelegations...)
+		}
+
+		if undelegationsBatch.End == true {
+			break
+		}
+	}
+
+	return undelegations, nil
 }
