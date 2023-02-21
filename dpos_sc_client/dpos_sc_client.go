@@ -1,34 +1,72 @@
 package dpos_sc_client
 
 import (
-	"log"
-
+	"context"
+	"crypto/ecdsa"
+	"errors"
+	"math/big"
 	dpos_interface "taraxa-dpos-sc-client/dpos_sc_client/dpos_interface"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/ethereum/go-ethereum/crypto"
 	"github.com/ethereum/go-ethereum/ethclient"
+)
+
+type Network uint64
+
+const (
+	Undefined Network = iota
+	Mainnet
+	Testnet
+	Devnet
 )
 
 // DposScClient contains variables needed for communication with taraxa dpos smart contract
 type DposScClient struct {
 	dposInterface *dpos_interface.TaraxaDposInterface
+	ethClient     *ethclient.Client
+	chainID       *big.Int
 }
 
-func NewDposScClient(rpcNodeURL string) (*DposScClient, error) {
-	ethClient, err := ethclient.Dial(rpcNodeURL)
+type Transactor struct {
+	transactOpts *bind.TransactOpts
+	address      common.Address
+}
+
+func NewDposScClient(network Network) (*DposScClient, error) {
+	dposScClient := new(DposScClient)
+
+	var networkRpcUrl string
+	switch network {
+	case Mainnet:
+		networkRpcUrl = "https://rpc.mainnet.taraxa.io"
+		dposScClient.chainID = big.NewInt(841)
+		break
+	case Testnet:
+		networkRpcUrl = "https://rpc.testnet.taraxa.io"
+		dposScClient.chainID = big.NewInt(842)
+		break
+	case Devnet:
+		networkRpcUrl = "https://rpc.devnet.taraxa.io"
+		dposScClient.chainID = big.NewInt(843)
+		break
+	default:
+		return nil, errors.New("Invalid network argument")
+	}
+
+	var err error
+	dposScClient.ethClient, err = ethclient.Dial(networkRpcUrl)
 	if err != nil {
-		log.Print(err)
 		return nil, err
 	}
 
 	// Precompiled dpos contract has the same address in all taraxa networks
 	dposScAddress := common.HexToAddress("0x00000000000000000000000000000000000000FE")
 
-	dposScClient := new(DposScClient)
-	dposScClient.dposInterface, err = dpos_interface.NewTaraxaDposInterface(dposScAddress, ethClient)
+	dposScClient.dposInterface, err = dpos_interface.NewTaraxaDposInterface(dposScAddress, dposScClient.ethClient)
 	if err != nil {
-		log.Print(err)
 		return nil, err
 	}
 
@@ -133,4 +171,96 @@ func (dposScClient *DposScClient) GetUndelegations(delegator common.Address) ([]
 	}
 
 	return undelegations, nil
+}
+
+func (dposScClient *DposScClient) NewTransactor(privateKeyStr string) (*Transactor, error) {
+	privateKey, err := crypto.HexToECDSA(privateKeyStr)
+	if err != nil {
+		return nil, err
+	}
+
+	publicKey := privateKey.Public()
+	publicKeyECDSA, ok := publicKey.(*ecdsa.PublicKey)
+	if !ok {
+		return nil, errors.New("error casting public key to ECDSA")
+	}
+
+	transactOpts, err := bind.NewKeyedTransactorWithChainID(privateKey, dposScClient.chainID)
+	if err != nil {
+		return nil, err
+	}
+
+	transactor := new(Transactor)
+	transactor.address = crypto.PubkeyToAddress(*publicKeyECDSA)
+	transactor.transactOpts = new(bind.TransactOpts)
+	*transactor.transactOpts = *transactOpts
+
+	return transactor, nil
+}
+
+func (dposScClient *DposScClient) setupNewTransactOpts(transactor *Transactor) (*bind.TransactOpts, error) {
+	nonce, err := dposScClient.ethClient.PendingNonceAt(context.Background(), transactor.address)
+	if err != nil {
+		return nil, err
+	}
+
+	gasPrice, err := dposScClient.ethClient.SuggestGasPrice(context.Background())
+	if err != nil {
+		return nil, err
+	}
+
+	transactOpts := new(bind.TransactOpts)
+	*transactOpts = *transactor.transactOpts
+
+	transactOpts.Nonce = big.NewInt(int64(nonce))
+	transactOpts.GasLimit = uint64(300000) // in units
+	transactOpts.GasPrice = gasPrice
+
+	return transactOpts, nil
+}
+
+func (dposScClient *DposScClient) Delegate(transactor *Transactor, amount *big.Int, validator common.Address) (*types.Transaction, error) {
+	transactOpts, err := dposScClient.setupNewTransactOpts(transactor)
+	if err != nil {
+		return nil, err
+	}
+
+	transactOpts.Value = amount // in wei
+	return dposScClient.dposInterface.Delegate(transactOpts, validator)
+}
+
+func (dposScClient *DposScClient) Undelegate(transactor *Transactor, amount *big.Int, validator common.Address) (*types.Transaction, error) {
+	transactOpts, err := dposScClient.setupNewTransactOpts(transactor)
+	if err != nil {
+		return nil, err
+	}
+
+	return dposScClient.dposInterface.Undelegate(transactOpts, validator, amount)
+}
+
+func (dposScClient *DposScClient) confirmUndelegate(transactor *Transactor, validator common.Address) (*types.Transaction, error) {
+	transactOpts, err := dposScClient.setupNewTransactOpts(transactor)
+	if err != nil {
+		return nil, err
+	}
+
+	return dposScClient.dposInterface.ConfirmUndelegate(transactOpts, validator)
+}
+
+func (dposScClient *DposScClient) cancelUndelegate(transactor *Transactor, validator common.Address) (*types.Transaction, error) {
+	transactOpts, err := dposScClient.setupNewTransactOpts(transactor)
+	if err != nil {
+		return nil, err
+	}
+
+	return dposScClient.dposInterface.CancelUndelegate(transactOpts, validator)
+}
+
+func (dposScClient *DposScClient) redelegateUndelegate(transactor *Transactor, amount *big.Int, validatorFrom common.Address, validatorTo common.Address) (*types.Transaction, error) {
+	transactOpts, err := dposScClient.setupNewTransactOpts(transactor)
+	if err != nil {
+		return nil, err
+	}
+
+	return dposScClient.dposInterface.ReDelegate(transactOpts, validatorFrom, validatorTo, amount)
 }
