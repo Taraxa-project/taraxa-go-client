@@ -282,3 +282,30 @@ func (dposScClient *DposScClient) ClaimCommissionRewards(transactor *Transactor,
 
 	return dposScClient.dposInterface.ClaimCommissionRewards(transactOpts, validator)
 }
+
+func (dposScClient *DposScClient) RegisterValidator(transactor *Transactor, validator common.Address, proof []byte, vrf_key []byte, commission uint16, description string, endpoint string) (*types.Transaction, error) {
+	transactOpts, err := dposScClient.createNewTransactOpts(transactor)
+	if err != nil {
+		return nil, err
+	}
+
+	return dposScClient.dposInterface.RegisterValidator(transactOpts, validator, proof, vrf_key, commission, description, endpoint)
+}
+
+func (dposScClient *DposScClient) SetValidatorInfo(transactor *Transactor, validator common.Address, description string, endpoint string) (*types.Transaction, error) {
+	transactOpts, err := dposScClient.createNewTransactOpts(transactor)
+	if err != nil {
+		return nil, err
+	}
+
+	return dposScClient.dposInterface.SetValidatorInfo(transactOpts, validator, description, endpoint)
+}
+
+func (dposScClient *DposScClient) SetCommission(transactor *Transactor, validator common.Address, commission uint16) (*types.Transaction, error) {
+	transactOpts, err := dposScClient.createNewTransactOpts(transactor)
+	if err != nil {
+		return nil, err
+	}
+
+	return dposScClient.dposInterface.SetCommission(transactOpts, validator, commission)
+}
