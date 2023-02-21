@@ -21,21 +21,21 @@ make devtools
 #### Create SC ABI
 run
 ```
-solc --abi --overwrite --optimize taraxa-evm/taraxa/state/dpos/solidity/dpos_contract_interface.sol --output-dir client/abi
+solc --abi --overwrite --optimize taraxa-evm/taraxa/state/dpos/solidity/dpos_contract_interface.sol --output-dir dpos_sc_client/dpos_interface/
 ```
 
 #### Create SC go class
 run
 ```
-abigen --abi=client/abi/DposInterface.abi --pkg=taraxaDposClient --out=client/taraxa_dpos_client.go
+abigen --abi=dpos_sc_client/dpos_interface/DposInterface.abi --pkg=dpos_interface --out=dpos_sc_client/dpos_interface/dpos_interface.go
 ```
 
 ### !!! To work with latest dpos contract interface
 Update taraxa-evm submodule and re-generate abi & client go implementation by running:
 ```
 git submodule update --init --recursive
-solc --abi --overwrite --optimize taraxa-evm/taraxa/state/dpos/solidity/dpos_contract_interface.sol --output-dir .
-abigen --abi=DposInterface.abi --pkg=taraxaDposClient --out=dpos_contract_interface.go
+solc --abi --overwrite --optimize taraxa-evm/taraxa/state/dpos/solidity/dpos_contract_interface.sol --output-dir dpos_sc_client/dpos_interface/
+abigen --abi=dpos_sc_client/dpos_interface/DposInterface.abi --pkg=dpos_interface --out=dpos_sc_client/dpos_interface/dpos_interface.go
 ```
 
 
