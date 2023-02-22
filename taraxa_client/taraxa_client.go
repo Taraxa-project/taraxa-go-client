@@ -3,7 +3,7 @@ package taraxa_client
 import (
 	"errors"
 	"math/big"
-	"taraxa-dpos-sc-client/taraxa_client/dpos_contract_client"
+	"taraxa-go-client/taraxa_client/dpos_contract_client"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/ethclient"

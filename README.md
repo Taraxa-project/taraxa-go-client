@@ -1,4 +1,4 @@
-# taraxa-dpos-sc-client
+# taraxa-go-client
 Taraxa dpos interface contract client 
 
 

@@ -5,7 +5,7 @@ import (
 	"crypto/ecdsa"
 	"errors"
 	"math/big"
-	dpos_interface "taraxa-dpos-sc-client/taraxa_client/dpos_contract_client/dpos_interface"
+	dpos_interface "taraxa-go-client/taraxa_client/dpos_contract_client/dpos_interface"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"

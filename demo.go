@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 	"math/big"
-	taraxa_client "taraxa-dpos-sc-client/taraxa_client"
+	taraxa_client "taraxa-go-client/taraxa_client"
 
 	"github.com/ethereum/go-ethereum/common"
 )

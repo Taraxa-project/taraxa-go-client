@@ -1,4 +1,4 @@
-module taraxa-dpos-sc-client
+module taraxa-go-client
 
 go 1.18
 
