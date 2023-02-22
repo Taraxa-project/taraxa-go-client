@@ -1,4 +1,4 @@
-module taraxa-go-client
+module github.com/Taraxa-project/taraxa-go-client
 
 go 1.18
 
