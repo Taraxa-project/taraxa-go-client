@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	taraxaClient, err := taraxa_client.NewTaraxaClient(taraxa_client.Testnet)
+	taraxaClient, err := taraxa_client.NewTaraxaClient(taraxa_client.Devnet)
 	if err != nil {
 		log.Fatal(err)
 	}

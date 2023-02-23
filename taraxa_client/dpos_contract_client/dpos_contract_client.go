@@ -23,8 +23,8 @@ type DposContractClient struct {
 }
 
 type Transactor struct {
-	transactOpts *bind.TransactOpts
-	address      common.Address
+	TransactOpts *bind.TransactOpts
+	Address      common.Address
 }
 
 func NewDposContractClient(ethClient *ethclient.Client, dposContractAddress common.Address, chainID *big.Int) (*DposContractClient, error) {
@@ -159,15 +159,15 @@ func (DposContractClient *DposContractClient) NewTransactor(privateKeyStr string
 	}
 
 	transactor := new(Transactor)
-	transactor.address = crypto.PubkeyToAddress(*publicKeyECDSA)
-	transactor.transactOpts = new(bind.TransactOpts)
-	*transactor.transactOpts = *transactOpts
+	transactor.Address = crypto.PubkeyToAddress(*publicKeyECDSA)
+	transactor.TransactOpts = new(bind.TransactOpts)
+	*transactor.TransactOpts = *transactOpts
 
 	return transactor, nil
 }
 
 func (DposContractClient *DposContractClient) createNewTransactOpts(transactor *Transactor) (*bind.TransactOpts, error) {
-	nonce, err := DposContractClient.ethClient.PendingNonceAt(context.Background(), transactor.address)
+	nonce, err := DposContractClient.ethClient.PendingNonceAt(context.Background(), transactor.Address)
 	if err != nil {
 		return nil, err
 	}
@@ -178,7 +178,7 @@ func (DposContractClient *DposContractClient) createNewTransactOpts(transactor *
 	}
 
 	transactOpts := new(bind.TransactOpts)
-	*transactOpts = *transactor.transactOpts
+	*transactOpts = *transactor.TransactOpts
 
 	transactOpts.Nonce = big.NewInt(int64(nonce))
 	transactOpts.GasLimit = uint64(300000) // in units
