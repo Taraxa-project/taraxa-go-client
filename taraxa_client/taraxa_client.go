@@ -29,6 +29,7 @@ type TaraxaClient struct {
 
 func NewTaraxaClient(chainID *big.Int, url string, dposContractAddress common.Address) (*TaraxaClient, error) {
 	taraxaClient := new(TaraxaClient)
+	taraxaClient.chainID = chainID
 
 	var err error
 	taraxaClient.EthRpcClient, err = ethclient.Dial(url)
@@ -40,8 +41,6 @@ func NewTaraxaClient(chainID *big.Int, url string, dposContractAddress common.Ad
 	if err != nil {
 		return nil, err
 	}
-
-	taraxaClient.chainID = chainID
 
 	return taraxaClient, nil
 }
