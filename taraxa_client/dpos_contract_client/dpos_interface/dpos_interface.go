@@ -43,9 +43,10 @@ type DposInterfaceDelegatorInfo struct {
 
 // DposInterfaceUndelegationData is an auto generated low-level Go binding around an user-defined struct.
 type DposInterfaceUndelegationData struct {
-	Stake     *big.Int
-	Block     uint64
-	Validator common.Address
+	Stake           *big.Int
+	Block           uint64
+	Validator       common.Address
+	ValidatorExists bool
 }
 
 // DposInterfaceValidatorBasicInfo is an auto generated low-level Go binding around an user-defined struct.
@@ -65,113 +66,113 @@ type DposInterfaceValidatorData struct {
 	Info    DposInterfaceValidatorBasicInfo
 }
 
-// TaraxaDposInterfaceMetaData contains all meta data concerning the TaraxaDposInterface contract.
-var TaraxaDposInterfaceMetaData = &bind.MetaData{
-	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"CommissionRewardsClaimed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"comission\",\"type\":\"uint16\"}],\"name\":\"CommissionSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Delegated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Redelegated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"RewardsClaimed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"UndelegateCanceled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"UndelegateConfirmed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Undelegated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"ValidatorInfoSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"ValidatorRegistered\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"cancelUndelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"claimCommissionRewards\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"claimRewards\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"confirmUndelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"delegate\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getDelegations\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"stake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"rewards\",\"type\":\"uint256\"}],\"internalType\":\"structDposInterface.DelegatorInfo\",\"name\":\"delegation\",\"type\":\"tuple\"}],\"internalType\":\"structDposInterface.DelegationData[]\",\"name\":\"delegations\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTotalEligibleVotesCount\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getUndelegations\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"stake\",\"type\":\"uint256\"},{\"internalType\":\"uint64\",\"name\":\"block\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"internalType\":\"structDposInterface.UndelegationData[]\",\"name\":\"undelegations\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"getValidator\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"total_stake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"commission_reward\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"},{\"internalType\":\"uint64\",\"name\":\"last_commission_change\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"internalType\":\"structDposInterface.ValidatorBasicInfo\",\"name\":\"validator_info\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"getValidatorDelegators\",\"outputs\":[{\"internalType\":\"address[]\",\"name\":\"delegators\",\"type\":\"address[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"getValidatorEligibleVotesCount\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getValidators\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"total_stake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"commission_reward\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"},{\"internalType\":\"uint64\",\"name\":\"last_commission_change\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"internalType\":\"structDposInterface.ValidatorBasicInfo\",\"name\":\"info\",\"type\":\"tuple\"}],\"internalType\":\"structDposInterface.ValidatorData[]\",\"name\":\"validators\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getValidatorsFor\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"total_stake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"commission_reward\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"},{\"internalType\":\"uint64\",\"name\":\"last_commission_change\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"internalType\":\"structDposInterface.ValidatorBasicInfo\",\"name\":\"info\",\"type\":\"tuple\"}],\"internalType\":\"structDposInterface.ValidatorData[]\",\"name\":\"validators\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"isValidatorEligible\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator_from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"validator_to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"reDelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"proof\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"vrf_key\",\"type\":\"bytes\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"name\":\"registerValidator\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"}],\"name\":\"setCommission\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"name\":\"setValidatorInfo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"undelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+// DposInterfaceMetaData contains all meta data concerning the DposInterface contract.
+var DposInterfaceMetaData = &bind.MetaData{
+	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"CommissionRewardsClaimed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"comission\",\"type\":\"uint16\"}],\"name\":\"CommissionSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Delegated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Redelegated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"RewardsClaimed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"UndelegateCanceled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"UndelegateConfirmed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Undelegated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"ValidatorInfoSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"ValidatorRegistered\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"cancelUndelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"claimAllRewards\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"claimCommissionRewards\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"claimRewards\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"confirmUndelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"delegate\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getDelegations\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"stake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"rewards\",\"type\":\"uint256\"}],\"internalType\":\"structDposInterface.DelegatorInfo\",\"name\":\"delegation\",\"type\":\"tuple\"}],\"internalType\":\"structDposInterface.DelegationData[]\",\"name\":\"delegations\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTotalEligibleVotesCount\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getUndelegations\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"stake\",\"type\":\"uint256\"},{\"internalType\":\"uint64\",\"name\":\"block\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"validator_exists\",\"type\":\"bool\"}],\"internalType\":\"structDposInterface.UndelegationData[]\",\"name\":\"undelegations\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"getValidator\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"total_stake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"commission_reward\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"},{\"internalType\":\"uint64\",\"name\":\"last_commission_change\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"internalType\":\"structDposInterface.ValidatorBasicInfo\",\"name\":\"validator_info\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"getValidatorEligibleVotesCount\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getValidators\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"total_stake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"commission_reward\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"},{\"internalType\":\"uint64\",\"name\":\"last_commission_change\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"internalType\":\"structDposInterface.ValidatorBasicInfo\",\"name\":\"info\",\"type\":\"tuple\"}],\"internalType\":\"structDposInterface.ValidatorData[]\",\"name\":\"validators\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getValidatorsFor\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"total_stake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"commission_reward\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"},{\"internalType\":\"uint64\",\"name\":\"last_commission_change\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"internalType\":\"structDposInterface.ValidatorBasicInfo\",\"name\":\"info\",\"type\":\"tuple\"}],\"internalType\":\"structDposInterface.ValidatorData[]\",\"name\":\"validators\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"isValidatorEligible\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator_from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"validator_to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"reDelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"proof\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"vrf_key\",\"type\":\"bytes\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"name\":\"registerValidator\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"}],\"name\":\"setCommission\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"name\":\"setValidatorInfo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"undelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
 }
 
-// TaraxaDposInterfaceABI is the input ABI used to generate the binding from.
-// Deprecated: Use TaraxaDposInterfaceMetaData.ABI instead.
-var TaraxaDposInterfaceABI = TaraxaDposInterfaceMetaData.ABI
+// DposInterfaceABI is the input ABI used to generate the binding from.
+// Deprecated: Use DposInterfaceMetaData.ABI instead.
+var DposInterfaceABI = DposInterfaceMetaData.ABI
 
-// TaraxaDposInterface is an auto generated Go binding around an Ethereum contract.
-type TaraxaDposInterface struct {
-	TaraxaDposInterfaceCaller     // Read-only binding to the contract
-	TaraxaDposInterfaceTransactor // Write-only binding to the contract
-	TaraxaDposInterfaceFilterer   // Log filterer for contract events
+// DposInterface is an auto generated Go binding around an Ethereum contract.
+type DposInterface struct {
+	DposInterfaceCaller     // Read-only binding to the contract
+	DposInterfaceTransactor // Write-only binding to the contract
+	DposInterfaceFilterer   // Log filterer for contract events
 }
 
-// TaraxaDposInterfaceCaller is an auto generated read-only Go binding around an Ethereum contract.
-type TaraxaDposInterfaceCaller struct {
+// DposInterfaceCaller is an auto generated read-only Go binding around an Ethereum contract.
+type DposInterfaceCaller struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// TaraxaDposInterfaceTransactor is an auto generated write-only Go binding around an Ethereum contract.
-type TaraxaDposInterfaceTransactor struct {
+// DposInterfaceTransactor is an auto generated write-only Go binding around an Ethereum contract.
+type DposInterfaceTransactor struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// TaraxaDposInterfaceFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
-type TaraxaDposInterfaceFilterer struct {
+// DposInterfaceFilterer is an auto generated log filtering Go binding around an Ethereum contract events.
+type DposInterfaceFilterer struct {
 	contract *bind.BoundContract // Generic contract wrapper for the low level calls
 }
 
-// TaraxaDposInterfaceSession is an auto generated Go binding around an Ethereum contract,
+// DposInterfaceSession is an auto generated Go binding around an Ethereum contract,
 // with pre-set call and transact options.
-type TaraxaDposInterfaceSession struct {
-	Contract     *TaraxaDposInterface // Generic contract binding to set the session for
-	CallOpts     bind.CallOpts        // Call options to use throughout this session
-	TransactOpts bind.TransactOpts    // Transaction auth options to use throughout this session
+type DposInterfaceSession struct {
+	Contract     *DposInterface    // Generic contract binding to set the session for
+	CallOpts     bind.CallOpts     // Call options to use throughout this session
+	TransactOpts bind.TransactOpts // Transaction auth options to use throughout this session
 }
 
-// TaraxaDposInterfaceCallerSession is an auto generated read-only Go binding around an Ethereum contract,
+// DposInterfaceCallerSession is an auto generated read-only Go binding around an Ethereum contract,
 // with pre-set call options.
-type TaraxaDposInterfaceCallerSession struct {
-	Contract *TaraxaDposInterfaceCaller // Generic contract caller binding to set the session for
-	CallOpts bind.CallOpts              // Call options to use throughout this session
+type DposInterfaceCallerSession struct {
+	Contract *DposInterfaceCaller // Generic contract caller binding to set the session for
+	CallOpts bind.CallOpts        // Call options to use throughout this session
 }
 
-// TaraxaDposInterfaceTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
+// DposInterfaceTransactorSession is an auto generated write-only Go binding around an Ethereum contract,
 // with pre-set transact options.
-type TaraxaDposInterfaceTransactorSession struct {
-	Contract     *TaraxaDposInterfaceTransactor // Generic contract transactor binding to set the session for
-	TransactOpts bind.TransactOpts              // Transaction auth options to use throughout this session
+type DposInterfaceTransactorSession struct {
+	Contract     *DposInterfaceTransactor // Generic contract transactor binding to set the session for
+	TransactOpts bind.TransactOpts        // Transaction auth options to use throughout this session
 }
 
-// TaraxaDposInterfaceRaw is an auto generated low-level Go binding around an Ethereum contract.
-type TaraxaDposInterfaceRaw struct {
-	Contract *TaraxaDposInterface // Generic contract binding to access the raw methods on
+// DposInterfaceRaw is an auto generated low-level Go binding around an Ethereum contract.
+type DposInterfaceRaw struct {
+	Contract *DposInterface // Generic contract binding to access the raw methods on
 }
 
-// TaraxaDposInterfaceCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
-type TaraxaDposInterfaceCallerRaw struct {
-	Contract *TaraxaDposInterfaceCaller // Generic read-only contract binding to access the raw methods on
+// DposInterfaceCallerRaw is an auto generated low-level read-only Go binding around an Ethereum contract.
+type DposInterfaceCallerRaw struct {
+	Contract *DposInterfaceCaller // Generic read-only contract binding to access the raw methods on
 }
 
-// TaraxaDposInterfaceTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
-type TaraxaDposInterfaceTransactorRaw struct {
-	Contract *TaraxaDposInterfaceTransactor // Generic write-only contract binding to access the raw methods on
+// DposInterfaceTransactorRaw is an auto generated low-level write-only Go binding around an Ethereum contract.
+type DposInterfaceTransactorRaw struct {
+	Contract *DposInterfaceTransactor // Generic write-only contract binding to access the raw methods on
 }
 
-// NewTaraxaDposInterface creates a new instance of TaraxaDposInterface, bound to a specific deployed contract.
-func NewTaraxaDposInterface(address common.Address, backend bind.ContractBackend) (*TaraxaDposInterface, error) {
-	contract, err := bindTaraxaDposInterface(address, backend, backend, backend)
+// NewDposInterface creates a new instance of DposInterface, bound to a specific deployed contract.
+func NewDposInterface(address common.Address, backend bind.ContractBackend) (*DposInterface, error) {
+	contract, err := bindDposInterface(address, backend, backend, backend)
 	if err != nil {
 		return nil, err
 	}
-	return &TaraxaDposInterface{TaraxaDposInterfaceCaller: TaraxaDposInterfaceCaller{contract: contract}, TaraxaDposInterfaceTransactor: TaraxaDposInterfaceTransactor{contract: contract}, TaraxaDposInterfaceFilterer: TaraxaDposInterfaceFilterer{contract: contract}}, nil
+	return &DposInterface{DposInterfaceCaller: DposInterfaceCaller{contract: contract}, DposInterfaceTransactor: DposInterfaceTransactor{contract: contract}, DposInterfaceFilterer: DposInterfaceFilterer{contract: contract}}, nil
 }
 
-// NewTaraxaDposInterfaceCaller creates a new read-only instance of TaraxaDposInterface, bound to a specific deployed contract.
-func NewTaraxaDposInterfaceCaller(address common.Address, caller bind.ContractCaller) (*TaraxaDposInterfaceCaller, error) {
-	contract, err := bindTaraxaDposInterface(address, caller, nil, nil)
+// NewDposInterfaceCaller creates a new read-only instance of DposInterface, bound to a specific deployed contract.
+func NewDposInterfaceCaller(address common.Address, caller bind.ContractCaller) (*DposInterfaceCaller, error) {
+	contract, err := bindDposInterface(address, caller, nil, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &TaraxaDposInterfaceCaller{contract: contract}, nil
+	return &DposInterfaceCaller{contract: contract}, nil
 }
 
-// NewTaraxaDposInterfaceTransactor creates a new write-only instance of TaraxaDposInterface, bound to a specific deployed contract.
-func NewTaraxaDposInterfaceTransactor(address common.Address, transactor bind.ContractTransactor) (*TaraxaDposInterfaceTransactor, error) {
-	contract, err := bindTaraxaDposInterface(address, nil, transactor, nil)
+// NewDposInterfaceTransactor creates a new write-only instance of DposInterface, bound to a specific deployed contract.
+func NewDposInterfaceTransactor(address common.Address, transactor bind.ContractTransactor) (*DposInterfaceTransactor, error) {
+	contract, err := bindDposInterface(address, nil, transactor, nil)
 	if err != nil {
 		return nil, err
 	}
-	return &TaraxaDposInterfaceTransactor{contract: contract}, nil
+	return &DposInterfaceTransactor{contract: contract}, nil
 }
 
-// NewTaraxaDposInterfaceFilterer creates a new log filterer instance of TaraxaDposInterface, bound to a specific deployed contract.
-func NewTaraxaDposInterfaceFilterer(address common.Address, filterer bind.ContractFilterer) (*TaraxaDposInterfaceFilterer, error) {
-	contract, err := bindTaraxaDposInterface(address, nil, nil, filterer)
+// NewDposInterfaceFilterer creates a new log filterer instance of DposInterface, bound to a specific deployed contract.
+func NewDposInterfaceFilterer(address common.Address, filterer bind.ContractFilterer) (*DposInterfaceFilterer, error) {
+	contract, err := bindDposInterface(address, nil, nil, filterer)
 	if err != nil {
 		return nil, err
 	}
-	return &TaraxaDposInterfaceFilterer{contract: contract}, nil
+	return &DposInterfaceFilterer{contract: contract}, nil
 }
 
-// bindTaraxaDposInterface binds a generic wrapper to an already deployed contract.
-func bindTaraxaDposInterface(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
-	parsed, err := TaraxaDposInterfaceMetaData.GetAbi()
+// bindDposInterface binds a generic wrapper to an already deployed contract.
+func bindDposInterface(address common.Address, caller bind.ContractCaller, transactor bind.ContractTransactor, filterer bind.ContractFilterer) (*bind.BoundContract, error) {
+	parsed, err := DposInterfaceMetaData.GetAbi()
 	if err != nil {
 		return nil, err
 	}
@@ -182,49 +183,49 @@ func bindTaraxaDposInterface(address common.Address, caller bind.ContractCaller,
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_TaraxaDposInterface *TaraxaDposInterfaceRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _TaraxaDposInterface.Contract.TaraxaDposInterfaceCaller.contract.Call(opts, result, method, params...)
+func (_DposInterface *DposInterfaceRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _DposInterface.Contract.DposInterfaceCaller.contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
 // its default method if one is available.
-func (_TaraxaDposInterface *TaraxaDposInterfaceRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.TaraxaDposInterfaceTransactor.contract.Transfer(opts)
+func (_DposInterface *DposInterfaceRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _DposInterface.Contract.DposInterfaceTransactor.contract.Transfer(opts)
 }
 
 // Transact invokes the (paid) contract method with params as input values.
-func (_TaraxaDposInterface *TaraxaDposInterfaceRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.TaraxaDposInterfaceTransactor.contract.Transact(opts, method, params...)
+func (_DposInterface *DposInterfaceRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _DposInterface.Contract.DposInterfaceTransactor.contract.Transact(opts, method, params...)
 }
 
 // Call invokes the (constant) contract method with params as input values and
 // sets the output to result. The result type might be a single field for simple
 // returns, a slice of interfaces for anonymous returns and a struct for named
 // returns.
-func (_TaraxaDposInterface *TaraxaDposInterfaceCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
-	return _TaraxaDposInterface.Contract.contract.Call(opts, result, method, params...)
+func (_DposInterface *DposInterfaceCallerRaw) Call(opts *bind.CallOpts, result *[]interface{}, method string, params ...interface{}) error {
+	return _DposInterface.Contract.contract.Call(opts, result, method, params...)
 }
 
 // Transfer initiates a plain transaction to move funds to the contract, calling
 // its default method if one is available.
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.contract.Transfer(opts)
+func (_DposInterface *DposInterfaceTransactorRaw) Transfer(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _DposInterface.Contract.contract.Transfer(opts)
 }
 
 // Transact invokes the (paid) contract method with params as input values.
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.contract.Transact(opts, method, params...)
+func (_DposInterface *DposInterfaceTransactorRaw) Transact(opts *bind.TransactOpts, method string, params ...interface{}) (*types.Transaction, error) {
+	return _DposInterface.Contract.contract.Transact(opts, method, params...)
 }
 
 // GetDelegations is a free data retrieval call binding the contract method 0x8b49d394.
 //
 // Solidity: function getDelegations(address delegator, uint32 batch) view returns((address,(uint256,uint256))[] delegations, bool end)
-func (_TaraxaDposInterface *TaraxaDposInterfaceCaller) GetDelegations(opts *bind.CallOpts, delegator common.Address, batch uint32) (struct {
+func (_DposInterface *DposInterfaceCaller) GetDelegations(opts *bind.CallOpts, delegator common.Address, batch uint32) (struct {
 	Delegations []DposInterfaceDelegationData
 	End         bool
 }, error) {
 	var out []interface{}
-	err := _TaraxaDposInterface.contract.Call(opts, &out, "getDelegations", delegator, batch)
+	err := _DposInterface.contract.Call(opts, &out, "getDelegations", delegator, batch)
 
 	outstruct := new(struct {
 		Delegations []DposInterfaceDelegationData
@@ -244,29 +245,29 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceCaller) GetDelegations(opts *bind
 // GetDelegations is a free data retrieval call binding the contract method 0x8b49d394.
 //
 // Solidity: function getDelegations(address delegator, uint32 batch) view returns((address,(uint256,uint256))[] delegations, bool end)
-func (_TaraxaDposInterface *TaraxaDposInterfaceSession) GetDelegations(delegator common.Address, batch uint32) (struct {
+func (_DposInterface *DposInterfaceSession) GetDelegations(delegator common.Address, batch uint32) (struct {
 	Delegations []DposInterfaceDelegationData
 	End         bool
 }, error) {
-	return _TaraxaDposInterface.Contract.GetDelegations(&_TaraxaDposInterface.CallOpts, delegator, batch)
+	return _DposInterface.Contract.GetDelegations(&_DposInterface.CallOpts, delegator, batch)
 }
 
 // GetDelegations is a free data retrieval call binding the contract method 0x8b49d394.
 //
 // Solidity: function getDelegations(address delegator, uint32 batch) view returns((address,(uint256,uint256))[] delegations, bool end)
-func (_TaraxaDposInterface *TaraxaDposInterfaceCallerSession) GetDelegations(delegator common.Address, batch uint32) (struct {
+func (_DposInterface *DposInterfaceCallerSession) GetDelegations(delegator common.Address, batch uint32) (struct {
 	Delegations []DposInterfaceDelegationData
 	End         bool
 }, error) {
-	return _TaraxaDposInterface.Contract.GetDelegations(&_TaraxaDposInterface.CallOpts, delegator, batch)
+	return _DposInterface.Contract.GetDelegations(&_DposInterface.CallOpts, delegator, batch)
 }
 
 // GetTotalEligibleVotesCount is a free data retrieval call binding the contract method 0xde8e4b50.
 //
 // Solidity: function getTotalEligibleVotesCount() view returns(uint64)
-func (_TaraxaDposInterface *TaraxaDposInterfaceCaller) GetTotalEligibleVotesCount(opts *bind.CallOpts) (uint64, error) {
+func (_DposInterface *DposInterfaceCaller) GetTotalEligibleVotesCount(opts *bind.CallOpts) (uint64, error) {
 	var out []interface{}
-	err := _TaraxaDposInterface.contract.Call(opts, &out, "getTotalEligibleVotesCount")
+	err := _DposInterface.contract.Call(opts, &out, "getTotalEligibleVotesCount")
 
 	if err != nil {
 		return *new(uint64), err
@@ -281,26 +282,26 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceCaller) GetTotalEligibleVotesCoun
 // GetTotalEligibleVotesCount is a free data retrieval call binding the contract method 0xde8e4b50.
 //
 // Solidity: function getTotalEligibleVotesCount() view returns(uint64)
-func (_TaraxaDposInterface *TaraxaDposInterfaceSession) GetTotalEligibleVotesCount() (uint64, error) {
-	return _TaraxaDposInterface.Contract.GetTotalEligibleVotesCount(&_TaraxaDposInterface.CallOpts)
+func (_DposInterface *DposInterfaceSession) GetTotalEligibleVotesCount() (uint64, error) {
+	return _DposInterface.Contract.GetTotalEligibleVotesCount(&_DposInterface.CallOpts)
 }
 
 // GetTotalEligibleVotesCount is a free data retrieval call binding the contract method 0xde8e4b50.
 //
 // Solidity: function getTotalEligibleVotesCount() view returns(uint64)
-func (_TaraxaDposInterface *TaraxaDposInterfaceCallerSession) GetTotalEligibleVotesCount() (uint64, error) {
-	return _TaraxaDposInterface.Contract.GetTotalEligibleVotesCount(&_TaraxaDposInterface.CallOpts)
+func (_DposInterface *DposInterfaceCallerSession) GetTotalEligibleVotesCount() (uint64, error) {
+	return _DposInterface.Contract.GetTotalEligibleVotesCount(&_DposInterface.CallOpts)
 }
 
 // GetUndelegations is a free data retrieval call binding the contract method 0x4edd9943.
 //
-// Solidity: function getUndelegations(address delegator, uint32 batch) view returns((uint256,uint64,address)[] undelegations, bool end)
-func (_TaraxaDposInterface *TaraxaDposInterfaceCaller) GetUndelegations(opts *bind.CallOpts, delegator common.Address, batch uint32) (struct {
+// Solidity: function getUndelegations(address delegator, uint32 batch) view returns((uint256,uint64,address,bool)[] undelegations, bool end)
+func (_DposInterface *DposInterfaceCaller) GetUndelegations(opts *bind.CallOpts, delegator common.Address, batch uint32) (struct {
 	Undelegations []DposInterfaceUndelegationData
 	End           bool
 }, error) {
 	var out []interface{}
-	err := _TaraxaDposInterface.contract.Call(opts, &out, "getUndelegations", delegator, batch)
+	err := _DposInterface.contract.Call(opts, &out, "getUndelegations", delegator, batch)
 
 	outstruct := new(struct {
 		Undelegations []DposInterfaceUndelegationData
@@ -319,30 +320,30 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceCaller) GetUndelegations(opts *bi
 
 // GetUndelegations is a free data retrieval call binding the contract method 0x4edd9943.
 //
-// Solidity: function getUndelegations(address delegator, uint32 batch) view returns((uint256,uint64,address)[] undelegations, bool end)
-func (_TaraxaDposInterface *TaraxaDposInterfaceSession) GetUndelegations(delegator common.Address, batch uint32) (struct {
+// Solidity: function getUndelegations(address delegator, uint32 batch) view returns((uint256,uint64,address,bool)[] undelegations, bool end)
+func (_DposInterface *DposInterfaceSession) GetUndelegations(delegator common.Address, batch uint32) (struct {
 	Undelegations []DposInterfaceUndelegationData
 	End           bool
 }, error) {
-	return _TaraxaDposInterface.Contract.GetUndelegations(&_TaraxaDposInterface.CallOpts, delegator, batch)
+	return _DposInterface.Contract.GetUndelegations(&_DposInterface.CallOpts, delegator, batch)
 }
 
 // GetUndelegations is a free data retrieval call binding the contract method 0x4edd9943.
 //
-// Solidity: function getUndelegations(address delegator, uint32 batch) view returns((uint256,uint64,address)[] undelegations, bool end)
-func (_TaraxaDposInterface *TaraxaDposInterfaceCallerSession) GetUndelegations(delegator common.Address, batch uint32) (struct {
+// Solidity: function getUndelegations(address delegator, uint32 batch) view returns((uint256,uint64,address,bool)[] undelegations, bool end)
+func (_DposInterface *DposInterfaceCallerSession) GetUndelegations(delegator common.Address, batch uint32) (struct {
 	Undelegations []DposInterfaceUndelegationData
 	End           bool
 }, error) {
-	return _TaraxaDposInterface.Contract.GetUndelegations(&_TaraxaDposInterface.CallOpts, delegator, batch)
+	return _DposInterface.Contract.GetUndelegations(&_DposInterface.CallOpts, delegator, batch)
 }
 
 // GetValidator is a free data retrieval call binding the contract method 0x1904bb2e.
 //
 // Solidity: function getValidator(address validator) view returns((uint256,uint256,uint16,uint64,address,string,string) validator_info)
-func (_TaraxaDposInterface *TaraxaDposInterfaceCaller) GetValidator(opts *bind.CallOpts, validator common.Address) (DposInterfaceValidatorBasicInfo, error) {
+func (_DposInterface *DposInterfaceCaller) GetValidator(opts *bind.CallOpts, validator common.Address) (DposInterfaceValidatorBasicInfo, error) {
 	var out []interface{}
-	err := _TaraxaDposInterface.contract.Call(opts, &out, "getValidator", validator)
+	err := _DposInterface.contract.Call(opts, &out, "getValidator", validator)
 
 	if err != nil {
 		return *new(DposInterfaceValidatorBasicInfo), err
@@ -357,54 +358,23 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceCaller) GetValidator(opts *bind.C
 // GetValidator is a free data retrieval call binding the contract method 0x1904bb2e.
 //
 // Solidity: function getValidator(address validator) view returns((uint256,uint256,uint16,uint64,address,string,string) validator_info)
-func (_TaraxaDposInterface *TaraxaDposInterfaceSession) GetValidator(validator common.Address) (DposInterfaceValidatorBasicInfo, error) {
-	return _TaraxaDposInterface.Contract.GetValidator(&_TaraxaDposInterface.CallOpts, validator)
+func (_DposInterface *DposInterfaceSession) GetValidator(validator common.Address) (DposInterfaceValidatorBasicInfo, error) {
+	return _DposInterface.Contract.GetValidator(&_DposInterface.CallOpts, validator)
 }
 
 // GetValidator is a free data retrieval call binding the contract method 0x1904bb2e.
 //
 // Solidity: function getValidator(address validator) view returns((uint256,uint256,uint16,uint64,address,string,string) validator_info)
-func (_TaraxaDposInterface *TaraxaDposInterfaceCallerSession) GetValidator(validator common.Address) (DposInterfaceValidatorBasicInfo, error) {
-	return _TaraxaDposInterface.Contract.GetValidator(&_TaraxaDposInterface.CallOpts, validator)
-}
-
-// GetValidatorDelegators is a free data retrieval call binding the contract method 0xc1deb4f1.
-//
-// Solidity: function getValidatorDelegators(address validator) view returns(address[] delegators)
-func (_TaraxaDposInterface *TaraxaDposInterfaceCaller) GetValidatorDelegators(opts *bind.CallOpts, validator common.Address) ([]common.Address, error) {
-	var out []interface{}
-	err := _TaraxaDposInterface.contract.Call(opts, &out, "getValidatorDelegators", validator)
-
-	if err != nil {
-		return *new([]common.Address), err
-	}
-
-	out0 := *abi.ConvertType(out[0], new([]common.Address)).(*[]common.Address)
-
-	return out0, err
-
-}
-
-// GetValidatorDelegators is a free data retrieval call binding the contract method 0xc1deb4f1.
-//
-// Solidity: function getValidatorDelegators(address validator) view returns(address[] delegators)
-func (_TaraxaDposInterface *TaraxaDposInterfaceSession) GetValidatorDelegators(validator common.Address) ([]common.Address, error) {
-	return _TaraxaDposInterface.Contract.GetValidatorDelegators(&_TaraxaDposInterface.CallOpts, validator)
-}
-
-// GetValidatorDelegators is a free data retrieval call binding the contract method 0xc1deb4f1.
-//
-// Solidity: function getValidatorDelegators(address validator) view returns(address[] delegators)
-func (_TaraxaDposInterface *TaraxaDposInterfaceCallerSession) GetValidatorDelegators(validator common.Address) ([]common.Address, error) {
-	return _TaraxaDposInterface.Contract.GetValidatorDelegators(&_TaraxaDposInterface.CallOpts, validator)
+func (_DposInterface *DposInterfaceCallerSession) GetValidator(validator common.Address) (DposInterfaceValidatorBasicInfo, error) {
+	return _DposInterface.Contract.GetValidator(&_DposInterface.CallOpts, validator)
 }
 
 // GetValidatorEligibleVotesCount is a free data retrieval call binding the contract method 0x618e3862.
 //
 // Solidity: function getValidatorEligibleVotesCount(address validator) view returns(uint64)
-func (_TaraxaDposInterface *TaraxaDposInterfaceCaller) GetValidatorEligibleVotesCount(opts *bind.CallOpts, validator common.Address) (uint64, error) {
+func (_DposInterface *DposInterfaceCaller) GetValidatorEligibleVotesCount(opts *bind.CallOpts, validator common.Address) (uint64, error) {
 	var out []interface{}
-	err := _TaraxaDposInterface.contract.Call(opts, &out, "getValidatorEligibleVotesCount", validator)
+	err := _DposInterface.contract.Call(opts, &out, "getValidatorEligibleVotesCount", validator)
 
 	if err != nil {
 		return *new(uint64), err
@@ -419,26 +389,26 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceCaller) GetValidatorEligibleVotes
 // GetValidatorEligibleVotesCount is a free data retrieval call binding the contract method 0x618e3862.
 //
 // Solidity: function getValidatorEligibleVotesCount(address validator) view returns(uint64)
-func (_TaraxaDposInterface *TaraxaDposInterfaceSession) GetValidatorEligibleVotesCount(validator common.Address) (uint64, error) {
-	return _TaraxaDposInterface.Contract.GetValidatorEligibleVotesCount(&_TaraxaDposInterface.CallOpts, validator)
+func (_DposInterface *DposInterfaceSession) GetValidatorEligibleVotesCount(validator common.Address) (uint64, error) {
+	return _DposInterface.Contract.GetValidatorEligibleVotesCount(&_DposInterface.CallOpts, validator)
 }
 
 // GetValidatorEligibleVotesCount is a free data retrieval call binding the contract method 0x618e3862.
 //
 // Solidity: function getValidatorEligibleVotesCount(address validator) view returns(uint64)
-func (_TaraxaDposInterface *TaraxaDposInterfaceCallerSession) GetValidatorEligibleVotesCount(validator common.Address) (uint64, error) {
-	return _TaraxaDposInterface.Contract.GetValidatorEligibleVotesCount(&_TaraxaDposInterface.CallOpts, validator)
+func (_DposInterface *DposInterfaceCallerSession) GetValidatorEligibleVotesCount(validator common.Address) (uint64, error) {
+	return _DposInterface.Contract.GetValidatorEligibleVotesCount(&_DposInterface.CallOpts, validator)
 }
 
 // GetValidators is a free data retrieval call binding the contract method 0x19d8024f.
 //
 // Solidity: function getValidators(uint32 batch) view returns((address,(uint256,uint256,uint16,uint64,address,string,string))[] validators, bool end)
-func (_TaraxaDposInterface *TaraxaDposInterfaceCaller) GetValidators(opts *bind.CallOpts, batch uint32) (struct {
+func (_DposInterface *DposInterfaceCaller) GetValidators(opts *bind.CallOpts, batch uint32) (struct {
 	Validators []DposInterfaceValidatorData
 	End        bool
 }, error) {
 	var out []interface{}
-	err := _TaraxaDposInterface.contract.Call(opts, &out, "getValidators", batch)
+	err := _DposInterface.contract.Call(opts, &out, "getValidators", batch)
 
 	outstruct := new(struct {
 		Validators []DposInterfaceValidatorData
@@ -458,32 +428,32 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceCaller) GetValidators(opts *bind.
 // GetValidators is a free data retrieval call binding the contract method 0x19d8024f.
 //
 // Solidity: function getValidators(uint32 batch) view returns((address,(uint256,uint256,uint16,uint64,address,string,string))[] validators, bool end)
-func (_TaraxaDposInterface *TaraxaDposInterfaceSession) GetValidators(batch uint32) (struct {
+func (_DposInterface *DposInterfaceSession) GetValidators(batch uint32) (struct {
 	Validators []DposInterfaceValidatorData
 	End        bool
 }, error) {
-	return _TaraxaDposInterface.Contract.GetValidators(&_TaraxaDposInterface.CallOpts, batch)
+	return _DposInterface.Contract.GetValidators(&_DposInterface.CallOpts, batch)
 }
 
 // GetValidators is a free data retrieval call binding the contract method 0x19d8024f.
 //
 // Solidity: function getValidators(uint32 batch) view returns((address,(uint256,uint256,uint16,uint64,address,string,string))[] validators, bool end)
-func (_TaraxaDposInterface *TaraxaDposInterfaceCallerSession) GetValidators(batch uint32) (struct {
+func (_DposInterface *DposInterfaceCallerSession) GetValidators(batch uint32) (struct {
 	Validators []DposInterfaceValidatorData
 	End        bool
 }, error) {
-	return _TaraxaDposInterface.Contract.GetValidators(&_TaraxaDposInterface.CallOpts, batch)
+	return _DposInterface.Contract.GetValidators(&_DposInterface.CallOpts, batch)
 }
 
 // GetValidatorsFor is a free data retrieval call binding the contract method 0x724ac6b0.
 //
 // Solidity: function getValidatorsFor(address owner, uint32 batch) view returns((address,(uint256,uint256,uint16,uint64,address,string,string))[] validators, bool end)
-func (_TaraxaDposInterface *TaraxaDposInterfaceCaller) GetValidatorsFor(opts *bind.CallOpts, owner common.Address, batch uint32) (struct {
+func (_DposInterface *DposInterfaceCaller) GetValidatorsFor(opts *bind.CallOpts, owner common.Address, batch uint32) (struct {
 	Validators []DposInterfaceValidatorData
 	End        bool
 }, error) {
 	var out []interface{}
-	err := _TaraxaDposInterface.contract.Call(opts, &out, "getValidatorsFor", owner, batch)
+	err := _DposInterface.contract.Call(opts, &out, "getValidatorsFor", owner, batch)
 
 	outstruct := new(struct {
 		Validators []DposInterfaceValidatorData
@@ -503,29 +473,29 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceCaller) GetValidatorsFor(opts *bi
 // GetValidatorsFor is a free data retrieval call binding the contract method 0x724ac6b0.
 //
 // Solidity: function getValidatorsFor(address owner, uint32 batch) view returns((address,(uint256,uint256,uint16,uint64,address,string,string))[] validators, bool end)
-func (_TaraxaDposInterface *TaraxaDposInterfaceSession) GetValidatorsFor(owner common.Address, batch uint32) (struct {
+func (_DposInterface *DposInterfaceSession) GetValidatorsFor(owner common.Address, batch uint32) (struct {
 	Validators []DposInterfaceValidatorData
 	End        bool
 }, error) {
-	return _TaraxaDposInterface.Contract.GetValidatorsFor(&_TaraxaDposInterface.CallOpts, owner, batch)
+	return _DposInterface.Contract.GetValidatorsFor(&_DposInterface.CallOpts, owner, batch)
 }
 
 // GetValidatorsFor is a free data retrieval call binding the contract method 0x724ac6b0.
 //
 // Solidity: function getValidatorsFor(address owner, uint32 batch) view returns((address,(uint256,uint256,uint16,uint64,address,string,string))[] validators, bool end)
-func (_TaraxaDposInterface *TaraxaDposInterfaceCallerSession) GetValidatorsFor(owner common.Address, batch uint32) (struct {
+func (_DposInterface *DposInterfaceCallerSession) GetValidatorsFor(owner common.Address, batch uint32) (struct {
 	Validators []DposInterfaceValidatorData
 	End        bool
 }, error) {
-	return _TaraxaDposInterface.Contract.GetValidatorsFor(&_TaraxaDposInterface.CallOpts, owner, batch)
+	return _DposInterface.Contract.GetValidatorsFor(&_DposInterface.CallOpts, owner, batch)
 }
 
 // IsValidatorEligible is a free data retrieval call binding the contract method 0xf3094e90.
 //
 // Solidity: function isValidatorEligible(address validator) view returns(bool)
-func (_TaraxaDposInterface *TaraxaDposInterfaceCaller) IsValidatorEligible(opts *bind.CallOpts, validator common.Address) (bool, error) {
+func (_DposInterface *DposInterfaceCaller) IsValidatorEligible(opts *bind.CallOpts, validator common.Address) (bool, error) {
 	var out []interface{}
-	err := _TaraxaDposInterface.contract.Call(opts, &out, "isValidatorEligible", validator)
+	err := _DposInterface.contract.Call(opts, &out, "isValidatorEligible", validator)
 
 	if err != nil {
 		return *new(bool), err
@@ -540,230 +510,251 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceCaller) IsValidatorEligible(opts 
 // IsValidatorEligible is a free data retrieval call binding the contract method 0xf3094e90.
 //
 // Solidity: function isValidatorEligible(address validator) view returns(bool)
-func (_TaraxaDposInterface *TaraxaDposInterfaceSession) IsValidatorEligible(validator common.Address) (bool, error) {
-	return _TaraxaDposInterface.Contract.IsValidatorEligible(&_TaraxaDposInterface.CallOpts, validator)
+func (_DposInterface *DposInterfaceSession) IsValidatorEligible(validator common.Address) (bool, error) {
+	return _DposInterface.Contract.IsValidatorEligible(&_DposInterface.CallOpts, validator)
 }
 
 // IsValidatorEligible is a free data retrieval call binding the contract method 0xf3094e90.
 //
 // Solidity: function isValidatorEligible(address validator) view returns(bool)
-func (_TaraxaDposInterface *TaraxaDposInterfaceCallerSession) IsValidatorEligible(validator common.Address) (bool, error) {
-	return _TaraxaDposInterface.Contract.IsValidatorEligible(&_TaraxaDposInterface.CallOpts, validator)
+func (_DposInterface *DposInterfaceCallerSession) IsValidatorEligible(validator common.Address) (bool, error) {
+	return _DposInterface.Contract.IsValidatorEligible(&_DposInterface.CallOpts, validator)
 }
 
 // CancelUndelegate is a paid mutator transaction binding the contract method 0x399ff554.
 //
 // Solidity: function cancelUndelegate(address validator) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactor) CancelUndelegate(opts *bind.TransactOpts, validator common.Address) (*types.Transaction, error) {
-	return _TaraxaDposInterface.contract.Transact(opts, "cancelUndelegate", validator)
+func (_DposInterface *DposInterfaceTransactor) CancelUndelegate(opts *bind.TransactOpts, validator common.Address) (*types.Transaction, error) {
+	return _DposInterface.contract.Transact(opts, "cancelUndelegate", validator)
 }
 
 // CancelUndelegate is a paid mutator transaction binding the contract method 0x399ff554.
 //
 // Solidity: function cancelUndelegate(address validator) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceSession) CancelUndelegate(validator common.Address) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.CancelUndelegate(&_TaraxaDposInterface.TransactOpts, validator)
+func (_DposInterface *DposInterfaceSession) CancelUndelegate(validator common.Address) (*types.Transaction, error) {
+	return _DposInterface.Contract.CancelUndelegate(&_DposInterface.TransactOpts, validator)
 }
 
 // CancelUndelegate is a paid mutator transaction binding the contract method 0x399ff554.
 //
 // Solidity: function cancelUndelegate(address validator) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactorSession) CancelUndelegate(validator common.Address) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.CancelUndelegate(&_TaraxaDposInterface.TransactOpts, validator)
+func (_DposInterface *DposInterfaceTransactorSession) CancelUndelegate(validator common.Address) (*types.Transaction, error) {
+	return _DposInterface.Contract.CancelUndelegate(&_DposInterface.TransactOpts, validator)
+}
+
+// ClaimAllRewards is a paid mutator transaction binding the contract method 0x09b72e00.
+//
+// Solidity: function claimAllRewards(uint32 batch) returns(bool end)
+func (_DposInterface *DposInterfaceTransactor) ClaimAllRewards(opts *bind.TransactOpts, batch uint32) (*types.Transaction, error) {
+	return _DposInterface.contract.Transact(opts, "claimAllRewards", batch)
+}
+
+// ClaimAllRewards is a paid mutator transaction binding the contract method 0x09b72e00.
+//
+// Solidity: function claimAllRewards(uint32 batch) returns(bool end)
+func (_DposInterface *DposInterfaceSession) ClaimAllRewards(batch uint32) (*types.Transaction, error) {
+	return _DposInterface.Contract.ClaimAllRewards(&_DposInterface.TransactOpts, batch)
+}
+
+// ClaimAllRewards is a paid mutator transaction binding the contract method 0x09b72e00.
+//
+// Solidity: function claimAllRewards(uint32 batch) returns(bool end)
+func (_DposInterface *DposInterfaceTransactorSession) ClaimAllRewards(batch uint32) (*types.Transaction, error) {
+	return _DposInterface.Contract.ClaimAllRewards(&_DposInterface.TransactOpts, batch)
 }
 
 // ClaimCommissionRewards is a paid mutator transaction binding the contract method 0xd0eebfe2.
 //
 // Solidity: function claimCommissionRewards(address validator) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactor) ClaimCommissionRewards(opts *bind.TransactOpts, validator common.Address) (*types.Transaction, error) {
-	return _TaraxaDposInterface.contract.Transact(opts, "claimCommissionRewards", validator)
+func (_DposInterface *DposInterfaceTransactor) ClaimCommissionRewards(opts *bind.TransactOpts, validator common.Address) (*types.Transaction, error) {
+	return _DposInterface.contract.Transact(opts, "claimCommissionRewards", validator)
 }
 
 // ClaimCommissionRewards is a paid mutator transaction binding the contract method 0xd0eebfe2.
 //
 // Solidity: function claimCommissionRewards(address validator) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceSession) ClaimCommissionRewards(validator common.Address) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.ClaimCommissionRewards(&_TaraxaDposInterface.TransactOpts, validator)
+func (_DposInterface *DposInterfaceSession) ClaimCommissionRewards(validator common.Address) (*types.Transaction, error) {
+	return _DposInterface.Contract.ClaimCommissionRewards(&_DposInterface.TransactOpts, validator)
 }
 
 // ClaimCommissionRewards is a paid mutator transaction binding the contract method 0xd0eebfe2.
 //
 // Solidity: function claimCommissionRewards(address validator) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactorSession) ClaimCommissionRewards(validator common.Address) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.ClaimCommissionRewards(&_TaraxaDposInterface.TransactOpts, validator)
+func (_DposInterface *DposInterfaceTransactorSession) ClaimCommissionRewards(validator common.Address) (*types.Transaction, error) {
+	return _DposInterface.Contract.ClaimCommissionRewards(&_DposInterface.TransactOpts, validator)
 }
 
 // ClaimRewards is a paid mutator transaction binding the contract method 0xef5cfb8c.
 //
 // Solidity: function claimRewards(address validator) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactor) ClaimRewards(opts *bind.TransactOpts, validator common.Address) (*types.Transaction, error) {
-	return _TaraxaDposInterface.contract.Transact(opts, "claimRewards", validator)
+func (_DposInterface *DposInterfaceTransactor) ClaimRewards(opts *bind.TransactOpts, validator common.Address) (*types.Transaction, error) {
+	return _DposInterface.contract.Transact(opts, "claimRewards", validator)
 }
 
 // ClaimRewards is a paid mutator transaction binding the contract method 0xef5cfb8c.
 //
 // Solidity: function claimRewards(address validator) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceSession) ClaimRewards(validator common.Address) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.ClaimRewards(&_TaraxaDposInterface.TransactOpts, validator)
+func (_DposInterface *DposInterfaceSession) ClaimRewards(validator common.Address) (*types.Transaction, error) {
+	return _DposInterface.Contract.ClaimRewards(&_DposInterface.TransactOpts, validator)
 }
 
 // ClaimRewards is a paid mutator transaction binding the contract method 0xef5cfb8c.
 //
 // Solidity: function claimRewards(address validator) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactorSession) ClaimRewards(validator common.Address) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.ClaimRewards(&_TaraxaDposInterface.TransactOpts, validator)
+func (_DposInterface *DposInterfaceTransactorSession) ClaimRewards(validator common.Address) (*types.Transaction, error) {
+	return _DposInterface.Contract.ClaimRewards(&_DposInterface.TransactOpts, validator)
 }
 
 // ConfirmUndelegate is a paid mutator transaction binding the contract method 0x45a02561.
 //
 // Solidity: function confirmUndelegate(address validator) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactor) ConfirmUndelegate(opts *bind.TransactOpts, validator common.Address) (*types.Transaction, error) {
-	return _TaraxaDposInterface.contract.Transact(opts, "confirmUndelegate", validator)
+func (_DposInterface *DposInterfaceTransactor) ConfirmUndelegate(opts *bind.TransactOpts, validator common.Address) (*types.Transaction, error) {
+	return _DposInterface.contract.Transact(opts, "confirmUndelegate", validator)
 }
 
 // ConfirmUndelegate is a paid mutator transaction binding the contract method 0x45a02561.
 //
 // Solidity: function confirmUndelegate(address validator) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceSession) ConfirmUndelegate(validator common.Address) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.ConfirmUndelegate(&_TaraxaDposInterface.TransactOpts, validator)
+func (_DposInterface *DposInterfaceSession) ConfirmUndelegate(validator common.Address) (*types.Transaction, error) {
+	return _DposInterface.Contract.ConfirmUndelegate(&_DposInterface.TransactOpts, validator)
 }
 
 // ConfirmUndelegate is a paid mutator transaction binding the contract method 0x45a02561.
 //
 // Solidity: function confirmUndelegate(address validator) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactorSession) ConfirmUndelegate(validator common.Address) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.ConfirmUndelegate(&_TaraxaDposInterface.TransactOpts, validator)
+func (_DposInterface *DposInterfaceTransactorSession) ConfirmUndelegate(validator common.Address) (*types.Transaction, error) {
+	return _DposInterface.Contract.ConfirmUndelegate(&_DposInterface.TransactOpts, validator)
 }
 
 // Delegate is a paid mutator transaction binding the contract method 0x5c19a95c.
 //
 // Solidity: function delegate(address validator) payable returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactor) Delegate(opts *bind.TransactOpts, validator common.Address) (*types.Transaction, error) {
-	return _TaraxaDposInterface.contract.Transact(opts, "delegate", validator)
+func (_DposInterface *DposInterfaceTransactor) Delegate(opts *bind.TransactOpts, validator common.Address) (*types.Transaction, error) {
+	return _DposInterface.contract.Transact(opts, "delegate", validator)
 }
 
 // Delegate is a paid mutator transaction binding the contract method 0x5c19a95c.
 //
 // Solidity: function delegate(address validator) payable returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceSession) Delegate(validator common.Address) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.Delegate(&_TaraxaDposInterface.TransactOpts, validator)
+func (_DposInterface *DposInterfaceSession) Delegate(validator common.Address) (*types.Transaction, error) {
+	return _DposInterface.Contract.Delegate(&_DposInterface.TransactOpts, validator)
 }
 
 // Delegate is a paid mutator transaction binding the contract method 0x5c19a95c.
 //
 // Solidity: function delegate(address validator) payable returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactorSession) Delegate(validator common.Address) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.Delegate(&_TaraxaDposInterface.TransactOpts, validator)
+func (_DposInterface *DposInterfaceTransactorSession) Delegate(validator common.Address) (*types.Transaction, error) {
+	return _DposInterface.Contract.Delegate(&_DposInterface.TransactOpts, validator)
 }
 
 // ReDelegate is a paid mutator transaction binding the contract method 0x703812cc.
 //
 // Solidity: function reDelegate(address validator_from, address validator_to, uint256 amount) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactor) ReDelegate(opts *bind.TransactOpts, validator_from common.Address, validator_to common.Address, amount *big.Int) (*types.Transaction, error) {
-	return _TaraxaDposInterface.contract.Transact(opts, "reDelegate", validator_from, validator_to, amount)
+func (_DposInterface *DposInterfaceTransactor) ReDelegate(opts *bind.TransactOpts, validator_from common.Address, validator_to common.Address, amount *big.Int) (*types.Transaction, error) {
+	return _DposInterface.contract.Transact(opts, "reDelegate", validator_from, validator_to, amount)
 }
 
 // ReDelegate is a paid mutator transaction binding the contract method 0x703812cc.
 //
 // Solidity: function reDelegate(address validator_from, address validator_to, uint256 amount) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceSession) ReDelegate(validator_from common.Address, validator_to common.Address, amount *big.Int) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.ReDelegate(&_TaraxaDposInterface.TransactOpts, validator_from, validator_to, amount)
+func (_DposInterface *DposInterfaceSession) ReDelegate(validator_from common.Address, validator_to common.Address, amount *big.Int) (*types.Transaction, error) {
+	return _DposInterface.Contract.ReDelegate(&_DposInterface.TransactOpts, validator_from, validator_to, amount)
 }
 
 // ReDelegate is a paid mutator transaction binding the contract method 0x703812cc.
 //
 // Solidity: function reDelegate(address validator_from, address validator_to, uint256 amount) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactorSession) ReDelegate(validator_from common.Address, validator_to common.Address, amount *big.Int) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.ReDelegate(&_TaraxaDposInterface.TransactOpts, validator_from, validator_to, amount)
+func (_DposInterface *DposInterfaceTransactorSession) ReDelegate(validator_from common.Address, validator_to common.Address, amount *big.Int) (*types.Transaction, error) {
+	return _DposInterface.Contract.ReDelegate(&_DposInterface.TransactOpts, validator_from, validator_to, amount)
 }
 
 // RegisterValidator is a paid mutator transaction binding the contract method 0xd6fdc127.
 //
 // Solidity: function registerValidator(address validator, bytes proof, bytes vrf_key, uint16 commission, string description, string endpoint) payable returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactor) RegisterValidator(opts *bind.TransactOpts, validator common.Address, proof []byte, vrf_key []byte, commission uint16, description string, endpoint string) (*types.Transaction, error) {
-	return _TaraxaDposInterface.contract.Transact(opts, "registerValidator", validator, proof, vrf_key, commission, description, endpoint)
+func (_DposInterface *DposInterfaceTransactor) RegisterValidator(opts *bind.TransactOpts, validator common.Address, proof []byte, vrf_key []byte, commission uint16, description string, endpoint string) (*types.Transaction, error) {
+	return _DposInterface.contract.Transact(opts, "registerValidator", validator, proof, vrf_key, commission, description, endpoint)
 }
 
 // RegisterValidator is a paid mutator transaction binding the contract method 0xd6fdc127.
 //
 // Solidity: function registerValidator(address validator, bytes proof, bytes vrf_key, uint16 commission, string description, string endpoint) payable returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceSession) RegisterValidator(validator common.Address, proof []byte, vrf_key []byte, commission uint16, description string, endpoint string) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.RegisterValidator(&_TaraxaDposInterface.TransactOpts, validator, proof, vrf_key, commission, description, endpoint)
+func (_DposInterface *DposInterfaceSession) RegisterValidator(validator common.Address, proof []byte, vrf_key []byte, commission uint16, description string, endpoint string) (*types.Transaction, error) {
+	return _DposInterface.Contract.RegisterValidator(&_DposInterface.TransactOpts, validator, proof, vrf_key, commission, description, endpoint)
 }
 
 // RegisterValidator is a paid mutator transaction binding the contract method 0xd6fdc127.
 //
 // Solidity: function registerValidator(address validator, bytes proof, bytes vrf_key, uint16 commission, string description, string endpoint) payable returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactorSession) RegisterValidator(validator common.Address, proof []byte, vrf_key []byte, commission uint16, description string, endpoint string) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.RegisterValidator(&_TaraxaDposInterface.TransactOpts, validator, proof, vrf_key, commission, description, endpoint)
+func (_DposInterface *DposInterfaceTransactorSession) RegisterValidator(validator common.Address, proof []byte, vrf_key []byte, commission uint16, description string, endpoint string) (*types.Transaction, error) {
+	return _DposInterface.Contract.RegisterValidator(&_DposInterface.TransactOpts, validator, proof, vrf_key, commission, description, endpoint)
 }
 
 // SetCommission is a paid mutator transaction binding the contract method 0xf000322c.
 //
 // Solidity: function setCommission(address validator, uint16 commission) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactor) SetCommission(opts *bind.TransactOpts, validator common.Address, commission uint16) (*types.Transaction, error) {
-	return _TaraxaDposInterface.contract.Transact(opts, "setCommission", validator, commission)
+func (_DposInterface *DposInterfaceTransactor) SetCommission(opts *bind.TransactOpts, validator common.Address, commission uint16) (*types.Transaction, error) {
+	return _DposInterface.contract.Transact(opts, "setCommission", validator, commission)
 }
 
 // SetCommission is a paid mutator transaction binding the contract method 0xf000322c.
 //
 // Solidity: function setCommission(address validator, uint16 commission) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceSession) SetCommission(validator common.Address, commission uint16) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.SetCommission(&_TaraxaDposInterface.TransactOpts, validator, commission)
+func (_DposInterface *DposInterfaceSession) SetCommission(validator common.Address, commission uint16) (*types.Transaction, error) {
+	return _DposInterface.Contract.SetCommission(&_DposInterface.TransactOpts, validator, commission)
 }
 
 // SetCommission is a paid mutator transaction binding the contract method 0xf000322c.
 //
 // Solidity: function setCommission(address validator, uint16 commission) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactorSession) SetCommission(validator common.Address, commission uint16) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.SetCommission(&_TaraxaDposInterface.TransactOpts, validator, commission)
+func (_DposInterface *DposInterfaceTransactorSession) SetCommission(validator common.Address, commission uint16) (*types.Transaction, error) {
+	return _DposInterface.Contract.SetCommission(&_DposInterface.TransactOpts, validator, commission)
 }
 
 // SetValidatorInfo is a paid mutator transaction binding the contract method 0x0babea4c.
 //
 // Solidity: function setValidatorInfo(address validator, string description, string endpoint) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactor) SetValidatorInfo(opts *bind.TransactOpts, validator common.Address, description string, endpoint string) (*types.Transaction, error) {
-	return _TaraxaDposInterface.contract.Transact(opts, "setValidatorInfo", validator, description, endpoint)
+func (_DposInterface *DposInterfaceTransactor) SetValidatorInfo(opts *bind.TransactOpts, validator common.Address, description string, endpoint string) (*types.Transaction, error) {
+	return _DposInterface.contract.Transact(opts, "setValidatorInfo", validator, description, endpoint)
 }
 
 // SetValidatorInfo is a paid mutator transaction binding the contract method 0x0babea4c.
 //
 // Solidity: function setValidatorInfo(address validator, string description, string endpoint) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceSession) SetValidatorInfo(validator common.Address, description string, endpoint string) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.SetValidatorInfo(&_TaraxaDposInterface.TransactOpts, validator, description, endpoint)
+func (_DposInterface *DposInterfaceSession) SetValidatorInfo(validator common.Address, description string, endpoint string) (*types.Transaction, error) {
+	return _DposInterface.Contract.SetValidatorInfo(&_DposInterface.TransactOpts, validator, description, endpoint)
 }
 
 // SetValidatorInfo is a paid mutator transaction binding the contract method 0x0babea4c.
 //
 // Solidity: function setValidatorInfo(address validator, string description, string endpoint) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactorSession) SetValidatorInfo(validator common.Address, description string, endpoint string) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.SetValidatorInfo(&_TaraxaDposInterface.TransactOpts, validator, description, endpoint)
+func (_DposInterface *DposInterfaceTransactorSession) SetValidatorInfo(validator common.Address, description string, endpoint string) (*types.Transaction, error) {
+	return _DposInterface.Contract.SetValidatorInfo(&_DposInterface.TransactOpts, validator, description, endpoint)
 }
 
 // Undelegate is a paid mutator transaction binding the contract method 0x4d99dd16.
 //
 // Solidity: function undelegate(address validator, uint256 amount) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactor) Undelegate(opts *bind.TransactOpts, validator common.Address, amount *big.Int) (*types.Transaction, error) {
-	return _TaraxaDposInterface.contract.Transact(opts, "undelegate", validator, amount)
+func (_DposInterface *DposInterfaceTransactor) Undelegate(opts *bind.TransactOpts, validator common.Address, amount *big.Int) (*types.Transaction, error) {
+	return _DposInterface.contract.Transact(opts, "undelegate", validator, amount)
 }
 
 // Undelegate is a paid mutator transaction binding the contract method 0x4d99dd16.
 //
 // Solidity: function undelegate(address validator, uint256 amount) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceSession) Undelegate(validator common.Address, amount *big.Int) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.Undelegate(&_TaraxaDposInterface.TransactOpts, validator, amount)
+func (_DposInterface *DposInterfaceSession) Undelegate(validator common.Address, amount *big.Int) (*types.Transaction, error) {
+	return _DposInterface.Contract.Undelegate(&_DposInterface.TransactOpts, validator, amount)
 }
 
 // Undelegate is a paid mutator transaction binding the contract method 0x4d99dd16.
 //
 // Solidity: function undelegate(address validator, uint256 amount) returns()
-func (_TaraxaDposInterface *TaraxaDposInterfaceTransactorSession) Undelegate(validator common.Address, amount *big.Int) (*types.Transaction, error) {
-	return _TaraxaDposInterface.Contract.Undelegate(&_TaraxaDposInterface.TransactOpts, validator, amount)
+func (_DposInterface *DposInterfaceTransactorSession) Undelegate(validator common.Address, amount *big.Int) (*types.Transaction, error) {
+	return _DposInterface.Contract.Undelegate(&_DposInterface.TransactOpts, validator, amount)
 }
 
-// TaraxaDposInterfaceCommissionRewardsClaimedIterator is returned from FilterCommissionRewardsClaimed and is used to iterate over the raw logs and unpacked data for CommissionRewardsClaimed events raised by the TaraxaDposInterface contract.
-type TaraxaDposInterfaceCommissionRewardsClaimedIterator struct {
-	Event *TaraxaDposInterfaceCommissionRewardsClaimed // Event containing the contract specifics and raw log
+// DposInterfaceCommissionRewardsClaimedIterator is returned from FilterCommissionRewardsClaimed and is used to iterate over the raw logs and unpacked data for CommissionRewardsClaimed events raised by the DposInterface contract.
+type DposInterfaceCommissionRewardsClaimedIterator struct {
+	Event *DposInterfaceCommissionRewardsClaimed // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -777,7 +768,7 @@ type TaraxaDposInterfaceCommissionRewardsClaimedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *TaraxaDposInterfaceCommissionRewardsClaimedIterator) Next() bool {
+func (it *DposInterfaceCommissionRewardsClaimedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -786,7 +777,7 @@ func (it *TaraxaDposInterfaceCommissionRewardsClaimedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(TaraxaDposInterfaceCommissionRewardsClaimed)
+			it.Event = new(DposInterfaceCommissionRewardsClaimed)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -801,7 +792,7 @@ func (it *TaraxaDposInterfaceCommissionRewardsClaimedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(TaraxaDposInterfaceCommissionRewardsClaimed)
+		it.Event = new(DposInterfaceCommissionRewardsClaimed)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -817,19 +808,19 @@ func (it *TaraxaDposInterfaceCommissionRewardsClaimedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *TaraxaDposInterfaceCommissionRewardsClaimedIterator) Error() error {
+func (it *DposInterfaceCommissionRewardsClaimedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *TaraxaDposInterfaceCommissionRewardsClaimedIterator) Close() error {
+func (it *DposInterfaceCommissionRewardsClaimedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// TaraxaDposInterfaceCommissionRewardsClaimed represents a CommissionRewardsClaimed event raised by the TaraxaDposInterface contract.
-type TaraxaDposInterfaceCommissionRewardsClaimed struct {
+// DposInterfaceCommissionRewardsClaimed represents a CommissionRewardsClaimed event raised by the DposInterface contract.
+type DposInterfaceCommissionRewardsClaimed struct {
 	Account   common.Address
 	Validator common.Address
 	Raw       types.Log // Blockchain specific contextual infos
@@ -838,7 +829,7 @@ type TaraxaDposInterfaceCommissionRewardsClaimed struct {
 // FilterCommissionRewardsClaimed is a free log retrieval operation binding the contract event 0x9fe6fb5c5703216904280d8ed59c57daa2bedb91e204b4f23e347ecaaf313c3b.
 //
 // Solidity: event CommissionRewardsClaimed(address indexed account, address indexed validator)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) FilterCommissionRewardsClaimed(opts *bind.FilterOpts, account []common.Address, validator []common.Address) (*TaraxaDposInterfaceCommissionRewardsClaimedIterator, error) {
+func (_DposInterface *DposInterfaceFilterer) FilterCommissionRewardsClaimed(opts *bind.FilterOpts, account []common.Address, validator []common.Address) (*DposInterfaceCommissionRewardsClaimedIterator, error) {
 
 	var accountRule []interface{}
 	for _, accountItem := range account {
@@ -849,17 +840,17 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) FilterCommissionRewards
 		validatorRule = append(validatorRule, validatorItem)
 	}
 
-	logs, sub, err := _TaraxaDposInterface.contract.FilterLogs(opts, "CommissionRewardsClaimed", accountRule, validatorRule)
+	logs, sub, err := _DposInterface.contract.FilterLogs(opts, "CommissionRewardsClaimed", accountRule, validatorRule)
 	if err != nil {
 		return nil, err
 	}
-	return &TaraxaDposInterfaceCommissionRewardsClaimedIterator{contract: _TaraxaDposInterface.contract, event: "CommissionRewardsClaimed", logs: logs, sub: sub}, nil
+	return &DposInterfaceCommissionRewardsClaimedIterator{contract: _DposInterface.contract, event: "CommissionRewardsClaimed", logs: logs, sub: sub}, nil
 }
 
 // WatchCommissionRewardsClaimed is a free log subscription operation binding the contract event 0x9fe6fb5c5703216904280d8ed59c57daa2bedb91e204b4f23e347ecaaf313c3b.
 //
 // Solidity: event CommissionRewardsClaimed(address indexed account, address indexed validator)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchCommissionRewardsClaimed(opts *bind.WatchOpts, sink chan<- *TaraxaDposInterfaceCommissionRewardsClaimed, account []common.Address, validator []common.Address) (event.Subscription, error) {
+func (_DposInterface *DposInterfaceFilterer) WatchCommissionRewardsClaimed(opts *bind.WatchOpts, sink chan<- *DposInterfaceCommissionRewardsClaimed, account []common.Address, validator []common.Address) (event.Subscription, error) {
 
 	var accountRule []interface{}
 	for _, accountItem := range account {
@@ -870,7 +861,7 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchCommissionRewardsC
 		validatorRule = append(validatorRule, validatorItem)
 	}
 
-	logs, sub, err := _TaraxaDposInterface.contract.WatchLogs(opts, "CommissionRewardsClaimed", accountRule, validatorRule)
+	logs, sub, err := _DposInterface.contract.WatchLogs(opts, "CommissionRewardsClaimed", accountRule, validatorRule)
 	if err != nil {
 		return nil, err
 	}
@@ -880,8 +871,8 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchCommissionRewardsC
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(TaraxaDposInterfaceCommissionRewardsClaimed)
-				if err := _TaraxaDposInterface.contract.UnpackLog(event, "CommissionRewardsClaimed", log); err != nil {
+				event := new(DposInterfaceCommissionRewardsClaimed)
+				if err := _DposInterface.contract.UnpackLog(event, "CommissionRewardsClaimed", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -905,18 +896,18 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchCommissionRewardsC
 // ParseCommissionRewardsClaimed is a log parse operation binding the contract event 0x9fe6fb5c5703216904280d8ed59c57daa2bedb91e204b4f23e347ecaaf313c3b.
 //
 // Solidity: event CommissionRewardsClaimed(address indexed account, address indexed validator)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) ParseCommissionRewardsClaimed(log types.Log) (*TaraxaDposInterfaceCommissionRewardsClaimed, error) {
-	event := new(TaraxaDposInterfaceCommissionRewardsClaimed)
-	if err := _TaraxaDposInterface.contract.UnpackLog(event, "CommissionRewardsClaimed", log); err != nil {
+func (_DposInterface *DposInterfaceFilterer) ParseCommissionRewardsClaimed(log types.Log) (*DposInterfaceCommissionRewardsClaimed, error) {
+	event := new(DposInterfaceCommissionRewardsClaimed)
+	if err := _DposInterface.contract.UnpackLog(event, "CommissionRewardsClaimed", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// TaraxaDposInterfaceCommissionSetIterator is returned from FilterCommissionSet and is used to iterate over the raw logs and unpacked data for CommissionSet events raised by the TaraxaDposInterface contract.
-type TaraxaDposInterfaceCommissionSetIterator struct {
-	Event *TaraxaDposInterfaceCommissionSet // Event containing the contract specifics and raw log
+// DposInterfaceCommissionSetIterator is returned from FilterCommissionSet and is used to iterate over the raw logs and unpacked data for CommissionSet events raised by the DposInterface contract.
+type DposInterfaceCommissionSetIterator struct {
+	Event *DposInterfaceCommissionSet // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -930,7 +921,7 @@ type TaraxaDposInterfaceCommissionSetIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *TaraxaDposInterfaceCommissionSetIterator) Next() bool {
+func (it *DposInterfaceCommissionSetIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -939,7 +930,7 @@ func (it *TaraxaDposInterfaceCommissionSetIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(TaraxaDposInterfaceCommissionSet)
+			it.Event = new(DposInterfaceCommissionSet)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -954,7 +945,7 @@ func (it *TaraxaDposInterfaceCommissionSetIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(TaraxaDposInterfaceCommissionSet)
+		it.Event = new(DposInterfaceCommissionSet)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -970,19 +961,19 @@ func (it *TaraxaDposInterfaceCommissionSetIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *TaraxaDposInterfaceCommissionSetIterator) Error() error {
+func (it *DposInterfaceCommissionSetIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *TaraxaDposInterfaceCommissionSetIterator) Close() error {
+func (it *DposInterfaceCommissionSetIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// TaraxaDposInterfaceCommissionSet represents a CommissionSet event raised by the TaraxaDposInterface contract.
-type TaraxaDposInterfaceCommissionSet struct {
+// DposInterfaceCommissionSet represents a CommissionSet event raised by the DposInterface contract.
+type DposInterfaceCommissionSet struct {
 	Validator common.Address
 	Comission uint16
 	Raw       types.Log // Blockchain specific contextual infos
@@ -991,31 +982,31 @@ type TaraxaDposInterfaceCommissionSet struct {
 // FilterCommissionSet is a free log retrieval operation binding the contract event 0xc909daf778d180f43dac53b55d0de934d2f1e0b70412ca274982e4e6e894eb1a.
 //
 // Solidity: event CommissionSet(address indexed validator, uint16 comission)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) FilterCommissionSet(opts *bind.FilterOpts, validator []common.Address) (*TaraxaDposInterfaceCommissionSetIterator, error) {
+func (_DposInterface *DposInterfaceFilterer) FilterCommissionSet(opts *bind.FilterOpts, validator []common.Address) (*DposInterfaceCommissionSetIterator, error) {
 
 	var validatorRule []interface{}
 	for _, validatorItem := range validator {
 		validatorRule = append(validatorRule, validatorItem)
 	}
 
-	logs, sub, err := _TaraxaDposInterface.contract.FilterLogs(opts, "CommissionSet", validatorRule)
+	logs, sub, err := _DposInterface.contract.FilterLogs(opts, "CommissionSet", validatorRule)
 	if err != nil {
 		return nil, err
 	}
-	return &TaraxaDposInterfaceCommissionSetIterator{contract: _TaraxaDposInterface.contract, event: "CommissionSet", logs: logs, sub: sub}, nil
+	return &DposInterfaceCommissionSetIterator{contract: _DposInterface.contract, event: "CommissionSet", logs: logs, sub: sub}, nil
 }
 
 // WatchCommissionSet is a free log subscription operation binding the contract event 0xc909daf778d180f43dac53b55d0de934d2f1e0b70412ca274982e4e6e894eb1a.
 //
 // Solidity: event CommissionSet(address indexed validator, uint16 comission)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchCommissionSet(opts *bind.WatchOpts, sink chan<- *TaraxaDposInterfaceCommissionSet, validator []common.Address) (event.Subscription, error) {
+func (_DposInterface *DposInterfaceFilterer) WatchCommissionSet(opts *bind.WatchOpts, sink chan<- *DposInterfaceCommissionSet, validator []common.Address) (event.Subscription, error) {
 
 	var validatorRule []interface{}
 	for _, validatorItem := range validator {
 		validatorRule = append(validatorRule, validatorItem)
 	}
 
-	logs, sub, err := _TaraxaDposInterface.contract.WatchLogs(opts, "CommissionSet", validatorRule)
+	logs, sub, err := _DposInterface.contract.WatchLogs(opts, "CommissionSet", validatorRule)
 	if err != nil {
 		return nil, err
 	}
@@ -1025,8 +1016,8 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchCommissionSet(opts
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(TaraxaDposInterfaceCommissionSet)
-				if err := _TaraxaDposInterface.contract.UnpackLog(event, "CommissionSet", log); err != nil {
+				event := new(DposInterfaceCommissionSet)
+				if err := _DposInterface.contract.UnpackLog(event, "CommissionSet", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1050,18 +1041,18 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchCommissionSet(opts
 // ParseCommissionSet is a log parse operation binding the contract event 0xc909daf778d180f43dac53b55d0de934d2f1e0b70412ca274982e4e6e894eb1a.
 //
 // Solidity: event CommissionSet(address indexed validator, uint16 comission)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) ParseCommissionSet(log types.Log) (*TaraxaDposInterfaceCommissionSet, error) {
-	event := new(TaraxaDposInterfaceCommissionSet)
-	if err := _TaraxaDposInterface.contract.UnpackLog(event, "CommissionSet", log); err != nil {
+func (_DposInterface *DposInterfaceFilterer) ParseCommissionSet(log types.Log) (*DposInterfaceCommissionSet, error) {
+	event := new(DposInterfaceCommissionSet)
+	if err := _DposInterface.contract.UnpackLog(event, "CommissionSet", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// TaraxaDposInterfaceDelegatedIterator is returned from FilterDelegated and is used to iterate over the raw logs and unpacked data for Delegated events raised by the TaraxaDposInterface contract.
-type TaraxaDposInterfaceDelegatedIterator struct {
-	Event *TaraxaDposInterfaceDelegated // Event containing the contract specifics and raw log
+// DposInterfaceDelegatedIterator is returned from FilterDelegated and is used to iterate over the raw logs and unpacked data for Delegated events raised by the DposInterface contract.
+type DposInterfaceDelegatedIterator struct {
+	Event *DposInterfaceDelegated // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1075,7 +1066,7 @@ type TaraxaDposInterfaceDelegatedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *TaraxaDposInterfaceDelegatedIterator) Next() bool {
+func (it *DposInterfaceDelegatedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1084,7 +1075,7 @@ func (it *TaraxaDposInterfaceDelegatedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(TaraxaDposInterfaceDelegated)
+			it.Event = new(DposInterfaceDelegated)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1099,7 +1090,7 @@ func (it *TaraxaDposInterfaceDelegatedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(TaraxaDposInterfaceDelegated)
+		it.Event = new(DposInterfaceDelegated)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1115,19 +1106,19 @@ func (it *TaraxaDposInterfaceDelegatedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *TaraxaDposInterfaceDelegatedIterator) Error() error {
+func (it *DposInterfaceDelegatedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *TaraxaDposInterfaceDelegatedIterator) Close() error {
+func (it *DposInterfaceDelegatedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// TaraxaDposInterfaceDelegated represents a Delegated event raised by the TaraxaDposInterface contract.
-type TaraxaDposInterfaceDelegated struct {
+// DposInterfaceDelegated represents a Delegated event raised by the DposInterface contract.
+type DposInterfaceDelegated struct {
 	Delegator common.Address
 	Validator common.Address
 	Amount    *big.Int
@@ -1137,7 +1128,7 @@ type TaraxaDposInterfaceDelegated struct {
 // FilterDelegated is a free log retrieval operation binding the contract event 0xe5541a6b6103d4fa7e021ed54fad39c66f27a76bd13d374cf6240ae6bd0bb72b.
 //
 // Solidity: event Delegated(address indexed delegator, address indexed validator, uint256 amount)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) FilterDelegated(opts *bind.FilterOpts, delegator []common.Address, validator []common.Address) (*TaraxaDposInterfaceDelegatedIterator, error) {
+func (_DposInterface *DposInterfaceFilterer) FilterDelegated(opts *bind.FilterOpts, delegator []common.Address, validator []common.Address) (*DposInterfaceDelegatedIterator, error) {
 
 	var delegatorRule []interface{}
 	for _, delegatorItem := range delegator {
@@ -1148,17 +1139,17 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) FilterDelegated(opts *b
 		validatorRule = append(validatorRule, validatorItem)
 	}
 
-	logs, sub, err := _TaraxaDposInterface.contract.FilterLogs(opts, "Delegated", delegatorRule, validatorRule)
+	logs, sub, err := _DposInterface.contract.FilterLogs(opts, "Delegated", delegatorRule, validatorRule)
 	if err != nil {
 		return nil, err
 	}
-	return &TaraxaDposInterfaceDelegatedIterator{contract: _TaraxaDposInterface.contract, event: "Delegated", logs: logs, sub: sub}, nil
+	return &DposInterfaceDelegatedIterator{contract: _DposInterface.contract, event: "Delegated", logs: logs, sub: sub}, nil
 }
 
 // WatchDelegated is a free log subscription operation binding the contract event 0xe5541a6b6103d4fa7e021ed54fad39c66f27a76bd13d374cf6240ae6bd0bb72b.
 //
 // Solidity: event Delegated(address indexed delegator, address indexed validator, uint256 amount)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchDelegated(opts *bind.WatchOpts, sink chan<- *TaraxaDposInterfaceDelegated, delegator []common.Address, validator []common.Address) (event.Subscription, error) {
+func (_DposInterface *DposInterfaceFilterer) WatchDelegated(opts *bind.WatchOpts, sink chan<- *DposInterfaceDelegated, delegator []common.Address, validator []common.Address) (event.Subscription, error) {
 
 	var delegatorRule []interface{}
 	for _, delegatorItem := range delegator {
@@ -1169,7 +1160,7 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchDelegated(opts *bi
 		validatorRule = append(validatorRule, validatorItem)
 	}
 
-	logs, sub, err := _TaraxaDposInterface.contract.WatchLogs(opts, "Delegated", delegatorRule, validatorRule)
+	logs, sub, err := _DposInterface.contract.WatchLogs(opts, "Delegated", delegatorRule, validatorRule)
 	if err != nil {
 		return nil, err
 	}
@@ -1179,8 +1170,8 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchDelegated(opts *bi
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(TaraxaDposInterfaceDelegated)
-				if err := _TaraxaDposInterface.contract.UnpackLog(event, "Delegated", log); err != nil {
+				event := new(DposInterfaceDelegated)
+				if err := _DposInterface.contract.UnpackLog(event, "Delegated", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1204,18 +1195,18 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchDelegated(opts *bi
 // ParseDelegated is a log parse operation binding the contract event 0xe5541a6b6103d4fa7e021ed54fad39c66f27a76bd13d374cf6240ae6bd0bb72b.
 //
 // Solidity: event Delegated(address indexed delegator, address indexed validator, uint256 amount)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) ParseDelegated(log types.Log) (*TaraxaDposInterfaceDelegated, error) {
-	event := new(TaraxaDposInterfaceDelegated)
-	if err := _TaraxaDposInterface.contract.UnpackLog(event, "Delegated", log); err != nil {
+func (_DposInterface *DposInterfaceFilterer) ParseDelegated(log types.Log) (*DposInterfaceDelegated, error) {
+	event := new(DposInterfaceDelegated)
+	if err := _DposInterface.contract.UnpackLog(event, "Delegated", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// TaraxaDposInterfaceRedelegatedIterator is returned from FilterRedelegated and is used to iterate over the raw logs and unpacked data for Redelegated events raised by the TaraxaDposInterface contract.
-type TaraxaDposInterfaceRedelegatedIterator struct {
-	Event *TaraxaDposInterfaceRedelegated // Event containing the contract specifics and raw log
+// DposInterfaceRedelegatedIterator is returned from FilterRedelegated and is used to iterate over the raw logs and unpacked data for Redelegated events raised by the DposInterface contract.
+type DposInterfaceRedelegatedIterator struct {
+	Event *DposInterfaceRedelegated // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1229,7 +1220,7 @@ type TaraxaDposInterfaceRedelegatedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *TaraxaDposInterfaceRedelegatedIterator) Next() bool {
+func (it *DposInterfaceRedelegatedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1238,7 +1229,7 @@ func (it *TaraxaDposInterfaceRedelegatedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(TaraxaDposInterfaceRedelegated)
+			it.Event = new(DposInterfaceRedelegated)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1253,7 +1244,7 @@ func (it *TaraxaDposInterfaceRedelegatedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(TaraxaDposInterfaceRedelegated)
+		it.Event = new(DposInterfaceRedelegated)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1269,19 +1260,19 @@ func (it *TaraxaDposInterfaceRedelegatedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *TaraxaDposInterfaceRedelegatedIterator) Error() error {
+func (it *DposInterfaceRedelegatedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *TaraxaDposInterfaceRedelegatedIterator) Close() error {
+func (it *DposInterfaceRedelegatedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// TaraxaDposInterfaceRedelegated represents a Redelegated event raised by the TaraxaDposInterface contract.
-type TaraxaDposInterfaceRedelegated struct {
+// DposInterfaceRedelegated represents a Redelegated event raised by the DposInterface contract.
+type DposInterfaceRedelegated struct {
 	Delegator common.Address
 	From      common.Address
 	To        common.Address
@@ -1292,7 +1283,7 @@ type TaraxaDposInterfaceRedelegated struct {
 // FilterRedelegated is a free log retrieval operation binding the contract event 0x12e144c27d0bad08abc77c66a640b5cf15a03a93f6582f40de6932b033a5fa5e.
 //
 // Solidity: event Redelegated(address indexed delegator, address indexed from, address indexed to, uint256 amount)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) FilterRedelegated(opts *bind.FilterOpts, delegator []common.Address, from []common.Address, to []common.Address) (*TaraxaDposInterfaceRedelegatedIterator, error) {
+func (_DposInterface *DposInterfaceFilterer) FilterRedelegated(opts *bind.FilterOpts, delegator []common.Address, from []common.Address, to []common.Address) (*DposInterfaceRedelegatedIterator, error) {
 
 	var delegatorRule []interface{}
 	for _, delegatorItem := range delegator {
@@ -1307,17 +1298,17 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) FilterRedelegated(opts 
 		toRule = append(toRule, toItem)
 	}
 
-	logs, sub, err := _TaraxaDposInterface.contract.FilterLogs(opts, "Redelegated", delegatorRule, fromRule, toRule)
+	logs, sub, err := _DposInterface.contract.FilterLogs(opts, "Redelegated", delegatorRule, fromRule, toRule)
 	if err != nil {
 		return nil, err
 	}
-	return &TaraxaDposInterfaceRedelegatedIterator{contract: _TaraxaDposInterface.contract, event: "Redelegated", logs: logs, sub: sub}, nil
+	return &DposInterfaceRedelegatedIterator{contract: _DposInterface.contract, event: "Redelegated", logs: logs, sub: sub}, nil
 }
 
 // WatchRedelegated is a free log subscription operation binding the contract event 0x12e144c27d0bad08abc77c66a640b5cf15a03a93f6582f40de6932b033a5fa5e.
 //
 // Solidity: event Redelegated(address indexed delegator, address indexed from, address indexed to, uint256 amount)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchRedelegated(opts *bind.WatchOpts, sink chan<- *TaraxaDposInterfaceRedelegated, delegator []common.Address, from []common.Address, to []common.Address) (event.Subscription, error) {
+func (_DposInterface *DposInterfaceFilterer) WatchRedelegated(opts *bind.WatchOpts, sink chan<- *DposInterfaceRedelegated, delegator []common.Address, from []common.Address, to []common.Address) (event.Subscription, error) {
 
 	var delegatorRule []interface{}
 	for _, delegatorItem := range delegator {
@@ -1332,7 +1323,7 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchRedelegated(opts *
 		toRule = append(toRule, toItem)
 	}
 
-	logs, sub, err := _TaraxaDposInterface.contract.WatchLogs(opts, "Redelegated", delegatorRule, fromRule, toRule)
+	logs, sub, err := _DposInterface.contract.WatchLogs(opts, "Redelegated", delegatorRule, fromRule, toRule)
 	if err != nil {
 		return nil, err
 	}
@@ -1342,8 +1333,8 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchRedelegated(opts *
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(TaraxaDposInterfaceRedelegated)
-				if err := _TaraxaDposInterface.contract.UnpackLog(event, "Redelegated", log); err != nil {
+				event := new(DposInterfaceRedelegated)
+				if err := _DposInterface.contract.UnpackLog(event, "Redelegated", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1367,18 +1358,18 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchRedelegated(opts *
 // ParseRedelegated is a log parse operation binding the contract event 0x12e144c27d0bad08abc77c66a640b5cf15a03a93f6582f40de6932b033a5fa5e.
 //
 // Solidity: event Redelegated(address indexed delegator, address indexed from, address indexed to, uint256 amount)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) ParseRedelegated(log types.Log) (*TaraxaDposInterfaceRedelegated, error) {
-	event := new(TaraxaDposInterfaceRedelegated)
-	if err := _TaraxaDposInterface.contract.UnpackLog(event, "Redelegated", log); err != nil {
+func (_DposInterface *DposInterfaceFilterer) ParseRedelegated(log types.Log) (*DposInterfaceRedelegated, error) {
+	event := new(DposInterfaceRedelegated)
+	if err := _DposInterface.contract.UnpackLog(event, "Redelegated", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// TaraxaDposInterfaceRewardsClaimedIterator is returned from FilterRewardsClaimed and is used to iterate over the raw logs and unpacked data for RewardsClaimed events raised by the TaraxaDposInterface contract.
-type TaraxaDposInterfaceRewardsClaimedIterator struct {
-	Event *TaraxaDposInterfaceRewardsClaimed // Event containing the contract specifics and raw log
+// DposInterfaceRewardsClaimedIterator is returned from FilterRewardsClaimed and is used to iterate over the raw logs and unpacked data for RewardsClaimed events raised by the DposInterface contract.
+type DposInterfaceRewardsClaimedIterator struct {
+	Event *DposInterfaceRewardsClaimed // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1392,7 +1383,7 @@ type TaraxaDposInterfaceRewardsClaimedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *TaraxaDposInterfaceRewardsClaimedIterator) Next() bool {
+func (it *DposInterfaceRewardsClaimedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1401,7 +1392,7 @@ func (it *TaraxaDposInterfaceRewardsClaimedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(TaraxaDposInterfaceRewardsClaimed)
+			it.Event = new(DposInterfaceRewardsClaimed)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1416,7 +1407,7 @@ func (it *TaraxaDposInterfaceRewardsClaimedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(TaraxaDposInterfaceRewardsClaimed)
+		it.Event = new(DposInterfaceRewardsClaimed)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1432,19 +1423,19 @@ func (it *TaraxaDposInterfaceRewardsClaimedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *TaraxaDposInterfaceRewardsClaimedIterator) Error() error {
+func (it *DposInterfaceRewardsClaimedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *TaraxaDposInterfaceRewardsClaimedIterator) Close() error {
+func (it *DposInterfaceRewardsClaimedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// TaraxaDposInterfaceRewardsClaimed represents a RewardsClaimed event raised by the TaraxaDposInterface contract.
-type TaraxaDposInterfaceRewardsClaimed struct {
+// DposInterfaceRewardsClaimed represents a RewardsClaimed event raised by the DposInterface contract.
+type DposInterfaceRewardsClaimed struct {
 	Account   common.Address
 	Validator common.Address
 	Raw       types.Log // Blockchain specific contextual infos
@@ -1453,7 +1444,7 @@ type TaraxaDposInterfaceRewardsClaimed struct {
 // FilterRewardsClaimed is a free log retrieval operation binding the contract event 0x76fefaa578826cd28a6d72d47460f755534b9a481c773721143222296cc4cc5a.
 //
 // Solidity: event RewardsClaimed(address indexed account, address indexed validator)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) FilterRewardsClaimed(opts *bind.FilterOpts, account []common.Address, validator []common.Address) (*TaraxaDposInterfaceRewardsClaimedIterator, error) {
+func (_DposInterface *DposInterfaceFilterer) FilterRewardsClaimed(opts *bind.FilterOpts, account []common.Address, validator []common.Address) (*DposInterfaceRewardsClaimedIterator, error) {
 
 	var accountRule []interface{}
 	for _, accountItem := range account {
@@ -1464,17 +1455,17 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) FilterRewardsClaimed(op
 		validatorRule = append(validatorRule, validatorItem)
 	}
 
-	logs, sub, err := _TaraxaDposInterface.contract.FilterLogs(opts, "RewardsClaimed", accountRule, validatorRule)
+	logs, sub, err := _DposInterface.contract.FilterLogs(opts, "RewardsClaimed", accountRule, validatorRule)
 	if err != nil {
 		return nil, err
 	}
-	return &TaraxaDposInterfaceRewardsClaimedIterator{contract: _TaraxaDposInterface.contract, event: "RewardsClaimed", logs: logs, sub: sub}, nil
+	return &DposInterfaceRewardsClaimedIterator{contract: _DposInterface.contract, event: "RewardsClaimed", logs: logs, sub: sub}, nil
 }
 
 // WatchRewardsClaimed is a free log subscription operation binding the contract event 0x76fefaa578826cd28a6d72d47460f755534b9a481c773721143222296cc4cc5a.
 //
 // Solidity: event RewardsClaimed(address indexed account, address indexed validator)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchRewardsClaimed(opts *bind.WatchOpts, sink chan<- *TaraxaDposInterfaceRewardsClaimed, account []common.Address, validator []common.Address) (event.Subscription, error) {
+func (_DposInterface *DposInterfaceFilterer) WatchRewardsClaimed(opts *bind.WatchOpts, sink chan<- *DposInterfaceRewardsClaimed, account []common.Address, validator []common.Address) (event.Subscription, error) {
 
 	var accountRule []interface{}
 	for _, accountItem := range account {
@@ -1485,7 +1476,7 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchRewardsClaimed(opt
 		validatorRule = append(validatorRule, validatorItem)
 	}
 
-	logs, sub, err := _TaraxaDposInterface.contract.WatchLogs(opts, "RewardsClaimed", accountRule, validatorRule)
+	logs, sub, err := _DposInterface.contract.WatchLogs(opts, "RewardsClaimed", accountRule, validatorRule)
 	if err != nil {
 		return nil, err
 	}
@@ -1495,8 +1486,8 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchRewardsClaimed(opt
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(TaraxaDposInterfaceRewardsClaimed)
-				if err := _TaraxaDposInterface.contract.UnpackLog(event, "RewardsClaimed", log); err != nil {
+				event := new(DposInterfaceRewardsClaimed)
+				if err := _DposInterface.contract.UnpackLog(event, "RewardsClaimed", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1520,18 +1511,18 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchRewardsClaimed(opt
 // ParseRewardsClaimed is a log parse operation binding the contract event 0x76fefaa578826cd28a6d72d47460f755534b9a481c773721143222296cc4cc5a.
 //
 // Solidity: event RewardsClaimed(address indexed account, address indexed validator)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) ParseRewardsClaimed(log types.Log) (*TaraxaDposInterfaceRewardsClaimed, error) {
-	event := new(TaraxaDposInterfaceRewardsClaimed)
-	if err := _TaraxaDposInterface.contract.UnpackLog(event, "RewardsClaimed", log); err != nil {
+func (_DposInterface *DposInterfaceFilterer) ParseRewardsClaimed(log types.Log) (*DposInterfaceRewardsClaimed, error) {
+	event := new(DposInterfaceRewardsClaimed)
+	if err := _DposInterface.contract.UnpackLog(event, "RewardsClaimed", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// TaraxaDposInterfaceUndelegateCanceledIterator is returned from FilterUndelegateCanceled and is used to iterate over the raw logs and unpacked data for UndelegateCanceled events raised by the TaraxaDposInterface contract.
-type TaraxaDposInterfaceUndelegateCanceledIterator struct {
-	Event *TaraxaDposInterfaceUndelegateCanceled // Event containing the contract specifics and raw log
+// DposInterfaceUndelegateCanceledIterator is returned from FilterUndelegateCanceled and is used to iterate over the raw logs and unpacked data for UndelegateCanceled events raised by the DposInterface contract.
+type DposInterfaceUndelegateCanceledIterator struct {
+	Event *DposInterfaceUndelegateCanceled // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1545,7 +1536,7 @@ type TaraxaDposInterfaceUndelegateCanceledIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *TaraxaDposInterfaceUndelegateCanceledIterator) Next() bool {
+func (it *DposInterfaceUndelegateCanceledIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1554,7 +1545,7 @@ func (it *TaraxaDposInterfaceUndelegateCanceledIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(TaraxaDposInterfaceUndelegateCanceled)
+			it.Event = new(DposInterfaceUndelegateCanceled)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1569,7 +1560,7 @@ func (it *TaraxaDposInterfaceUndelegateCanceledIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(TaraxaDposInterfaceUndelegateCanceled)
+		it.Event = new(DposInterfaceUndelegateCanceled)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1585,19 +1576,19 @@ func (it *TaraxaDposInterfaceUndelegateCanceledIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *TaraxaDposInterfaceUndelegateCanceledIterator) Error() error {
+func (it *DposInterfaceUndelegateCanceledIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *TaraxaDposInterfaceUndelegateCanceledIterator) Close() error {
+func (it *DposInterfaceUndelegateCanceledIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// TaraxaDposInterfaceUndelegateCanceled represents a UndelegateCanceled event raised by the TaraxaDposInterface contract.
-type TaraxaDposInterfaceUndelegateCanceled struct {
+// DposInterfaceUndelegateCanceled represents a UndelegateCanceled event raised by the DposInterface contract.
+type DposInterfaceUndelegateCanceled struct {
 	Delegator common.Address
 	Validator common.Address
 	Amount    *big.Int
@@ -1607,7 +1598,7 @@ type TaraxaDposInterfaceUndelegateCanceled struct {
 // FilterUndelegateCanceled is a free log retrieval operation binding the contract event 0xfc25f8a919d19f2c2dfce21115718abc9ef2b1e0c9218a488f614c75be4184b7.
 //
 // Solidity: event UndelegateCanceled(address indexed delegator, address indexed validator, uint256 amount)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) FilterUndelegateCanceled(opts *bind.FilterOpts, delegator []common.Address, validator []common.Address) (*TaraxaDposInterfaceUndelegateCanceledIterator, error) {
+func (_DposInterface *DposInterfaceFilterer) FilterUndelegateCanceled(opts *bind.FilterOpts, delegator []common.Address, validator []common.Address) (*DposInterfaceUndelegateCanceledIterator, error) {
 
 	var delegatorRule []interface{}
 	for _, delegatorItem := range delegator {
@@ -1618,17 +1609,17 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) FilterUndelegateCancele
 		validatorRule = append(validatorRule, validatorItem)
 	}
 
-	logs, sub, err := _TaraxaDposInterface.contract.FilterLogs(opts, "UndelegateCanceled", delegatorRule, validatorRule)
+	logs, sub, err := _DposInterface.contract.FilterLogs(opts, "UndelegateCanceled", delegatorRule, validatorRule)
 	if err != nil {
 		return nil, err
 	}
-	return &TaraxaDposInterfaceUndelegateCanceledIterator{contract: _TaraxaDposInterface.contract, event: "UndelegateCanceled", logs: logs, sub: sub}, nil
+	return &DposInterfaceUndelegateCanceledIterator{contract: _DposInterface.contract, event: "UndelegateCanceled", logs: logs, sub: sub}, nil
 }
 
 // WatchUndelegateCanceled is a free log subscription operation binding the contract event 0xfc25f8a919d19f2c2dfce21115718abc9ef2b1e0c9218a488f614c75be4184b7.
 //
 // Solidity: event UndelegateCanceled(address indexed delegator, address indexed validator, uint256 amount)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchUndelegateCanceled(opts *bind.WatchOpts, sink chan<- *TaraxaDposInterfaceUndelegateCanceled, delegator []common.Address, validator []common.Address) (event.Subscription, error) {
+func (_DposInterface *DposInterfaceFilterer) WatchUndelegateCanceled(opts *bind.WatchOpts, sink chan<- *DposInterfaceUndelegateCanceled, delegator []common.Address, validator []common.Address) (event.Subscription, error) {
 
 	var delegatorRule []interface{}
 	for _, delegatorItem := range delegator {
@@ -1639,7 +1630,7 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchUndelegateCanceled
 		validatorRule = append(validatorRule, validatorItem)
 	}
 
-	logs, sub, err := _TaraxaDposInterface.contract.WatchLogs(opts, "UndelegateCanceled", delegatorRule, validatorRule)
+	logs, sub, err := _DposInterface.contract.WatchLogs(opts, "UndelegateCanceled", delegatorRule, validatorRule)
 	if err != nil {
 		return nil, err
 	}
@@ -1649,8 +1640,8 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchUndelegateCanceled
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(TaraxaDposInterfaceUndelegateCanceled)
-				if err := _TaraxaDposInterface.contract.UnpackLog(event, "UndelegateCanceled", log); err != nil {
+				event := new(DposInterfaceUndelegateCanceled)
+				if err := _DposInterface.contract.UnpackLog(event, "UndelegateCanceled", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1674,18 +1665,18 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchUndelegateCanceled
 // ParseUndelegateCanceled is a log parse operation binding the contract event 0xfc25f8a919d19f2c2dfce21115718abc9ef2b1e0c9218a488f614c75be4184b7.
 //
 // Solidity: event UndelegateCanceled(address indexed delegator, address indexed validator, uint256 amount)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) ParseUndelegateCanceled(log types.Log) (*TaraxaDposInterfaceUndelegateCanceled, error) {
-	event := new(TaraxaDposInterfaceUndelegateCanceled)
-	if err := _TaraxaDposInterface.contract.UnpackLog(event, "UndelegateCanceled", log); err != nil {
+func (_DposInterface *DposInterfaceFilterer) ParseUndelegateCanceled(log types.Log) (*DposInterfaceUndelegateCanceled, error) {
+	event := new(DposInterfaceUndelegateCanceled)
+	if err := _DposInterface.contract.UnpackLog(event, "UndelegateCanceled", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// TaraxaDposInterfaceUndelegateConfirmedIterator is returned from FilterUndelegateConfirmed and is used to iterate over the raw logs and unpacked data for UndelegateConfirmed events raised by the TaraxaDposInterface contract.
-type TaraxaDposInterfaceUndelegateConfirmedIterator struct {
-	Event *TaraxaDposInterfaceUndelegateConfirmed // Event containing the contract specifics and raw log
+// DposInterfaceUndelegateConfirmedIterator is returned from FilterUndelegateConfirmed and is used to iterate over the raw logs and unpacked data for UndelegateConfirmed events raised by the DposInterface contract.
+type DposInterfaceUndelegateConfirmedIterator struct {
+	Event *DposInterfaceUndelegateConfirmed // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1699,7 +1690,7 @@ type TaraxaDposInterfaceUndelegateConfirmedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *TaraxaDposInterfaceUndelegateConfirmedIterator) Next() bool {
+func (it *DposInterfaceUndelegateConfirmedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1708,7 +1699,7 @@ func (it *TaraxaDposInterfaceUndelegateConfirmedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(TaraxaDposInterfaceUndelegateConfirmed)
+			it.Event = new(DposInterfaceUndelegateConfirmed)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1723,7 +1714,7 @@ func (it *TaraxaDposInterfaceUndelegateConfirmedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(TaraxaDposInterfaceUndelegateConfirmed)
+		it.Event = new(DposInterfaceUndelegateConfirmed)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1739,19 +1730,19 @@ func (it *TaraxaDposInterfaceUndelegateConfirmedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *TaraxaDposInterfaceUndelegateConfirmedIterator) Error() error {
+func (it *DposInterfaceUndelegateConfirmedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *TaraxaDposInterfaceUndelegateConfirmedIterator) Close() error {
+func (it *DposInterfaceUndelegateConfirmedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// TaraxaDposInterfaceUndelegateConfirmed represents a UndelegateConfirmed event raised by the TaraxaDposInterface contract.
-type TaraxaDposInterfaceUndelegateConfirmed struct {
+// DposInterfaceUndelegateConfirmed represents a UndelegateConfirmed event raised by the DposInterface contract.
+type DposInterfaceUndelegateConfirmed struct {
 	Delegator common.Address
 	Validator common.Address
 	Amount    *big.Int
@@ -1761,7 +1752,7 @@ type TaraxaDposInterfaceUndelegateConfirmed struct {
 // FilterUndelegateConfirmed is a free log retrieval operation binding the contract event 0xf8bef3a6fe3b4c932b5b51c6472a89f171d039f4bacf18cff632208938bf0426.
 //
 // Solidity: event UndelegateConfirmed(address indexed delegator, address indexed validator, uint256 amount)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) FilterUndelegateConfirmed(opts *bind.FilterOpts, delegator []common.Address, validator []common.Address) (*TaraxaDposInterfaceUndelegateConfirmedIterator, error) {
+func (_DposInterface *DposInterfaceFilterer) FilterUndelegateConfirmed(opts *bind.FilterOpts, delegator []common.Address, validator []common.Address) (*DposInterfaceUndelegateConfirmedIterator, error) {
 
 	var delegatorRule []interface{}
 	for _, delegatorItem := range delegator {
@@ -1772,17 +1763,17 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) FilterUndelegateConfirm
 		validatorRule = append(validatorRule, validatorItem)
 	}
 
-	logs, sub, err := _TaraxaDposInterface.contract.FilterLogs(opts, "UndelegateConfirmed", delegatorRule, validatorRule)
+	logs, sub, err := _DposInterface.contract.FilterLogs(opts, "UndelegateConfirmed", delegatorRule, validatorRule)
 	if err != nil {
 		return nil, err
 	}
-	return &TaraxaDposInterfaceUndelegateConfirmedIterator{contract: _TaraxaDposInterface.contract, event: "UndelegateConfirmed", logs: logs, sub: sub}, nil
+	return &DposInterfaceUndelegateConfirmedIterator{contract: _DposInterface.contract, event: "UndelegateConfirmed", logs: logs, sub: sub}, nil
 }
 
 // WatchUndelegateConfirmed is a free log subscription operation binding the contract event 0xf8bef3a6fe3b4c932b5b51c6472a89f171d039f4bacf18cff632208938bf0426.
 //
 // Solidity: event UndelegateConfirmed(address indexed delegator, address indexed validator, uint256 amount)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchUndelegateConfirmed(opts *bind.WatchOpts, sink chan<- *TaraxaDposInterfaceUndelegateConfirmed, delegator []common.Address, validator []common.Address) (event.Subscription, error) {
+func (_DposInterface *DposInterfaceFilterer) WatchUndelegateConfirmed(opts *bind.WatchOpts, sink chan<- *DposInterfaceUndelegateConfirmed, delegator []common.Address, validator []common.Address) (event.Subscription, error) {
 
 	var delegatorRule []interface{}
 	for _, delegatorItem := range delegator {
@@ -1793,7 +1784,7 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchUndelegateConfirme
 		validatorRule = append(validatorRule, validatorItem)
 	}
 
-	logs, sub, err := _TaraxaDposInterface.contract.WatchLogs(opts, "UndelegateConfirmed", delegatorRule, validatorRule)
+	logs, sub, err := _DposInterface.contract.WatchLogs(opts, "UndelegateConfirmed", delegatorRule, validatorRule)
 	if err != nil {
 		return nil, err
 	}
@@ -1803,8 +1794,8 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchUndelegateConfirme
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(TaraxaDposInterfaceUndelegateConfirmed)
-				if err := _TaraxaDposInterface.contract.UnpackLog(event, "UndelegateConfirmed", log); err != nil {
+				event := new(DposInterfaceUndelegateConfirmed)
+				if err := _DposInterface.contract.UnpackLog(event, "UndelegateConfirmed", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1828,18 +1819,18 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchUndelegateConfirme
 // ParseUndelegateConfirmed is a log parse operation binding the contract event 0xf8bef3a6fe3b4c932b5b51c6472a89f171d039f4bacf18cff632208938bf0426.
 //
 // Solidity: event UndelegateConfirmed(address indexed delegator, address indexed validator, uint256 amount)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) ParseUndelegateConfirmed(log types.Log) (*TaraxaDposInterfaceUndelegateConfirmed, error) {
-	event := new(TaraxaDposInterfaceUndelegateConfirmed)
-	if err := _TaraxaDposInterface.contract.UnpackLog(event, "UndelegateConfirmed", log); err != nil {
+func (_DposInterface *DposInterfaceFilterer) ParseUndelegateConfirmed(log types.Log) (*DposInterfaceUndelegateConfirmed, error) {
+	event := new(DposInterfaceUndelegateConfirmed)
+	if err := _DposInterface.contract.UnpackLog(event, "UndelegateConfirmed", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// TaraxaDposInterfaceUndelegatedIterator is returned from FilterUndelegated and is used to iterate over the raw logs and unpacked data for Undelegated events raised by the TaraxaDposInterface contract.
-type TaraxaDposInterfaceUndelegatedIterator struct {
-	Event *TaraxaDposInterfaceUndelegated // Event containing the contract specifics and raw log
+// DposInterfaceUndelegatedIterator is returned from FilterUndelegated and is used to iterate over the raw logs and unpacked data for Undelegated events raised by the DposInterface contract.
+type DposInterfaceUndelegatedIterator struct {
+	Event *DposInterfaceUndelegated // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -1853,7 +1844,7 @@ type TaraxaDposInterfaceUndelegatedIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *TaraxaDposInterfaceUndelegatedIterator) Next() bool {
+func (it *DposInterfaceUndelegatedIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -1862,7 +1853,7 @@ func (it *TaraxaDposInterfaceUndelegatedIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(TaraxaDposInterfaceUndelegated)
+			it.Event = new(DposInterfaceUndelegated)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -1877,7 +1868,7 @@ func (it *TaraxaDposInterfaceUndelegatedIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(TaraxaDposInterfaceUndelegated)
+		it.Event = new(DposInterfaceUndelegated)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -1893,19 +1884,19 @@ func (it *TaraxaDposInterfaceUndelegatedIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *TaraxaDposInterfaceUndelegatedIterator) Error() error {
+func (it *DposInterfaceUndelegatedIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *TaraxaDposInterfaceUndelegatedIterator) Close() error {
+func (it *DposInterfaceUndelegatedIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// TaraxaDposInterfaceUndelegated represents a Undelegated event raised by the TaraxaDposInterface contract.
-type TaraxaDposInterfaceUndelegated struct {
+// DposInterfaceUndelegated represents a Undelegated event raised by the DposInterface contract.
+type DposInterfaceUndelegated struct {
 	Delegator common.Address
 	Validator common.Address
 	Amount    *big.Int
@@ -1915,7 +1906,7 @@ type TaraxaDposInterfaceUndelegated struct {
 // FilterUndelegated is a free log retrieval operation binding the contract event 0x4d10bd049775c77bd7f255195afba5088028ecb3c7c277d393ccff7934f2f92c.
 //
 // Solidity: event Undelegated(address indexed delegator, address indexed validator, uint256 amount)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) FilterUndelegated(opts *bind.FilterOpts, delegator []common.Address, validator []common.Address) (*TaraxaDposInterfaceUndelegatedIterator, error) {
+func (_DposInterface *DposInterfaceFilterer) FilterUndelegated(opts *bind.FilterOpts, delegator []common.Address, validator []common.Address) (*DposInterfaceUndelegatedIterator, error) {
 
 	var delegatorRule []interface{}
 	for _, delegatorItem := range delegator {
@@ -1926,17 +1917,17 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) FilterUndelegated(opts 
 		validatorRule = append(validatorRule, validatorItem)
 	}
 
-	logs, sub, err := _TaraxaDposInterface.contract.FilterLogs(opts, "Undelegated", delegatorRule, validatorRule)
+	logs, sub, err := _DposInterface.contract.FilterLogs(opts, "Undelegated", delegatorRule, validatorRule)
 	if err != nil {
 		return nil, err
 	}
-	return &TaraxaDposInterfaceUndelegatedIterator{contract: _TaraxaDposInterface.contract, event: "Undelegated", logs: logs, sub: sub}, nil
+	return &DposInterfaceUndelegatedIterator{contract: _DposInterface.contract, event: "Undelegated", logs: logs, sub: sub}, nil
 }
 
 // WatchUndelegated is a free log subscription operation binding the contract event 0x4d10bd049775c77bd7f255195afba5088028ecb3c7c277d393ccff7934f2f92c.
 //
 // Solidity: event Undelegated(address indexed delegator, address indexed validator, uint256 amount)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchUndelegated(opts *bind.WatchOpts, sink chan<- *TaraxaDposInterfaceUndelegated, delegator []common.Address, validator []common.Address) (event.Subscription, error) {
+func (_DposInterface *DposInterfaceFilterer) WatchUndelegated(opts *bind.WatchOpts, sink chan<- *DposInterfaceUndelegated, delegator []common.Address, validator []common.Address) (event.Subscription, error) {
 
 	var delegatorRule []interface{}
 	for _, delegatorItem := range delegator {
@@ -1947,7 +1938,7 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchUndelegated(opts *
 		validatorRule = append(validatorRule, validatorItem)
 	}
 
-	logs, sub, err := _TaraxaDposInterface.contract.WatchLogs(opts, "Undelegated", delegatorRule, validatorRule)
+	logs, sub, err := _DposInterface.contract.WatchLogs(opts, "Undelegated", delegatorRule, validatorRule)
 	if err != nil {
 		return nil, err
 	}
@@ -1957,8 +1948,8 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchUndelegated(opts *
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(TaraxaDposInterfaceUndelegated)
-				if err := _TaraxaDposInterface.contract.UnpackLog(event, "Undelegated", log); err != nil {
+				event := new(DposInterfaceUndelegated)
+				if err := _DposInterface.contract.UnpackLog(event, "Undelegated", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -1982,18 +1973,18 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchUndelegated(opts *
 // ParseUndelegated is a log parse operation binding the contract event 0x4d10bd049775c77bd7f255195afba5088028ecb3c7c277d393ccff7934f2f92c.
 //
 // Solidity: event Undelegated(address indexed delegator, address indexed validator, uint256 amount)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) ParseUndelegated(log types.Log) (*TaraxaDposInterfaceUndelegated, error) {
-	event := new(TaraxaDposInterfaceUndelegated)
-	if err := _TaraxaDposInterface.contract.UnpackLog(event, "Undelegated", log); err != nil {
+func (_DposInterface *DposInterfaceFilterer) ParseUndelegated(log types.Log) (*DposInterfaceUndelegated, error) {
+	event := new(DposInterfaceUndelegated)
+	if err := _DposInterface.contract.UnpackLog(event, "Undelegated", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// TaraxaDposInterfaceValidatorInfoSetIterator is returned from FilterValidatorInfoSet and is used to iterate over the raw logs and unpacked data for ValidatorInfoSet events raised by the TaraxaDposInterface contract.
-type TaraxaDposInterfaceValidatorInfoSetIterator struct {
-	Event *TaraxaDposInterfaceValidatorInfoSet // Event containing the contract specifics and raw log
+// DposInterfaceValidatorInfoSetIterator is returned from FilterValidatorInfoSet and is used to iterate over the raw logs and unpacked data for ValidatorInfoSet events raised by the DposInterface contract.
+type DposInterfaceValidatorInfoSetIterator struct {
+	Event *DposInterfaceValidatorInfoSet // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -2007,7 +1998,7 @@ type TaraxaDposInterfaceValidatorInfoSetIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *TaraxaDposInterfaceValidatorInfoSetIterator) Next() bool {
+func (it *DposInterfaceValidatorInfoSetIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -2016,7 +2007,7 @@ func (it *TaraxaDposInterfaceValidatorInfoSetIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(TaraxaDposInterfaceValidatorInfoSet)
+			it.Event = new(DposInterfaceValidatorInfoSet)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -2031,7 +2022,7 @@ func (it *TaraxaDposInterfaceValidatorInfoSetIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(TaraxaDposInterfaceValidatorInfoSet)
+		it.Event = new(DposInterfaceValidatorInfoSet)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -2047,19 +2038,19 @@ func (it *TaraxaDposInterfaceValidatorInfoSetIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *TaraxaDposInterfaceValidatorInfoSetIterator) Error() error {
+func (it *DposInterfaceValidatorInfoSetIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *TaraxaDposInterfaceValidatorInfoSetIterator) Close() error {
+func (it *DposInterfaceValidatorInfoSetIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// TaraxaDposInterfaceValidatorInfoSet represents a ValidatorInfoSet event raised by the TaraxaDposInterface contract.
-type TaraxaDposInterfaceValidatorInfoSet struct {
+// DposInterfaceValidatorInfoSet represents a ValidatorInfoSet event raised by the DposInterface contract.
+type DposInterfaceValidatorInfoSet struct {
 	Validator common.Address
 	Raw       types.Log // Blockchain specific contextual infos
 }
@@ -2067,31 +2058,31 @@ type TaraxaDposInterfaceValidatorInfoSet struct {
 // FilterValidatorInfoSet is a free log retrieval operation binding the contract event 0x7aa20e1f59764c9066578febd688a51375adbd654aff86cef56593a17a99071d.
 //
 // Solidity: event ValidatorInfoSet(address indexed validator)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) FilterValidatorInfoSet(opts *bind.FilterOpts, validator []common.Address) (*TaraxaDposInterfaceValidatorInfoSetIterator, error) {
+func (_DposInterface *DposInterfaceFilterer) FilterValidatorInfoSet(opts *bind.FilterOpts, validator []common.Address) (*DposInterfaceValidatorInfoSetIterator, error) {
 
 	var validatorRule []interface{}
 	for _, validatorItem := range validator {
 		validatorRule = append(validatorRule, validatorItem)
 	}
 
-	logs, sub, err := _TaraxaDposInterface.contract.FilterLogs(opts, "ValidatorInfoSet", validatorRule)
+	logs, sub, err := _DposInterface.contract.FilterLogs(opts, "ValidatorInfoSet", validatorRule)
 	if err != nil {
 		return nil, err
 	}
-	return &TaraxaDposInterfaceValidatorInfoSetIterator{contract: _TaraxaDposInterface.contract, event: "ValidatorInfoSet", logs: logs, sub: sub}, nil
+	return &DposInterfaceValidatorInfoSetIterator{contract: _DposInterface.contract, event: "ValidatorInfoSet", logs: logs, sub: sub}, nil
 }
 
 // WatchValidatorInfoSet is a free log subscription operation binding the contract event 0x7aa20e1f59764c9066578febd688a51375adbd654aff86cef56593a17a99071d.
 //
 // Solidity: event ValidatorInfoSet(address indexed validator)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchValidatorInfoSet(opts *bind.WatchOpts, sink chan<- *TaraxaDposInterfaceValidatorInfoSet, validator []common.Address) (event.Subscription, error) {
+func (_DposInterface *DposInterfaceFilterer) WatchValidatorInfoSet(opts *bind.WatchOpts, sink chan<- *DposInterfaceValidatorInfoSet, validator []common.Address) (event.Subscription, error) {
 
 	var validatorRule []interface{}
 	for _, validatorItem := range validator {
 		validatorRule = append(validatorRule, validatorItem)
 	}
 
-	logs, sub, err := _TaraxaDposInterface.contract.WatchLogs(opts, "ValidatorInfoSet", validatorRule)
+	logs, sub, err := _DposInterface.contract.WatchLogs(opts, "ValidatorInfoSet", validatorRule)
 	if err != nil {
 		return nil, err
 	}
@@ -2101,8 +2092,8 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchValidatorInfoSet(o
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(TaraxaDposInterfaceValidatorInfoSet)
-				if err := _TaraxaDposInterface.contract.UnpackLog(event, "ValidatorInfoSet", log); err != nil {
+				event := new(DposInterfaceValidatorInfoSet)
+				if err := _DposInterface.contract.UnpackLog(event, "ValidatorInfoSet", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -2126,18 +2117,18 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchValidatorInfoSet(o
 // ParseValidatorInfoSet is a log parse operation binding the contract event 0x7aa20e1f59764c9066578febd688a51375adbd654aff86cef56593a17a99071d.
 //
 // Solidity: event ValidatorInfoSet(address indexed validator)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) ParseValidatorInfoSet(log types.Log) (*TaraxaDposInterfaceValidatorInfoSet, error) {
-	event := new(TaraxaDposInterfaceValidatorInfoSet)
-	if err := _TaraxaDposInterface.contract.UnpackLog(event, "ValidatorInfoSet", log); err != nil {
+func (_DposInterface *DposInterfaceFilterer) ParseValidatorInfoSet(log types.Log) (*DposInterfaceValidatorInfoSet, error) {
+	event := new(DposInterfaceValidatorInfoSet)
+	if err := _DposInterface.contract.UnpackLog(event, "ValidatorInfoSet", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
 	return event, nil
 }
 
-// TaraxaDposInterfaceValidatorRegisteredIterator is returned from FilterValidatorRegistered and is used to iterate over the raw logs and unpacked data for ValidatorRegistered events raised by the TaraxaDposInterface contract.
-type TaraxaDposInterfaceValidatorRegisteredIterator struct {
-	Event *TaraxaDposInterfaceValidatorRegistered // Event containing the contract specifics and raw log
+// DposInterfaceValidatorRegisteredIterator is returned from FilterValidatorRegistered and is used to iterate over the raw logs and unpacked data for ValidatorRegistered events raised by the DposInterface contract.
+type DposInterfaceValidatorRegisteredIterator struct {
+	Event *DposInterfaceValidatorRegistered // Event containing the contract specifics and raw log
 
 	contract *bind.BoundContract // Generic contract to use for unpacking event data
 	event    string              // Event name to use for unpacking event data
@@ -2151,7 +2142,7 @@ type TaraxaDposInterfaceValidatorRegisteredIterator struct {
 // Next advances the iterator to the subsequent event, returning whether there
 // are any more events found. In case of a retrieval or parsing error, false is
 // returned and Error() can be queried for the exact failure.
-func (it *TaraxaDposInterfaceValidatorRegisteredIterator) Next() bool {
+func (it *DposInterfaceValidatorRegisteredIterator) Next() bool {
 	// If the iterator failed, stop iterating
 	if it.fail != nil {
 		return false
@@ -2160,7 +2151,7 @@ func (it *TaraxaDposInterfaceValidatorRegisteredIterator) Next() bool {
 	if it.done {
 		select {
 		case log := <-it.logs:
-			it.Event = new(TaraxaDposInterfaceValidatorRegistered)
+			it.Event = new(DposInterfaceValidatorRegistered)
 			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 				it.fail = err
 				return false
@@ -2175,7 +2166,7 @@ func (it *TaraxaDposInterfaceValidatorRegisteredIterator) Next() bool {
 	// Iterator still in progress, wait for either a data or an error event
 	select {
 	case log := <-it.logs:
-		it.Event = new(TaraxaDposInterfaceValidatorRegistered)
+		it.Event = new(DposInterfaceValidatorRegistered)
 		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
 			it.fail = err
 			return false
@@ -2191,19 +2182,19 @@ func (it *TaraxaDposInterfaceValidatorRegisteredIterator) Next() bool {
 }
 
 // Error returns any retrieval or parsing error occurred during filtering.
-func (it *TaraxaDposInterfaceValidatorRegisteredIterator) Error() error {
+func (it *DposInterfaceValidatorRegisteredIterator) Error() error {
 	return it.fail
 }
 
 // Close terminates the iteration process, releasing any pending underlying
 // resources.
-func (it *TaraxaDposInterfaceValidatorRegisteredIterator) Close() error {
+func (it *DposInterfaceValidatorRegisteredIterator) Close() error {
 	it.sub.Unsubscribe()
 	return nil
 }
 
-// TaraxaDposInterfaceValidatorRegistered represents a ValidatorRegistered event raised by the TaraxaDposInterface contract.
-type TaraxaDposInterfaceValidatorRegistered struct {
+// DposInterfaceValidatorRegistered represents a ValidatorRegistered event raised by the DposInterface contract.
+type DposInterfaceValidatorRegistered struct {
 	Validator common.Address
 	Raw       types.Log // Blockchain specific contextual infos
 }
@@ -2211,31 +2202,31 @@ type TaraxaDposInterfaceValidatorRegistered struct {
 // FilterValidatorRegistered is a free log retrieval operation binding the contract event 0xd09501348473474a20c772c79c653e1fd7e8b437e418fe235d277d2c88853251.
 //
 // Solidity: event ValidatorRegistered(address indexed validator)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) FilterValidatorRegistered(opts *bind.FilterOpts, validator []common.Address) (*TaraxaDposInterfaceValidatorRegisteredIterator, error) {
+func (_DposInterface *DposInterfaceFilterer) FilterValidatorRegistered(opts *bind.FilterOpts, validator []common.Address) (*DposInterfaceValidatorRegisteredIterator, error) {
 
 	var validatorRule []interface{}
 	for _, validatorItem := range validator {
 		validatorRule = append(validatorRule, validatorItem)
 	}
 
-	logs, sub, err := _TaraxaDposInterface.contract.FilterLogs(opts, "ValidatorRegistered", validatorRule)
+	logs, sub, err := _DposInterface.contract.FilterLogs(opts, "ValidatorRegistered", validatorRule)
 	if err != nil {
 		return nil, err
 	}
-	return &TaraxaDposInterfaceValidatorRegisteredIterator{contract: _TaraxaDposInterface.contract, event: "ValidatorRegistered", logs: logs, sub: sub}, nil
+	return &DposInterfaceValidatorRegisteredIterator{contract: _DposInterface.contract, event: "ValidatorRegistered", logs: logs, sub: sub}, nil
 }
 
 // WatchValidatorRegistered is a free log subscription operation binding the contract event 0xd09501348473474a20c772c79c653e1fd7e8b437e418fe235d277d2c88853251.
 //
 // Solidity: event ValidatorRegistered(address indexed validator)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchValidatorRegistered(opts *bind.WatchOpts, sink chan<- *TaraxaDposInterfaceValidatorRegistered, validator []common.Address) (event.Subscription, error) {
+func (_DposInterface *DposInterfaceFilterer) WatchValidatorRegistered(opts *bind.WatchOpts, sink chan<- *DposInterfaceValidatorRegistered, validator []common.Address) (event.Subscription, error) {
 
 	var validatorRule []interface{}
 	for _, validatorItem := range validator {
 		validatorRule = append(validatorRule, validatorItem)
 	}
 
-	logs, sub, err := _TaraxaDposInterface.contract.WatchLogs(opts, "ValidatorRegistered", validatorRule)
+	logs, sub, err := _DposInterface.contract.WatchLogs(opts, "ValidatorRegistered", validatorRule)
 	if err != nil {
 		return nil, err
 	}
@@ -2245,8 +2236,8 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchValidatorRegistere
 			select {
 			case log := <-logs:
 				// New log arrived, parse the event and forward to the user
-				event := new(TaraxaDposInterfaceValidatorRegistered)
-				if err := _TaraxaDposInterface.contract.UnpackLog(event, "ValidatorRegistered", log); err != nil {
+				event := new(DposInterfaceValidatorRegistered)
+				if err := _DposInterface.contract.UnpackLog(event, "ValidatorRegistered", log); err != nil {
 					return err
 				}
 				event.Raw = log
@@ -2270,9 +2261,9 @@ func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) WatchValidatorRegistere
 // ParseValidatorRegistered is a log parse operation binding the contract event 0xd09501348473474a20c772c79c653e1fd7e8b437e418fe235d277d2c88853251.
 //
 // Solidity: event ValidatorRegistered(address indexed validator)
-func (_TaraxaDposInterface *TaraxaDposInterfaceFilterer) ParseValidatorRegistered(log types.Log) (*TaraxaDposInterfaceValidatorRegistered, error) {
-	event := new(TaraxaDposInterfaceValidatorRegistered)
-	if err := _TaraxaDposInterface.contract.UnpackLog(event, "ValidatorRegistered", log); err != nil {
+func (_DposInterface *DposInterfaceFilterer) ParseValidatorRegistered(log types.Log) (*DposInterfaceValidatorRegistered, error) {
+	event := new(DposInterfaceValidatorRegistered)
+	if err := _DposInterface.contract.UnpackLog(event, "ValidatorRegistered", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
