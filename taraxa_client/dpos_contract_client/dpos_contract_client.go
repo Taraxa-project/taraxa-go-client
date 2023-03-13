@@ -17,7 +17,7 @@ import (
 
 // DposContractClient contains variables needed for communication with taraxa dpos smart contract
 type DposContractClient struct {
-	dposInterface *dpos_interface.TaraxaDposInterface
+	dposInterface *dpos_interface.DposInterface
 	ethClient     *ethclient.Client
 	chainID       *big.Int
 }
@@ -32,7 +32,7 @@ func NewDposContractClient(ethClient *ethclient.Client, dposContractAddress comm
 	dposContractClient := new(DposContractClient)
 	var err error
 
-	dposContractClient.dposInterface, err = dpos_interface.NewTaraxaDposInterface(dposContractAddress, ethClient)
+	dposContractClient.dposInterface, err = dpos_interface.NewDposInterface(dposContractAddress, ethClient)
 	dposContractClient.ethClient = ethClient
 	dposContractClient.chainID = chainID
 	if err != nil {
