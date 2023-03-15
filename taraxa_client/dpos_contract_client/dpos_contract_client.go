@@ -25,7 +25,7 @@ type DposContractClient struct {
 type Transactor struct {
 	TransactOpts *bind.TransactOpts
 	Address      common.Address
-	nonce        uint64
+	Nonce        uint64
 }
 
 func NewDposContractClient(ethClient *ethclient.Client, dposContractAddress common.Address, chainID *big.Int) (*DposContractClient, error) {
@@ -167,7 +167,7 @@ func (DposContractClient *DposContractClient) NewTransactor(privateKeyStr string
 
 	transactor := new(Transactor)
 	transactor.Address = address
-	transactor.nonce = nonce
+	transactor.Nonce = nonce
 	transactor.TransactOpts = new(bind.TransactOpts)
 	*transactor.TransactOpts = *transactOpts
 
@@ -185,7 +185,7 @@ func (DposContractClient *DposContractClient) createNewTransactOpts(transactor *
 		return nil, err
 	}
 
-	maxNonce := transactor.nonce
+	maxNonce := transactor.Nonce
 	if nonce > maxNonce {
 		maxNonce = nonce
 	}
@@ -198,7 +198,7 @@ func (DposContractClient *DposContractClient) createNewTransactOpts(transactor *
 	transactOpts.GasPrice = gasPrice
 
 	// Increment transactos nonce for the next tx
-	transactor.nonce++
+	transactor.Nonce++
 
 	return transactOpts, nil
 }
