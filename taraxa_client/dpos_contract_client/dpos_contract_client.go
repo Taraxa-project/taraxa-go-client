@@ -59,10 +59,18 @@ func (DposContractClient *DposContractClient) IsValidatorEligible(validator comm
 }
 
 func (DposContractClient *DposContractClient) GetValidators() ([]dpos_interface.DposInterfaceValidatorData, error) {
+	return DposContractClient.getValidators(&bind.CallOpts{})
+}
+
+func (DposContractClient *DposContractClient) GetValidatorsAtBlock(block_num *big.Int) ([]dpos_interface.DposInterfaceValidatorData, error) {
+	return DposContractClient.getValidators(&bind.CallOpts{BlockNumber: block_num})
+}
+
+func (DposContractClient *DposContractClient) getValidators(opts *bind.CallOpts) ([]dpos_interface.DposInterfaceValidatorData, error) {
 	var validators []dpos_interface.DposInterfaceValidatorData
 
 	for batch := uint32(0); ; batch++ {
-		validatorsBatch, err := DposContractClient.dposInterface.GetValidators(&bind.CallOpts{}, batch)
+		validatorsBatch, err := DposContractClient.dposInterface.GetValidators(opts, batch)
 		if err != nil {
 			return nil, err
 		}
