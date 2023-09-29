@@ -68,7 +68,7 @@ type DposInterfaceValidatorData struct {
 
 // DposInterfaceMetaData contains all meta data concerning the DposInterface contract.
 var DposInterfaceMetaData = &bind.MetaData{
-	ABI: `[{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"account","type":"address"},{"indexed":true,"internalType":"address","name":"validator","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"CommissionRewardsClaimed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"validator","type":"address"},{"indexed":false,"internalType":"uint16","name":"commission","type":"uint16"}],"name":"CommissionSet","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"delegator","type":"address"},{"indexed":true,"internalType":"address","name":"validator","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Delegated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"delegator","type":"address"},{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Redelegated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"account","type":"address"},{"indexed":true,"internalType":"address","name":"validator","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"RewardsClaimed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"delegator","type":"address"},{"indexed":true,"internalType":"address","name":"validator","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"UndelegateCanceled","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"delegator","type":"address"},{"indexed":true,"internalType":"address","name":"validator","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"UndelegateConfirmed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"delegator","type":"address"},{"indexed":true,"internalType":"address","name":"validator","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"Undelegated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"validator","type":"address"}],"name":"ValidatorInfoSet","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"validator","type":"address"}],"name":"ValidatorRegistered","type":"event"},{"inputs":[{"internalType":"address","name":"validator","type":"address"}],"name":"cancelUndelegate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"validator","type":"address"}],"name":"claimCommissionRewards","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"validator","type":"address"}],"name":"claimRewards","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"validator","type":"address"}],"name":"confirmUndelegate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"validator","type":"address"}],"name":"delegate","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"delegator","type":"address"},{"internalType":"uint32","name":"batch","type":"uint32"}],"name":"getDelegations","outputs":[{"components":[{"internalType":"address","name":"account","type":"address"},{"components":[{"internalType":"uint256","name":"stake","type":"uint256"},{"internalType":"uint256","name":"rewards","type":"uint256"}],"internalType":"struct DposInterface.DelegatorInfo","name":"delegation","type":"tuple"}],"internalType":"struct DposInterface.DelegationData[]","name":"delegations","type":"tuple[]"},{"internalType":"bool","name":"end","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getTotalEligibleVotesCount","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"delegator","type":"address"},{"internalType":"uint32","name":"batch","type":"uint32"}],"name":"getUndelegations","outputs":[{"components":[{"internalType":"uint256","name":"stake","type":"uint256"},{"internalType":"uint64","name":"block","type":"uint64"},{"internalType":"address","name":"validator","type":"address"}],"internalType":"struct DposInterface.UndelegationData[]","name":"undelegations","type":"tuple[]"},{"internalType":"bool","name":"end","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"validator","type":"address"}],"name":"getValidator","outputs":[{"components":[{"internalType":"uint256","name":"total_stake","type":"uint256"},{"internalType":"uint256","name":"commission_reward","type":"uint256"},{"internalType":"uint16","name":"commission","type":"uint16"},{"internalType":"uint64","name":"last_commission_change","type":"uint64"},{"internalType":"address","name":"owner","type":"address"},{"internalType":"string","name":"description","type":"string"},{"internalType":"string","name":"endpoint","type":"string"}],"internalType":"struct DposInterface.ValidatorBasicInfo","name":"validator_info","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"validator","type":"address"}],"name":"getValidatorEligibleVotesCount","outputs":[{"internalType":"uint64","name":"","type":"uint64"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint32","name":"batch","type":"uint32"}],"name":"getValidators","outputs":[{"components":[{"internalType":"address","name":"account","type":"address"},{"components":[{"internalType":"uint256","name":"total_stake","type":"uint256"},{"internalType":"uint256","name":"commission_reward","type":"uint256"},{"internalType":"uint16","name":"commission","type":"uint16"},{"internalType":"uint64","name":"last_commission_change","type":"uint64"},{"internalType":"address","name":"owner","type":"address"},{"internalType":"string","name":"description","type":"string"},{"internalType":"string","name":"endpoint","type":"string"}],"internalType":"struct DposInterface.ValidatorBasicInfo","name":"info","type":"tuple"}],"internalType":"struct DposInterface.ValidatorData[]","name":"validators","type":"tuple[]"},{"internalType":"bool","name":"end","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint32","name":"batch","type":"uint32"}],"name":"getValidatorsFor","outputs":[{"components":[{"internalType":"address","name":"account","type":"address"},{"components":[{"internalType":"uint256","name":"total_stake","type":"uint256"},{"internalType":"uint256","name":"commission_reward","type":"uint256"},{"internalType":"uint16","name":"commission","type":"uint16"},{"internalType":"uint64","name":"last_commission_change","type":"uint64"},{"internalType":"address","name":"owner","type":"address"},{"internalType":"string","name":"description","type":"string"},{"internalType":"string","name":"endpoint","type":"string"}],"internalType":"struct DposInterface.ValidatorBasicInfo","name":"info","type":"tuple"}],"internalType":"struct DposInterface.ValidatorData[]","name":"validators","type":"tuple[]"},{"internalType":"bool","name":"end","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"validator","type":"address"}],"name":"isValidatorEligible","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"validator_from","type":"address"},{"internalType":"address","name":"validator_to","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"reDelegate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"validator","type":"address"},{"internalType":"bytes","name":"proof","type":"bytes"},{"internalType":"bytes","name":"vrf_key","type":"bytes"},{"internalType":"uint16","name":"commission","type":"uint16"},{"internalType":"string","name":"description","type":"string"},{"internalType":"string","name":"endpoint","type":"string"}],"name":"registerValidator","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"validator","type":"address"},{"internalType":"uint16","name":"commission","type":"uint16"}],"name":"setCommission","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"validator","type":"address"},{"internalType":"string","name":"description","type":"string"},{"internalType":"string","name":"endpoint","type":"string"}],"name":"setValidatorInfo","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"validator","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"undelegate","outputs":[],"stateMutability":"nonpayable","type":"function"}]`,
+	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"CommissionRewardsClaimed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"}],\"name\":\"CommissionSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Delegated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Redelegated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"RewardsClaimed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"UndelegateCanceled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"UndelegateConfirmed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Undelegated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"ValidatorInfoSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"ValidatorRegistered\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"cancelUndelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"claimAllRewards\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"claimCommissionRewards\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"claimRewards\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"confirmUndelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"delegate\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getDelegations\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"stake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"rewards\",\"type\":\"uint256\"}],\"internalType\":\"structDposInterface.DelegatorInfo\",\"name\":\"delegation\",\"type\":\"tuple\"}],\"internalType\":\"structDposInterface.DelegationData[]\",\"name\":\"delegations\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"}],\"name\":\"getTotalDelegation\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"total_delegation\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTotalEligibleVotesCount\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getUndelegations\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"stake\",\"type\":\"uint256\"},{\"internalType\":\"uint64\",\"name\":\"block\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"validator_exists\",\"type\":\"bool\"}],\"internalType\":\"structDposInterface.UndelegationData[]\",\"name\":\"undelegations\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"getValidator\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"total_stake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"commission_reward\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"},{\"internalType\":\"uint64\",\"name\":\"last_commission_change\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"internalType\":\"structDposInterface.ValidatorBasicInfo\",\"name\":\"validator_info\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"getValidatorEligibleVotesCount\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getValidators\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"total_stake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"commission_reward\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"},{\"internalType\":\"uint64\",\"name\":\"last_commission_change\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"internalType\":\"structDposInterface.ValidatorBasicInfo\",\"name\":\"info\",\"type\":\"tuple\"}],\"internalType\":\"structDposInterface.ValidatorData[]\",\"name\":\"validators\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getValidatorsFor\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"total_stake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"commission_reward\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"},{\"internalType\":\"uint64\",\"name\":\"last_commission_change\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"internalType\":\"structDposInterface.ValidatorBasicInfo\",\"name\":\"info\",\"type\":\"tuple\"}],\"internalType\":\"structDposInterface.ValidatorData[]\",\"name\":\"validators\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"isValidatorEligible\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator_from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"validator_to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"reDelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"proof\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"vrf_key\",\"type\":\"bytes\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"name\":\"registerValidator\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"}],\"name\":\"setCommission\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"name\":\"setValidatorInfo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"undelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
 }
 
 // DposInterfaceABI is the input ABI used to generate the binding from.
@@ -260,6 +260,37 @@ func (_DposInterface *DposInterfaceCallerSession) GetDelegations(delegator commo
 	End         bool
 }, error) {
 	return _DposInterface.Contract.GetDelegations(&_DposInterface.CallOpts, delegator, batch)
+}
+
+// GetTotalDelegation is a free data retrieval call binding the contract method 0xfc5e7e09.
+//
+// Solidity: function getTotalDelegation(address delegator) view returns(uint256 total_delegation)
+func (_DposInterface *DposInterfaceCaller) GetTotalDelegation(opts *bind.CallOpts, delegator common.Address) (*big.Int, error) {
+	var out []interface{}
+	err := _DposInterface.contract.Call(opts, &out, "getTotalDelegation", delegator)
+
+	if err != nil {
+		return *new(*big.Int), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(*big.Int)).(**big.Int)
+
+	return out0, err
+
+}
+
+// GetTotalDelegation is a free data retrieval call binding the contract method 0xfc5e7e09.
+//
+// Solidity: function getTotalDelegation(address delegator) view returns(uint256 total_delegation)
+func (_DposInterface *DposInterfaceSession) GetTotalDelegation(delegator common.Address) (*big.Int, error) {
+	return _DposInterface.Contract.GetTotalDelegation(&_DposInterface.CallOpts, delegator)
+}
+
+// GetTotalDelegation is a free data retrieval call binding the contract method 0xfc5e7e09.
+//
+// Solidity: function getTotalDelegation(address delegator) view returns(uint256 total_delegation)
+func (_DposInterface *DposInterfaceCallerSession) GetTotalDelegation(delegator common.Address) (*big.Int, error) {
+	return _DposInterface.Contract.GetTotalDelegation(&_DposInterface.CallOpts, delegator)
 }
 
 // GetTotalEligibleVotesCount is a free data retrieval call binding the contract method 0xde8e4b50.
@@ -823,12 +854,13 @@ func (it *DposInterfaceCommissionRewardsClaimedIterator) Close() error {
 type DposInterfaceCommissionRewardsClaimed struct {
 	Account   common.Address
 	Validator common.Address
+	Amount    *big.Int
 	Raw       types.Log // Blockchain specific contextual infos
 }
 
-// FilterCommissionRewardsClaimed is a free log retrieval operation binding the contract event 0x9fe6fb5c5703216904280d8ed59c57daa2bedb91e204b4f23e347ecaaf313c3b.
+// FilterCommissionRewardsClaimed is a free log retrieval operation binding the contract event 0xf0ec9e0f6add850a1738c5822244e26ffc3d1f14da7537aa240582b25af12ad0.
 //
-// Solidity: event CommissionRewardsClaimed(address indexed account, address indexed validator)
+// Solidity: event CommissionRewardsClaimed(address indexed account, address indexed validator, uint256 amount)
 func (_DposInterface *DposInterfaceFilterer) FilterCommissionRewardsClaimed(opts *bind.FilterOpts, account []common.Address, validator []common.Address) (*DposInterfaceCommissionRewardsClaimedIterator, error) {
 
 	var accountRule []interface{}
@@ -847,9 +879,9 @@ func (_DposInterface *DposInterfaceFilterer) FilterCommissionRewardsClaimed(opts
 	return &DposInterfaceCommissionRewardsClaimedIterator{contract: _DposInterface.contract, event: "CommissionRewardsClaimed", logs: logs, sub: sub}, nil
 }
 
-// WatchCommissionRewardsClaimed is a free log subscription operation binding the contract event 0x9fe6fb5c5703216904280d8ed59c57daa2bedb91e204b4f23e347ecaaf313c3b.
+// WatchCommissionRewardsClaimed is a free log subscription operation binding the contract event 0xf0ec9e0f6add850a1738c5822244e26ffc3d1f14da7537aa240582b25af12ad0.
 //
-// Solidity: event CommissionRewardsClaimed(address indexed account, address indexed validator)
+// Solidity: event CommissionRewardsClaimed(address indexed account, address indexed validator, uint256 amount)
 func (_DposInterface *DposInterfaceFilterer) WatchCommissionRewardsClaimed(opts *bind.WatchOpts, sink chan<- *DposInterfaceCommissionRewardsClaimed, account []common.Address, validator []common.Address) (event.Subscription, error) {
 
 	var accountRule []interface{}
@@ -893,9 +925,9 @@ func (_DposInterface *DposInterfaceFilterer) WatchCommissionRewardsClaimed(opts 
 	}), nil
 }
 
-// ParseCommissionRewardsClaimed is a log parse operation binding the contract event 0x9fe6fb5c5703216904280d8ed59c57daa2bedb91e204b4f23e347ecaaf313c3b.
+// ParseCommissionRewardsClaimed is a log parse operation binding the contract event 0xf0ec9e0f6add850a1738c5822244e26ffc3d1f14da7537aa240582b25af12ad0.
 //
-// Solidity: event CommissionRewardsClaimed(address indexed account, address indexed validator)
+// Solidity: event CommissionRewardsClaimed(address indexed account, address indexed validator, uint256 amount)
 func (_DposInterface *DposInterfaceFilterer) ParseCommissionRewardsClaimed(log types.Log) (*DposInterfaceCommissionRewardsClaimed, error) {
 	event := new(DposInterfaceCommissionRewardsClaimed)
 	if err := _DposInterface.contract.UnpackLog(event, "CommissionRewardsClaimed", log); err != nil {
@@ -974,14 +1006,14 @@ func (it *DposInterfaceCommissionSetIterator) Close() error {
 
 // DposInterfaceCommissionSet represents a CommissionSet event raised by the DposInterface contract.
 type DposInterfaceCommissionSet struct {
-	Validator common.Address
-	Comission uint16
-	Raw       types.Log // Blockchain specific contextual infos
+	Validator  common.Address
+	Commission uint16
+	Raw        types.Log // Blockchain specific contextual infos
 }
 
 // FilterCommissionSet is a free log retrieval operation binding the contract event 0xc909daf778d180f43dac53b55d0de934d2f1e0b70412ca274982e4e6e894eb1a.
 //
-// Solidity: event CommissionSet(address indexed validator, uint16 comission)
+// Solidity: event CommissionSet(address indexed validator, uint16 commission)
 func (_DposInterface *DposInterfaceFilterer) FilterCommissionSet(opts *bind.FilterOpts, validator []common.Address) (*DposInterfaceCommissionSetIterator, error) {
 
 	var validatorRule []interface{}
@@ -998,7 +1030,7 @@ func (_DposInterface *DposInterfaceFilterer) FilterCommissionSet(opts *bind.Filt
 
 // WatchCommissionSet is a free log subscription operation binding the contract event 0xc909daf778d180f43dac53b55d0de934d2f1e0b70412ca274982e4e6e894eb1a.
 //
-// Solidity: event CommissionSet(address indexed validator, uint16 comission)
+// Solidity: event CommissionSet(address indexed validator, uint16 commission)
 func (_DposInterface *DposInterfaceFilterer) WatchCommissionSet(opts *bind.WatchOpts, sink chan<- *DposInterfaceCommissionSet, validator []common.Address) (event.Subscription, error) {
 
 	var validatorRule []interface{}
@@ -1040,7 +1072,7 @@ func (_DposInterface *DposInterfaceFilterer) WatchCommissionSet(opts *bind.Watch
 
 // ParseCommissionSet is a log parse operation binding the contract event 0xc909daf778d180f43dac53b55d0de934d2f1e0b70412ca274982e4e6e894eb1a.
 //
-// Solidity: event CommissionSet(address indexed validator, uint16 comission)
+// Solidity: event CommissionSet(address indexed validator, uint16 commission)
 func (_DposInterface *DposInterfaceFilterer) ParseCommissionSet(log types.Log) (*DposInterfaceCommissionSet, error) {
 	event := new(DposInterfaceCommissionSet)
 	if err := _DposInterface.contract.UnpackLog(event, "CommissionSet", log); err != nil {
@@ -1438,12 +1470,13 @@ func (it *DposInterfaceRewardsClaimedIterator) Close() error {
 type DposInterfaceRewardsClaimed struct {
 	Account   common.Address
 	Validator common.Address
+	Amount    *big.Int
 	Raw       types.Log // Blockchain specific contextual infos
 }
 
-// FilterRewardsClaimed is a free log retrieval operation binding the contract event 0x76fefaa578826cd28a6d72d47460f755534b9a481c773721143222296cc4cc5a.
+// FilterRewardsClaimed is a free log retrieval operation binding the contract event 0x9310ccfcb8de723f578a9e4282ea9f521f05ae40dc08f3068dfad528a65ee3c7.
 //
-// Solidity: event RewardsClaimed(address indexed account, address indexed validator)
+// Solidity: event RewardsClaimed(address indexed account, address indexed validator, uint256 amount)
 func (_DposInterface *DposInterfaceFilterer) FilterRewardsClaimed(opts *bind.FilterOpts, account []common.Address, validator []common.Address) (*DposInterfaceRewardsClaimedIterator, error) {
 
 	var accountRule []interface{}
@@ -1462,9 +1495,9 @@ func (_DposInterface *DposInterfaceFilterer) FilterRewardsClaimed(opts *bind.Fil
 	return &DposInterfaceRewardsClaimedIterator{contract: _DposInterface.contract, event: "RewardsClaimed", logs: logs, sub: sub}, nil
 }
 
-// WatchRewardsClaimed is a free log subscription operation binding the contract event 0x76fefaa578826cd28a6d72d47460f755534b9a481c773721143222296cc4cc5a.
+// WatchRewardsClaimed is a free log subscription operation binding the contract event 0x9310ccfcb8de723f578a9e4282ea9f521f05ae40dc08f3068dfad528a65ee3c7.
 //
-// Solidity: event RewardsClaimed(address indexed account, address indexed validator)
+// Solidity: event RewardsClaimed(address indexed account, address indexed validator, uint256 amount)
 func (_DposInterface *DposInterfaceFilterer) WatchRewardsClaimed(opts *bind.WatchOpts, sink chan<- *DposInterfaceRewardsClaimed, account []common.Address, validator []common.Address) (event.Subscription, error) {
 
 	var accountRule []interface{}
@@ -1508,9 +1541,9 @@ func (_DposInterface *DposInterfaceFilterer) WatchRewardsClaimed(opts *bind.Watc
 	}), nil
 }
 
-// ParseRewardsClaimed is a log parse operation binding the contract event 0x76fefaa578826cd28a6d72d47460f755534b9a481c773721143222296cc4cc5a.
+// ParseRewardsClaimed is a log parse operation binding the contract event 0x9310ccfcb8de723f578a9e4282ea9f521f05ae40dc08f3068dfad528a65ee3c7.
 //
-// Solidity: event RewardsClaimed(address indexed account, address indexed validator)
+// Solidity: event RewardsClaimed(address indexed account, address indexed validator, uint256 amount)
 func (_DposInterface *DposInterfaceFilterer) ParseRewardsClaimed(log types.Log) (*DposInterfaceRewardsClaimed, error) {
 	event := new(DposInterfaceRewardsClaimed)
 	if err := _DposInterface.contract.UnpackLog(event, "RewardsClaimed", log); err != nil {
