@@ -49,6 +49,12 @@ type DposInterfaceUndelegationData struct {
 	ValidatorExists bool
 }
 
+// DposInterfaceUndelegationV2Data is an auto generated low-level Go binding around an user-defined struct.
+type DposInterfaceUndelegationV2Data struct {
+	UndelegationData DposInterfaceUndelegationData
+	UndelegationId   uint64
+}
+
 // DposInterfaceValidatorBasicInfo is an auto generated low-level Go binding around an user-defined struct.
 type DposInterfaceValidatorBasicInfo struct {
 	TotalStake           *big.Int
@@ -69,7 +75,7 @@ type DposInterfaceValidatorData struct {
 
 // DposInterfaceMetaData contains all meta data concerning the DposInterface contract.
 var DposInterfaceMetaData = &bind.MetaData{
-	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"CommissionRewardsClaimed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"}],\"name\":\"CommissionSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Delegated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Redelegated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"RewardsClaimed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"UndelegateCanceled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"UndelegateConfirmed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Undelegated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"ValidatorInfoSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"ValidatorRegistered\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"cancelUndelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"claimAllRewards\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"claimCommissionRewards\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"claimRewards\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"confirmUndelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"delegate\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getDelegations\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"stake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"rewards\",\"type\":\"uint256\"}],\"internalType\":\"structDposInterface.DelegatorInfo\",\"name\":\"delegation\",\"type\":\"tuple\"}],\"internalType\":\"structDposInterface.DelegationData[]\",\"name\":\"delegations\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"}],\"name\":\"getTotalDelegation\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"total_delegation\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTotalEligibleVotesCount\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getUndelegations\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"stake\",\"type\":\"uint256\"},{\"internalType\":\"uint64\",\"name\":\"block\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"validator_exists\",\"type\":\"bool\"}],\"internalType\":\"structDposInterface.UndelegationData[]\",\"name\":\"undelegations\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"getValidator\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"total_stake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"commission_reward\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"},{\"internalType\":\"uint64\",\"name\":\"last_commission_change\",\"type\":\"uint64\"},{\"internalType\":\"uint16\",\"name\":\"undelegations_count\",\"type\":\"uint16\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"internalType\":\"structDposInterface.ValidatorBasicInfo\",\"name\":\"validator_info\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"getValidatorEligibleVotesCount\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getValidators\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"total_stake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"commission_reward\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"},{\"internalType\":\"uint64\",\"name\":\"last_commission_change\",\"type\":\"uint64\"},{\"internalType\":\"uint16\",\"name\":\"undelegations_count\",\"type\":\"uint16\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"internalType\":\"structDposInterface.ValidatorBasicInfo\",\"name\":\"info\",\"type\":\"tuple\"}],\"internalType\":\"structDposInterface.ValidatorData[]\",\"name\":\"validators\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getValidatorsFor\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"total_stake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"commission_reward\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"},{\"internalType\":\"uint64\",\"name\":\"last_commission_change\",\"type\":\"uint64\"},{\"internalType\":\"uint16\",\"name\":\"undelegations_count\",\"type\":\"uint16\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"internalType\":\"structDposInterface.ValidatorBasicInfo\",\"name\":\"info\",\"type\":\"tuple\"}],\"internalType\":\"structDposInterface.ValidatorData[]\",\"name\":\"validators\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"isValidatorEligible\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator_from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"validator_to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"reDelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"proof\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"vrf_key\",\"type\":\"bytes\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"name\":\"registerValidator\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"}],\"name\":\"setCommission\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"name\":\"setValidatorInfo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"undelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"CommissionRewardsClaimed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"}],\"name\":\"CommissionSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Delegated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Redelegated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"RewardsClaimed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"UndelegateCanceled\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"undelegation_id\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"UndelegateCanceledV2\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"UndelegateConfirmed\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"undelegation_id\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"UndelegateConfirmedV2\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"Undelegated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint64\",\"name\":\"undelegation_id\",\"type\":\"uint64\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"UndelegatedV2\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"ValidatorInfoSet\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"ValidatorRegistered\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"cancelUndelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"uint64\",\"name\":\"undelegation_id\",\"type\":\"uint64\"}],\"name\":\"cancelUndelegateV2\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"claimAllRewards\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"claimCommissionRewards\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"claimRewards\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"confirmUndelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"uint64\",\"name\":\"undelegation_id\",\"type\":\"uint64\"}],\"name\":\"confirmUndelegateV2\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"delegate\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getDelegations\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"stake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"rewards\",\"type\":\"uint256\"}],\"internalType\":\"structDposInterface.DelegatorInfo\",\"name\":\"delegation\",\"type\":\"tuple\"}],\"internalType\":\"structDposInterface.DelegationData[]\",\"name\":\"delegations\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"}],\"name\":\"getTotalDelegation\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"total_delegation\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTotalEligibleVotesCount\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"uint64\",\"name\":\"undelegation_id\",\"type\":\"uint64\"}],\"name\":\"getUndelegationV2\",\"outputs\":[{\"components\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"stake\",\"type\":\"uint256\"},{\"internalType\":\"uint64\",\"name\":\"block\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"validator_exists\",\"type\":\"bool\"}],\"internalType\":\"structDposInterface.UndelegationData\",\"name\":\"undelegation_data\",\"type\":\"tuple\"},{\"internalType\":\"uint64\",\"name\":\"undelegation_id\",\"type\":\"uint64\"}],\"internalType\":\"structDposInterface.UndelegationV2Data\",\"name\":\"undelegation_v2\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getUndelegations\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"stake\",\"type\":\"uint256\"},{\"internalType\":\"uint64\",\"name\":\"block\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"validator_exists\",\"type\":\"bool\"}],\"internalType\":\"structDposInterface.UndelegationData[]\",\"name\":\"undelegations\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getUndelegationsV2\",\"outputs\":[{\"components\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"stake\",\"type\":\"uint256\"},{\"internalType\":\"uint64\",\"name\":\"block\",\"type\":\"uint64\"},{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"validator_exists\",\"type\":\"bool\"}],\"internalType\":\"structDposInterface.UndelegationData\",\"name\":\"undelegation_data\",\"type\":\"tuple\"},{\"internalType\":\"uint64\",\"name\":\"undelegation_id\",\"type\":\"uint64\"}],\"internalType\":\"structDposInterface.UndelegationV2Data[]\",\"name\":\"undelegations_v2\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"getValidator\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"total_stake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"commission_reward\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"},{\"internalType\":\"uint64\",\"name\":\"last_commission_change\",\"type\":\"uint64\"},{\"internalType\":\"uint16\",\"name\":\"undelegations_count\",\"type\":\"uint16\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"internalType\":\"structDposInterface.ValidatorBasicInfo\",\"name\":\"validator_info\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"getValidatorEligibleVotesCount\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"\",\"type\":\"uint64\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getValidators\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"total_stake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"commission_reward\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"},{\"internalType\":\"uint64\",\"name\":\"last_commission_change\",\"type\":\"uint64\"},{\"internalType\":\"uint16\",\"name\":\"undelegations_count\",\"type\":\"uint16\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"internalType\":\"structDposInterface.ValidatorBasicInfo\",\"name\":\"info\",\"type\":\"tuple\"}],\"internalType\":\"structDposInterface.ValidatorData[]\",\"name\":\"validators\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"batch\",\"type\":\"uint32\"}],\"name\":\"getValidatorsFor\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"components\":[{\"internalType\":\"uint256\",\"name\":\"total_stake\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"commission_reward\",\"type\":\"uint256\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"},{\"internalType\":\"uint64\",\"name\":\"last_commission_change\",\"type\":\"uint64\"},{\"internalType\":\"uint16\",\"name\":\"undelegations_count\",\"type\":\"uint16\"},{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"internalType\":\"structDposInterface.ValidatorBasicInfo\",\"name\":\"info\",\"type\":\"tuple\"}],\"internalType\":\"structDposInterface.ValidatorData[]\",\"name\":\"validators\",\"type\":\"tuple[]\"},{\"internalType\":\"bool\",\"name\":\"end\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"}],\"name\":\"isValidatorEligible\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator_from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"validator_to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"reDelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"proof\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"vrf_key\",\"type\":\"bytes\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"name\":\"registerValidator\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"uint16\",\"name\":\"commission\",\"type\":\"uint16\"}],\"name\":\"setCommission\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"description\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"endpoint\",\"type\":\"string\"}],\"name\":\"setValidatorInfo\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"undelegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"validator\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"undelegateV2\",\"outputs\":[{\"internalType\":\"uint64\",\"name\":\"undelegation_id\",\"type\":\"uint64\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
 }
 
 // DposInterfaceABI is the input ABI used to generate the binding from.
@@ -325,6 +331,37 @@ func (_DposInterface *DposInterfaceCallerSession) GetTotalEligibleVotesCount() (
 	return _DposInterface.Contract.GetTotalEligibleVotesCount(&_DposInterface.CallOpts)
 }
 
+// GetUndelegationV2 is a free data retrieval call binding the contract method 0xc1107e27.
+//
+// Solidity: function getUndelegationV2(address delegator, address validator, uint64 undelegation_id) view returns(((uint256,uint64,address,bool),uint64) undelegation_v2)
+func (_DposInterface *DposInterfaceCaller) GetUndelegationV2(opts *bind.CallOpts, delegator common.Address, validator common.Address, undelegation_id uint64) (DposInterfaceUndelegationV2Data, error) {
+	var out []interface{}
+	err := _DposInterface.contract.Call(opts, &out, "getUndelegationV2", delegator, validator, undelegation_id)
+
+	if err != nil {
+		return *new(DposInterfaceUndelegationV2Data), err
+	}
+
+	out0 := *abi.ConvertType(out[0], new(DposInterfaceUndelegationV2Data)).(*DposInterfaceUndelegationV2Data)
+
+	return out0, err
+
+}
+
+// GetUndelegationV2 is a free data retrieval call binding the contract method 0xc1107e27.
+//
+// Solidity: function getUndelegationV2(address delegator, address validator, uint64 undelegation_id) view returns(((uint256,uint64,address,bool),uint64) undelegation_v2)
+func (_DposInterface *DposInterfaceSession) GetUndelegationV2(delegator common.Address, validator common.Address, undelegation_id uint64) (DposInterfaceUndelegationV2Data, error) {
+	return _DposInterface.Contract.GetUndelegationV2(&_DposInterface.CallOpts, delegator, validator, undelegation_id)
+}
+
+// GetUndelegationV2 is a free data retrieval call binding the contract method 0xc1107e27.
+//
+// Solidity: function getUndelegationV2(address delegator, address validator, uint64 undelegation_id) view returns(((uint256,uint64,address,bool),uint64) undelegation_v2)
+func (_DposInterface *DposInterfaceCallerSession) GetUndelegationV2(delegator common.Address, validator common.Address, undelegation_id uint64) (DposInterfaceUndelegationV2Data, error) {
+	return _DposInterface.Contract.GetUndelegationV2(&_DposInterface.CallOpts, delegator, validator, undelegation_id)
+}
+
 // GetUndelegations is a free data retrieval call binding the contract method 0x4edd9943.
 //
 // Solidity: function getUndelegations(address delegator, uint32 batch) view returns((uint256,uint64,address,bool)[] undelegations, bool end)
@@ -368,6 +405,51 @@ func (_DposInterface *DposInterfaceCallerSession) GetUndelegations(delegator com
 	End           bool
 }, error) {
 	return _DposInterface.Contract.GetUndelegations(&_DposInterface.CallOpts, delegator, batch)
+}
+
+// GetUndelegationsV2 is a free data retrieval call binding the contract method 0x78df66e3.
+//
+// Solidity: function getUndelegationsV2(address delegator, uint32 batch) view returns(((uint256,uint64,address,bool),uint64)[] undelegations_v2, bool end)
+func (_DposInterface *DposInterfaceCaller) GetUndelegationsV2(opts *bind.CallOpts, delegator common.Address, batch uint32) (struct {
+	UndelegationsV2 []DposInterfaceUndelegationV2Data
+	End             bool
+}, error) {
+	var out []interface{}
+	err := _DposInterface.contract.Call(opts, &out, "getUndelegationsV2", delegator, batch)
+
+	outstruct := new(struct {
+		UndelegationsV2 []DposInterfaceUndelegationV2Data
+		End             bool
+	})
+	if err != nil {
+		return *outstruct, err
+	}
+
+	outstruct.UndelegationsV2 = *abi.ConvertType(out[0], new([]DposInterfaceUndelegationV2Data)).(*[]DposInterfaceUndelegationV2Data)
+	outstruct.End = *abi.ConvertType(out[1], new(bool)).(*bool)
+
+	return *outstruct, err
+
+}
+
+// GetUndelegationsV2 is a free data retrieval call binding the contract method 0x78df66e3.
+//
+// Solidity: function getUndelegationsV2(address delegator, uint32 batch) view returns(((uint256,uint64,address,bool),uint64)[] undelegations_v2, bool end)
+func (_DposInterface *DposInterfaceSession) GetUndelegationsV2(delegator common.Address, batch uint32) (struct {
+	UndelegationsV2 []DposInterfaceUndelegationV2Data
+	End             bool
+}, error) {
+	return _DposInterface.Contract.GetUndelegationsV2(&_DposInterface.CallOpts, delegator, batch)
+}
+
+// GetUndelegationsV2 is a free data retrieval call binding the contract method 0x78df66e3.
+//
+// Solidity: function getUndelegationsV2(address delegator, uint32 batch) view returns(((uint256,uint64,address,bool),uint64)[] undelegations_v2, bool end)
+func (_DposInterface *DposInterfaceCallerSession) GetUndelegationsV2(delegator common.Address, batch uint32) (struct {
+	UndelegationsV2 []DposInterfaceUndelegationV2Data
+	End             bool
+}, error) {
+	return _DposInterface.Contract.GetUndelegationsV2(&_DposInterface.CallOpts, delegator, batch)
 }
 
 // GetValidator is a free data retrieval call binding the contract method 0x1904bb2e.
@@ -574,25 +656,46 @@ func (_DposInterface *DposInterfaceTransactorSession) CancelUndelegate(validator
 	return _DposInterface.Contract.CancelUndelegate(&_DposInterface.TransactOpts, validator)
 }
 
-// ClaimAllRewards is a paid mutator transaction binding the contract method 0x09b72e00.
+// CancelUndelegateV2 is a paid mutator transaction binding the contract method 0xb6e1e329.
 //
-// Solidity: function claimAllRewards(uint32 batch) returns(bool end)
-func (_DposInterface *DposInterfaceTransactor) ClaimAllRewards(opts *bind.TransactOpts, batch uint32) (*types.Transaction, error) {
-	return _DposInterface.contract.Transact(opts, "claimAllRewards", batch)
+// Solidity: function cancelUndelegateV2(address validator, uint64 undelegation_id) returns()
+func (_DposInterface *DposInterfaceTransactor) CancelUndelegateV2(opts *bind.TransactOpts, validator common.Address, undelegation_id uint64) (*types.Transaction, error) {
+	return _DposInterface.contract.Transact(opts, "cancelUndelegateV2", validator, undelegation_id)
 }
 
-// ClaimAllRewards is a paid mutator transaction binding the contract method 0x09b72e00.
+// CancelUndelegateV2 is a paid mutator transaction binding the contract method 0xb6e1e329.
 //
-// Solidity: function claimAllRewards(uint32 batch) returns(bool end)
-func (_DposInterface *DposInterfaceSession) ClaimAllRewards(batch uint32) (*types.Transaction, error) {
-	return _DposInterface.Contract.ClaimAllRewards(&_DposInterface.TransactOpts, batch)
+// Solidity: function cancelUndelegateV2(address validator, uint64 undelegation_id) returns()
+func (_DposInterface *DposInterfaceSession) CancelUndelegateV2(validator common.Address, undelegation_id uint64) (*types.Transaction, error) {
+	return _DposInterface.Contract.CancelUndelegateV2(&_DposInterface.TransactOpts, validator, undelegation_id)
 }
 
-// ClaimAllRewards is a paid mutator transaction binding the contract method 0x09b72e00.
+// CancelUndelegateV2 is a paid mutator transaction binding the contract method 0xb6e1e329.
 //
-// Solidity: function claimAllRewards(uint32 batch) returns(bool end)
-func (_DposInterface *DposInterfaceTransactorSession) ClaimAllRewards(batch uint32) (*types.Transaction, error) {
-	return _DposInterface.Contract.ClaimAllRewards(&_DposInterface.TransactOpts, batch)
+// Solidity: function cancelUndelegateV2(address validator, uint64 undelegation_id) returns()
+func (_DposInterface *DposInterfaceTransactorSession) CancelUndelegateV2(validator common.Address, undelegation_id uint64) (*types.Transaction, error) {
+	return _DposInterface.Contract.CancelUndelegateV2(&_DposInterface.TransactOpts, validator, undelegation_id)
+}
+
+// ClaimAllRewards is a paid mutator transaction binding the contract method 0x0b83a727.
+//
+// Solidity: function claimAllRewards() returns()
+func (_DposInterface *DposInterfaceTransactor) ClaimAllRewards(opts *bind.TransactOpts) (*types.Transaction, error) {
+	return _DposInterface.contract.Transact(opts, "claimAllRewards")
+}
+
+// ClaimAllRewards is a paid mutator transaction binding the contract method 0x0b83a727.
+//
+// Solidity: function claimAllRewards() returns()
+func (_DposInterface *DposInterfaceSession) ClaimAllRewards() (*types.Transaction, error) {
+	return _DposInterface.Contract.ClaimAllRewards(&_DposInterface.TransactOpts)
+}
+
+// ClaimAllRewards is a paid mutator transaction binding the contract method 0x0b83a727.
+//
+// Solidity: function claimAllRewards() returns()
+func (_DposInterface *DposInterfaceTransactorSession) ClaimAllRewards() (*types.Transaction, error) {
+	return _DposInterface.Contract.ClaimAllRewards(&_DposInterface.TransactOpts)
 }
 
 // ClaimCommissionRewards is a paid mutator transaction binding the contract method 0xd0eebfe2.
@@ -656,6 +759,27 @@ func (_DposInterface *DposInterfaceSession) ConfirmUndelegate(validator common.A
 // Solidity: function confirmUndelegate(address validator) returns()
 func (_DposInterface *DposInterfaceTransactorSession) ConfirmUndelegate(validator common.Address) (*types.Transaction, error) {
 	return _DposInterface.Contract.ConfirmUndelegate(&_DposInterface.TransactOpts, validator)
+}
+
+// ConfirmUndelegateV2 is a paid mutator transaction binding the contract method 0x788d0974.
+//
+// Solidity: function confirmUndelegateV2(address validator, uint64 undelegation_id) returns()
+func (_DposInterface *DposInterfaceTransactor) ConfirmUndelegateV2(opts *bind.TransactOpts, validator common.Address, undelegation_id uint64) (*types.Transaction, error) {
+	return _DposInterface.contract.Transact(opts, "confirmUndelegateV2", validator, undelegation_id)
+}
+
+// ConfirmUndelegateV2 is a paid mutator transaction binding the contract method 0x788d0974.
+//
+// Solidity: function confirmUndelegateV2(address validator, uint64 undelegation_id) returns()
+func (_DposInterface *DposInterfaceSession) ConfirmUndelegateV2(validator common.Address, undelegation_id uint64) (*types.Transaction, error) {
+	return _DposInterface.Contract.ConfirmUndelegateV2(&_DposInterface.TransactOpts, validator, undelegation_id)
+}
+
+// ConfirmUndelegateV2 is a paid mutator transaction binding the contract method 0x788d0974.
+//
+// Solidity: function confirmUndelegateV2(address validator, uint64 undelegation_id) returns()
+func (_DposInterface *DposInterfaceTransactorSession) ConfirmUndelegateV2(validator common.Address, undelegation_id uint64) (*types.Transaction, error) {
+	return _DposInterface.Contract.ConfirmUndelegateV2(&_DposInterface.TransactOpts, validator, undelegation_id)
 }
 
 // Delegate is a paid mutator transaction binding the contract method 0x5c19a95c.
@@ -782,6 +906,27 @@ func (_DposInterface *DposInterfaceSession) Undelegate(validator common.Address,
 // Solidity: function undelegate(address validator, uint256 amount) returns()
 func (_DposInterface *DposInterfaceTransactorSession) Undelegate(validator common.Address, amount *big.Int) (*types.Transaction, error) {
 	return _DposInterface.Contract.Undelegate(&_DposInterface.TransactOpts, validator, amount)
+}
+
+// UndelegateV2 is a paid mutator transaction binding the contract method 0xbd0e7fcc.
+//
+// Solidity: function undelegateV2(address validator, uint256 amount) returns(uint64 undelegation_id)
+func (_DposInterface *DposInterfaceTransactor) UndelegateV2(opts *bind.TransactOpts, validator common.Address, amount *big.Int) (*types.Transaction, error) {
+	return _DposInterface.contract.Transact(opts, "undelegateV2", validator, amount)
+}
+
+// UndelegateV2 is a paid mutator transaction binding the contract method 0xbd0e7fcc.
+//
+// Solidity: function undelegateV2(address validator, uint256 amount) returns(uint64 undelegation_id)
+func (_DposInterface *DposInterfaceSession) UndelegateV2(validator common.Address, amount *big.Int) (*types.Transaction, error) {
+	return _DposInterface.Contract.UndelegateV2(&_DposInterface.TransactOpts, validator, amount)
+}
+
+// UndelegateV2 is a paid mutator transaction binding the contract method 0xbd0e7fcc.
+//
+// Solidity: function undelegateV2(address validator, uint256 amount) returns(uint64 undelegation_id)
+func (_DposInterface *DposInterfaceTransactorSession) UndelegateV2(validator common.Address, amount *big.Int) (*types.Transaction, error) {
+	return _DposInterface.Contract.UndelegateV2(&_DposInterface.TransactOpts, validator, amount)
 }
 
 // DposInterfaceCommissionRewardsClaimedIterator is returned from FilterCommissionRewardsClaimed and is used to iterate over the raw logs and unpacked data for CommissionRewardsClaimed events raised by the DposInterface contract.
@@ -1708,6 +1853,169 @@ func (_DposInterface *DposInterfaceFilterer) ParseUndelegateCanceled(log types.L
 	return event, nil
 }
 
+// DposInterfaceUndelegateCanceledV2Iterator is returned from FilterUndelegateCanceledV2 and is used to iterate over the raw logs and unpacked data for UndelegateCanceledV2 events raised by the DposInterface contract.
+type DposInterfaceUndelegateCanceledV2Iterator struct {
+	Event *DposInterfaceUndelegateCanceledV2 // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *DposInterfaceUndelegateCanceledV2Iterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(DposInterfaceUndelegateCanceledV2)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(DposInterfaceUndelegateCanceledV2)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *DposInterfaceUndelegateCanceledV2Iterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *DposInterfaceUndelegateCanceledV2Iterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// DposInterfaceUndelegateCanceledV2 represents a UndelegateCanceledV2 event raised by the DposInterface contract.
+type DposInterfaceUndelegateCanceledV2 struct {
+	Delegator      common.Address
+	Validator      common.Address
+	UndelegationId uint64
+	Amount         *big.Int
+	Raw            types.Log // Blockchain specific contextual infos
+}
+
+// FilterUndelegateCanceledV2 is a free log retrieval operation binding the contract event 0xe0474558d9b6ee7a45f2d6d12effd21909b53360eb73eda6cf0f197031738fee.
+//
+// Solidity: event UndelegateCanceledV2(address indexed delegator, address indexed validator, uint64 indexed undelegation_id, uint256 amount)
+func (_DposInterface *DposInterfaceFilterer) FilterUndelegateCanceledV2(opts *bind.FilterOpts, delegator []common.Address, validator []common.Address, undelegation_id []uint64) (*DposInterfaceUndelegateCanceledV2Iterator, error) {
+
+	var delegatorRule []interface{}
+	for _, delegatorItem := range delegator {
+		delegatorRule = append(delegatorRule, delegatorItem)
+	}
+	var validatorRule []interface{}
+	for _, validatorItem := range validator {
+		validatorRule = append(validatorRule, validatorItem)
+	}
+	var undelegation_idRule []interface{}
+	for _, undelegation_idItem := range undelegation_id {
+		undelegation_idRule = append(undelegation_idRule, undelegation_idItem)
+	}
+
+	logs, sub, err := _DposInterface.contract.FilterLogs(opts, "UndelegateCanceledV2", delegatorRule, validatorRule, undelegation_idRule)
+	if err != nil {
+		return nil, err
+	}
+	return &DposInterfaceUndelegateCanceledV2Iterator{contract: _DposInterface.contract, event: "UndelegateCanceledV2", logs: logs, sub: sub}, nil
+}
+
+// WatchUndelegateCanceledV2 is a free log subscription operation binding the contract event 0xe0474558d9b6ee7a45f2d6d12effd21909b53360eb73eda6cf0f197031738fee.
+//
+// Solidity: event UndelegateCanceledV2(address indexed delegator, address indexed validator, uint64 indexed undelegation_id, uint256 amount)
+func (_DposInterface *DposInterfaceFilterer) WatchUndelegateCanceledV2(opts *bind.WatchOpts, sink chan<- *DposInterfaceUndelegateCanceledV2, delegator []common.Address, validator []common.Address, undelegation_id []uint64) (event.Subscription, error) {
+
+	var delegatorRule []interface{}
+	for _, delegatorItem := range delegator {
+		delegatorRule = append(delegatorRule, delegatorItem)
+	}
+	var validatorRule []interface{}
+	for _, validatorItem := range validator {
+		validatorRule = append(validatorRule, validatorItem)
+	}
+	var undelegation_idRule []interface{}
+	for _, undelegation_idItem := range undelegation_id {
+		undelegation_idRule = append(undelegation_idRule, undelegation_idItem)
+	}
+
+	logs, sub, err := _DposInterface.contract.WatchLogs(opts, "UndelegateCanceledV2", delegatorRule, validatorRule, undelegation_idRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(DposInterfaceUndelegateCanceledV2)
+				if err := _DposInterface.contract.UnpackLog(event, "UndelegateCanceledV2", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseUndelegateCanceledV2 is a log parse operation binding the contract event 0xe0474558d9b6ee7a45f2d6d12effd21909b53360eb73eda6cf0f197031738fee.
+//
+// Solidity: event UndelegateCanceledV2(address indexed delegator, address indexed validator, uint64 indexed undelegation_id, uint256 amount)
+func (_DposInterface *DposInterfaceFilterer) ParseUndelegateCanceledV2(log types.Log) (*DposInterfaceUndelegateCanceledV2, error) {
+	event := new(DposInterfaceUndelegateCanceledV2)
+	if err := _DposInterface.contract.UnpackLog(event, "UndelegateCanceledV2", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
 // DposInterfaceUndelegateConfirmedIterator is returned from FilterUndelegateConfirmed and is used to iterate over the raw logs and unpacked data for UndelegateConfirmed events raised by the DposInterface contract.
 type DposInterfaceUndelegateConfirmedIterator struct {
 	Event *DposInterfaceUndelegateConfirmed // Event containing the contract specifics and raw log
@@ -1862,6 +2170,169 @@ func (_DposInterface *DposInterfaceFilterer) ParseUndelegateConfirmed(log types.
 	return event, nil
 }
 
+// DposInterfaceUndelegateConfirmedV2Iterator is returned from FilterUndelegateConfirmedV2 and is used to iterate over the raw logs and unpacked data for UndelegateConfirmedV2 events raised by the DposInterface contract.
+type DposInterfaceUndelegateConfirmedV2Iterator struct {
+	Event *DposInterfaceUndelegateConfirmedV2 // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *DposInterfaceUndelegateConfirmedV2Iterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(DposInterfaceUndelegateConfirmedV2)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(DposInterfaceUndelegateConfirmedV2)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *DposInterfaceUndelegateConfirmedV2Iterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *DposInterfaceUndelegateConfirmedV2Iterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// DposInterfaceUndelegateConfirmedV2 represents a UndelegateConfirmedV2 event raised by the DposInterface contract.
+type DposInterfaceUndelegateConfirmedV2 struct {
+	Delegator      common.Address
+	Validator      common.Address
+	UndelegationId uint64
+	Amount         *big.Int
+	Raw            types.Log // Blockchain specific contextual infos
+}
+
+// FilterUndelegateConfirmedV2 is a free log retrieval operation binding the contract event 0xa637e566d82568efa4bd8c588e17232aee483873fa17fb873f6d398ba85ed57c.
+//
+// Solidity: event UndelegateConfirmedV2(address indexed delegator, address indexed validator, uint64 indexed undelegation_id, uint256 amount)
+func (_DposInterface *DposInterfaceFilterer) FilterUndelegateConfirmedV2(opts *bind.FilterOpts, delegator []common.Address, validator []common.Address, undelegation_id []uint64) (*DposInterfaceUndelegateConfirmedV2Iterator, error) {
+
+	var delegatorRule []interface{}
+	for _, delegatorItem := range delegator {
+		delegatorRule = append(delegatorRule, delegatorItem)
+	}
+	var validatorRule []interface{}
+	for _, validatorItem := range validator {
+		validatorRule = append(validatorRule, validatorItem)
+	}
+	var undelegation_idRule []interface{}
+	for _, undelegation_idItem := range undelegation_id {
+		undelegation_idRule = append(undelegation_idRule, undelegation_idItem)
+	}
+
+	logs, sub, err := _DposInterface.contract.FilterLogs(opts, "UndelegateConfirmedV2", delegatorRule, validatorRule, undelegation_idRule)
+	if err != nil {
+		return nil, err
+	}
+	return &DposInterfaceUndelegateConfirmedV2Iterator{contract: _DposInterface.contract, event: "UndelegateConfirmedV2", logs: logs, sub: sub}, nil
+}
+
+// WatchUndelegateConfirmedV2 is a free log subscription operation binding the contract event 0xa637e566d82568efa4bd8c588e17232aee483873fa17fb873f6d398ba85ed57c.
+//
+// Solidity: event UndelegateConfirmedV2(address indexed delegator, address indexed validator, uint64 indexed undelegation_id, uint256 amount)
+func (_DposInterface *DposInterfaceFilterer) WatchUndelegateConfirmedV2(opts *bind.WatchOpts, sink chan<- *DposInterfaceUndelegateConfirmedV2, delegator []common.Address, validator []common.Address, undelegation_id []uint64) (event.Subscription, error) {
+
+	var delegatorRule []interface{}
+	for _, delegatorItem := range delegator {
+		delegatorRule = append(delegatorRule, delegatorItem)
+	}
+	var validatorRule []interface{}
+	for _, validatorItem := range validator {
+		validatorRule = append(validatorRule, validatorItem)
+	}
+	var undelegation_idRule []interface{}
+	for _, undelegation_idItem := range undelegation_id {
+		undelegation_idRule = append(undelegation_idRule, undelegation_idItem)
+	}
+
+	logs, sub, err := _DposInterface.contract.WatchLogs(opts, "UndelegateConfirmedV2", delegatorRule, validatorRule, undelegation_idRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(DposInterfaceUndelegateConfirmedV2)
+				if err := _DposInterface.contract.UnpackLog(event, "UndelegateConfirmedV2", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseUndelegateConfirmedV2 is a log parse operation binding the contract event 0xa637e566d82568efa4bd8c588e17232aee483873fa17fb873f6d398ba85ed57c.
+//
+// Solidity: event UndelegateConfirmedV2(address indexed delegator, address indexed validator, uint64 indexed undelegation_id, uint256 amount)
+func (_DposInterface *DposInterfaceFilterer) ParseUndelegateConfirmedV2(log types.Log) (*DposInterfaceUndelegateConfirmedV2, error) {
+	event := new(DposInterfaceUndelegateConfirmedV2)
+	if err := _DposInterface.contract.UnpackLog(event, "UndelegateConfirmedV2", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
 // DposInterfaceUndelegatedIterator is returned from FilterUndelegated and is used to iterate over the raw logs and unpacked data for Undelegated events raised by the DposInterface contract.
 type DposInterfaceUndelegatedIterator struct {
 	Event *DposInterfaceUndelegated // Event containing the contract specifics and raw log
@@ -2010,6 +2481,169 @@ func (_DposInterface *DposInterfaceFilterer) WatchUndelegated(opts *bind.WatchOp
 func (_DposInterface *DposInterfaceFilterer) ParseUndelegated(log types.Log) (*DposInterfaceUndelegated, error) {
 	event := new(DposInterfaceUndelegated)
 	if err := _DposInterface.contract.UnpackLog(event, "Undelegated", log); err != nil {
+		return nil, err
+	}
+	event.Raw = log
+	return event, nil
+}
+
+// DposInterfaceUndelegatedV2Iterator is returned from FilterUndelegatedV2 and is used to iterate over the raw logs and unpacked data for UndelegatedV2 events raised by the DposInterface contract.
+type DposInterfaceUndelegatedV2Iterator struct {
+	Event *DposInterfaceUndelegatedV2 // Event containing the contract specifics and raw log
+
+	contract *bind.BoundContract // Generic contract to use for unpacking event data
+	event    string              // Event name to use for unpacking event data
+
+	logs chan types.Log        // Log channel receiving the found contract events
+	sub  ethereum.Subscription // Subscription for errors, completion and termination
+	done bool                  // Whether the subscription completed delivering logs
+	fail error                 // Occurred error to stop iteration
+}
+
+// Next advances the iterator to the subsequent event, returning whether there
+// are any more events found. In case of a retrieval or parsing error, false is
+// returned and Error() can be queried for the exact failure.
+func (it *DposInterfaceUndelegatedV2Iterator) Next() bool {
+	// If the iterator failed, stop iterating
+	if it.fail != nil {
+		return false
+	}
+	// If the iterator completed, deliver directly whatever's available
+	if it.done {
+		select {
+		case log := <-it.logs:
+			it.Event = new(DposInterfaceUndelegatedV2)
+			if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+				it.fail = err
+				return false
+			}
+			it.Event.Raw = log
+			return true
+
+		default:
+			return false
+		}
+	}
+	// Iterator still in progress, wait for either a data or an error event
+	select {
+	case log := <-it.logs:
+		it.Event = new(DposInterfaceUndelegatedV2)
+		if err := it.contract.UnpackLog(it.Event, it.event, log); err != nil {
+			it.fail = err
+			return false
+		}
+		it.Event.Raw = log
+		return true
+
+	case err := <-it.sub.Err():
+		it.done = true
+		it.fail = err
+		return it.Next()
+	}
+}
+
+// Error returns any retrieval or parsing error occurred during filtering.
+func (it *DposInterfaceUndelegatedV2Iterator) Error() error {
+	return it.fail
+}
+
+// Close terminates the iteration process, releasing any pending underlying
+// resources.
+func (it *DposInterfaceUndelegatedV2Iterator) Close() error {
+	it.sub.Unsubscribe()
+	return nil
+}
+
+// DposInterfaceUndelegatedV2 represents a UndelegatedV2 event raised by the DposInterface contract.
+type DposInterfaceUndelegatedV2 struct {
+	Delegator      common.Address
+	Validator      common.Address
+	UndelegationId uint64
+	Amount         *big.Int
+	Raw            types.Log // Blockchain specific contextual infos
+}
+
+// FilterUndelegatedV2 is a free log retrieval operation binding the contract event 0xcfe7d712cc67daf9a8d00e8cca5881948bc528988fc31a071effa1dbe6dc91ef.
+//
+// Solidity: event UndelegatedV2(address indexed delegator, address indexed validator, uint64 indexed undelegation_id, uint256 amount)
+func (_DposInterface *DposInterfaceFilterer) FilterUndelegatedV2(opts *bind.FilterOpts, delegator []common.Address, validator []common.Address, undelegation_id []uint64) (*DposInterfaceUndelegatedV2Iterator, error) {
+
+	var delegatorRule []interface{}
+	for _, delegatorItem := range delegator {
+		delegatorRule = append(delegatorRule, delegatorItem)
+	}
+	var validatorRule []interface{}
+	for _, validatorItem := range validator {
+		validatorRule = append(validatorRule, validatorItem)
+	}
+	var undelegation_idRule []interface{}
+	for _, undelegation_idItem := range undelegation_id {
+		undelegation_idRule = append(undelegation_idRule, undelegation_idItem)
+	}
+
+	logs, sub, err := _DposInterface.contract.FilterLogs(opts, "UndelegatedV2", delegatorRule, validatorRule, undelegation_idRule)
+	if err != nil {
+		return nil, err
+	}
+	return &DposInterfaceUndelegatedV2Iterator{contract: _DposInterface.contract, event: "UndelegatedV2", logs: logs, sub: sub}, nil
+}
+
+// WatchUndelegatedV2 is a free log subscription operation binding the contract event 0xcfe7d712cc67daf9a8d00e8cca5881948bc528988fc31a071effa1dbe6dc91ef.
+//
+// Solidity: event UndelegatedV2(address indexed delegator, address indexed validator, uint64 indexed undelegation_id, uint256 amount)
+func (_DposInterface *DposInterfaceFilterer) WatchUndelegatedV2(opts *bind.WatchOpts, sink chan<- *DposInterfaceUndelegatedV2, delegator []common.Address, validator []common.Address, undelegation_id []uint64) (event.Subscription, error) {
+
+	var delegatorRule []interface{}
+	for _, delegatorItem := range delegator {
+		delegatorRule = append(delegatorRule, delegatorItem)
+	}
+	var validatorRule []interface{}
+	for _, validatorItem := range validator {
+		validatorRule = append(validatorRule, validatorItem)
+	}
+	var undelegation_idRule []interface{}
+	for _, undelegation_idItem := range undelegation_id {
+		undelegation_idRule = append(undelegation_idRule, undelegation_idItem)
+	}
+
+	logs, sub, err := _DposInterface.contract.WatchLogs(opts, "UndelegatedV2", delegatorRule, validatorRule, undelegation_idRule)
+	if err != nil {
+		return nil, err
+	}
+	return event.NewSubscription(func(quit <-chan struct{}) error {
+		defer sub.Unsubscribe()
+		for {
+			select {
+			case log := <-logs:
+				// New log arrived, parse the event and forward to the user
+				event := new(DposInterfaceUndelegatedV2)
+				if err := _DposInterface.contract.UnpackLog(event, "UndelegatedV2", log); err != nil {
+					return err
+				}
+				event.Raw = log
+
+				select {
+				case sink <- event:
+				case err := <-sub.Err():
+					return err
+				case <-quit:
+					return nil
+				}
+			case err := <-sub.Err():
+				return err
+			case <-quit:
+				return nil
+			}
+		}
+	}), nil
+}
+
+// ParseUndelegatedV2 is a log parse operation binding the contract event 0xcfe7d712cc67daf9a8d00e8cca5881948bc528988fc31a071effa1dbe6dc91ef.
+//
+// Solidity: event UndelegatedV2(address indexed delegator, address indexed validator, uint64 indexed undelegation_id, uint256 amount)
+func (_DposInterface *DposInterfaceFilterer) ParseUndelegatedV2(log types.Log) (*DposInterfaceUndelegatedV2, error) {
+	event := new(DposInterfaceUndelegatedV2)
+	if err := _DposInterface.contract.UnpackLog(event, "UndelegatedV2", log); err != nil {
 		return nil, err
 	}
 	event.Raw = log
